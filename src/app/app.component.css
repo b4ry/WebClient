@@ -110,12 +110,12 @@
     42%     {   box-shadow: 0px 0px 0px;                                                            }
     50%     {   left: 65%; top: 39%;                                                                }
     75%     {   left: 50%; top: 38%;                                                                }
-    100%    {   z-index: -2; left: %; top: 38%;                                                     }
+    100%    {   z-index: -2; left: 35%; top: 38%;                                                   }
 }
 
 @keyframes blink1 {
-    40% {   width: 7px; height: 7px; background: rgb(255, 255, 255);               }
-    90% {   width: 0px; height: 0px;                                                 }
+    40%     {   width: 7px; height: 7px; background: rgb(255, 255, 255);               }
+    90%     {   width: 0px; height: 0px;                                                 }
 }
 
 @keyframes blink2 {
