@@ -1,6 +1,6 @@
 .photo {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     background-color: darkgray;
     border-radius: 50%;
     z-index: -1;
@@ -8,28 +8,29 @@
 
 .center {
     position: absolute;
-    top: 40%;
+    top: 45%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
 }
 
-.moon1 {
-    width: 50px;
-    height: 50px;
+.moon-skills {
+    width: 80px;
+    height: 80px;
     background-color: darkred;
     border-radius: 50%;
     animation-name: orbit;
-    animation-duration: 20s;
+    animation-duration: 25s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     transition: width 2s, height 2s;
     z-index: 1;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5); 
 }
 
-.moon2 {
-    width: 75px;
-    height: 75px;
+.moon-experiences {
+    width: 100px;
+    height: 100px;
     background-color: darkblue;
     border-radius: 50%;
     animation-name: orbit2;
@@ -40,13 +41,13 @@
     z-index: 2;
 }
 
-.moon3 {
-    width: 40px;
-    height: 40px;
+.moon-projects {
+    width: 75px;
+    height: 75px;
     background: darkviolet;
     border-radius: 50%;
     animation-name: orbit3;
-    animation-duration: 20s;
+    animation-duration: 30s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     transition: width 2s, height 2s;
@@ -84,40 +85,37 @@
 }
 
 @keyframes orbit {
-    from    {   transform: rotate(0deg) translateY(-150px) translateX(-150px);                  }
-	to      {   transform: rotate(360deg) translateY(-150px) translateX(-150px);                }
-    0%      {   background-color:darkred; box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);     }
-    10%     {   box-shadow: 0px 0px 0px;                                                        }
+    from    {   transform: rotate(0deg) translateY(-175px) translateX(-175px);                  }
+	to      {   transform: rotate(360deg) translateY(-175px) translateX(-175px);                }
+    0%      {   background-color:darkred;                                                     }
     25%     {   background-color:red;                                                         }
     50%     {   background-color:yellow;                                                      }
-    75%     {   background-color:red; box-shadow: 0px 0px 0px;                                }
-    100%    {   background-color:darkred; box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);     }
+    75%     {   background-color:red;                                                         }
+    100%    {   background-color:darkred;                                                     }
 }
 
 @keyframes orbit2 {
-	from    { 	transform: rotate(0deg) translateY(-130px) translateX(-130px);                }
-    to      {   transform: rotate(-360deg) translateY(-130px) translateX(-130px);             }
-    0%      {   background-color:darkblue; box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);  }
-    22%     {   box-shadow: 0px 0px 0px;                                                      }
-    25%     {   background-color:blue; box-shadow: 0px 0px 0px;                             }
-    50%     {   background-color:lightblue; box-shadow: 0px 0px 0px;                        }
-    75%     {   background-color:blue;  box-shadow: 0px 0px 0px;                            }
-    100%    {   background-color:darkblue; box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);  }
+	from    { 	transform: rotate(0deg) translateY(-200px) translateX(-200px);                                      }
+    to      {   transform: rotate(-360deg) translateY(-200px) translateX(-200px);                                   }
+    0%      {   background-color:darkblue; box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);                        }
+    16%     {   box-shadow: 0px 0px 0px;                                                                            }
+    25%     {   background-color:blue; box-shadow: 0px 0px 0px;                                                   }
+    50%     {   background-color:lightblue; box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);                       }
+    75%     {   background-color:blue;  box-shadow: 0px 0px 0px;                                                  }
+    100%    {   background-color:darkblue; box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);                        }
 }
 
 @keyframes orbit3 {
-    0%      {  left: 40%; top: 38%;                                                  }
-    19%     { box-shadow: 10px 10px 5px grey;                                      }
-    25%     {  left: 50%; top: 40%;                                                  }
-    43%     { box-shadow: 0px 0px 0px;                                               }
-    50%     {  left: 60%; top: 39%;                                                  }
-    75%     {  left: 50%; top: 38%;                                                  }
-    100%    {  z-index: -2; left: 40%; top: 38%;                                     }
+    0%      {   left: 35%; top: 38%; box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);                }
+    42%     {   box-shadow: 0px 0px 0px;                                                            }
+    50%     {   left: 65%; top: 39%;                                                                }
+    75%     {   left: 50%; top: 38%;                                                                }
+    100%    {   z-index: -2; left: %; top: 38%;                                                     }
 }
 
 @keyframes blink1 {
-    40% { width: 7px; height: 7px; background: rgb(255, 255, 255)}
-    90% { width: 0px; height: 0px;}
+    40% {   width: 7px; height: 7px; background: rgb(255, 255, 255);               }
+    90% {   width: 0px; height: 0px;                                                 }
 }
 
 @keyframes blink2 {
@@ -134,7 +132,7 @@
     100%    {   background: orangered;      }
 }
 
-.moon1:hover, .moon2:hover, .moon3:hover {
+.moon-experiences:hover, .moon-skills:hover, .moon-projects:hover {
 	width: 150px;
     height: 150px;
 }
@@ -143,7 +141,7 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    height: 20%;
+    height: 4%;
     width: 100%;
     background-color: dimgrey;
     color: white;
