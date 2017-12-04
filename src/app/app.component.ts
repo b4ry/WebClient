@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  openFullFooter(): void {
+    document.getElementById("footer").style.height = "10%";
+  }
 }
