@@ -4,7 +4,7 @@
     background-color: orange;
     border-radius: 50%;
     z-index: -1;
-    animation-name: radiating;
+    /* animation-name: radiating; */
     animation-duration: 20s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -207,6 +207,7 @@
 .moon-experiences:hover, .moon-skills:hover, .moon-projects:hover {
 	width: 150px;
     height: 150px;
+    cursor: pointer;
 }
 
 .footer {
@@ -348,6 +349,7 @@
 
 .about-me i.fa-user:hover {
     color: red;
+    cursor: pointer;
 }
 
 .about-me i.fa-user .about-me-tooltip {
