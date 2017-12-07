@@ -371,7 +371,7 @@
 
 .moon-experiences:hover .moon-experiences-tooltip, .moon-skills:hover .moon-skills-tooltip, .moon-projects:hover .moon-projects-tooltip {
     visibility: visible;
-    transition: opacity 4s, transform 2s;
+    transition: opacity 3s, transform 2s;
     font-size: 300%;
     opacity: 1;
     transform: translateX(-10px);
