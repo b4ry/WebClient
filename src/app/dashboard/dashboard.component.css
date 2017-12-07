@@ -352,7 +352,7 @@
     cursor: pointer;
 }
 
-.about-me i.fa-user .about-me-tooltip, .moon-experiences .moon-experiences-tooltip {
+.about-me i.fa-user .about-me-tooltip {
     visibility: hidden;
     width: 120px;
     background-color: rgb(255, 255, 255, 0);
@@ -371,9 +371,10 @@
 
 .moon-experiences:hover .moon-experiences-tooltip, .moon-skills:hover .moon-skills-tooltip, .moon-projects:hover .moon-projects-tooltip {
     visibility: visible;
-    font-size: 120%;
-    transition: opacity 4s;
+    transition: opacity 4s, transform 2s;
+    font-size: 300%;
     opacity: 1;
+    transform: translateX(-10px);
 }
 
 .moon-experiences .moon-experiences-tooltip, .moon-skills .moon-skills-tooltip, .moon-projects .moon-projects-tooltip {
@@ -390,6 +391,10 @@
     margin-left: -60px;
     font-weight: bold;
     font-size: 120%;
-    transition: opacity 4s, visibility 4s;
+    transition: opacity 1s, visibility 2s, transform 2s;
     opacity: 0;
+}
+
+textPath {
+    transition: font-size 4s;
 }
