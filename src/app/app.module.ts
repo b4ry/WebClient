@@ -11,6 +11,9 @@ import { SkillsComponent } from './skills/skills.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { FooterComponent } from './footer/footer.component';
+import { SkillsPanelComponent } from './skills-panel/skills-panel.component';
+import { ExperiencesPanelComponent } from './experiences-panel/experiences-panel.component';
+import { ProjectsPanelComponent } from './projects-panel/projects-panel.component';
 
 import { ExperienceService } from './services/experience.service';
 import { TechnologyTypeService } from './services/Skills/technology-types.service';
@@ -27,6 +30,9 @@ import { MapTechnologyTypeEnumPipe } from './services/pipes/map-technology-type-
     ExperiencesComponent,
     SkillsComponent,
     ProjectsComponent,
+    SkillsPanelComponent,
+    ExperiencesPanelComponent,
+    ProjectsPanelComponent,
     MapTechnologyTypeEnumPipe
   ],
   imports: [

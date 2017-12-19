@@ -1,0 +1,23 @@
+.left-side-nav {
+    height: 88%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 4%;
+    left: 0;
+    background-color: dimgray;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.left-side-nav .closebtn {
+    position: absolute;
+    top: 0.5%;
+    right: 4%;
+    font-size: 200%;
+}
+
+i.fa-times-circle:hover {
+    color: red;
+    cursor: pointer;
+}
