@@ -9,6 +9,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ExperienceService } from './services/experience.service';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { FooterComponent } from './footer/footer.component';
+import { ExperiencesComponent } from './experiences/experiences.component';
+import { SkillsComponent } from './skills/skills.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     DashboardComponent,
     AboutMeComponent,
-    FooterComponent
+    FooterComponent,
+    ExperiencesComponent,
+    SkillsComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,
