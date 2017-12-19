@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TechnologyTypeService } from '../services/Skills/technology-types.service';
-import { TechnologyType } from '../services/dtos/technology-type';
+import { TechnologyService } from '../services/Skills/technology.service';
+import { TechnologyTypeDto } from '../services/dtos/technology-type-dto';
+import { TechnologyDto } from '../services/dtos/technology-dto';
 
 @Component({
   selector: 'app-skills',
@@ -9,18 +11,30 @@ import { TechnologyType } from '../services/dtos/technology-type';
 })
 export class SkillsComponent implements OnInit {
 
-  _technologyTypes: TechnologyType[];
+  _technologyTypes: TechnologyTypeDto[];
+  _technologies: TechnologyDto[];
 
-  constructor(private technologyTypeService: TechnologyTypeService) { }
+  constructor(
+    private technologyTypeService: TechnologyTypeService,
+    private technologyServie: TechnologyService) { }
 
   ngOnInit() {
     this.getTechnologyTypes();
+    this.getTechnologies();
   }
 
   getTechnologyTypes(): void {
     this.technologyTypeService.getTechnologyTypes()
         .subscribe(
             resultArray => this._technologyTypes = resultArray,
+            error => console.log("Error :: " + error)
+        )
+  }
+
+  getTechnologies(): void {
+    this.technologyServie.getTechnologies()
+        .subscribe(
+            resultArray => this._technologies = resultArray,
             error => console.log("Error :: " + error)
         )
   }

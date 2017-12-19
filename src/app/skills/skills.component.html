@@ -16,3 +16,37 @@
         </table>
     </div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Technology type</th>
+                <th class="text-center">Projects</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let technology of _technologies">
+                <td class="text-center" style="width: 15px;">{{technology.name}}</td>
+                <td class="text-center" style="width: 15px;">{{technology.technologyType.technologyTypeEnum | mapTechnologyTypeEnumPipe}}</td>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Description</th>
+                        </tr>
+                    </thead>
+
+                    <tr *ngFor="let project of technology.projects">
+                        <td class="text-center" style="width: 15px;">{{project.name}}</td>
+                        <td class="text-center" style="width: 15px;">{{project.description}}</td>
+                    </tr>
+                </table>    
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

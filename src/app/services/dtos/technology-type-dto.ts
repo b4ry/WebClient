@@ -1,6 +1,6 @@
 import { TechnologyTypeEnum } from "../enums/technology-type-enum";
 
-export class TechnologyType {
+export class TechnologyTypeDto {
     name: string;
-    technologyType: TechnologyTypeEnum;
+    technologyTypeEnum: TechnologyTypeEnum;
 }
