@@ -9,6 +9,22 @@
     /* z-index: 10; */
 }
 
+.footer .dashboard {
+    color: black;
+    font-weight: bold;
+}
+
+.dashboard i.fa-globe {
+    left: 7%;
+    top: 8%;
+    position: absolute;
+    font-size: 200%;
+    animation-name: contact-globe-rolling;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+}
+
 .footer .contact {
     left: 20%;
     top: 8%;
@@ -97,6 +113,11 @@
     animation-iteration-count: 1;
 }
 
+@keyframes contact-globe-rolling {
+    0%      {    left: 0%; transform: rotate(0deg); pointer-events: none;           }
+    100%    {    left: 7%; transform: rotate(360deg); pointer-events: none;         }
+}
+
 @keyframes contact-phone-rolling {
     0%      {    left: 0%; transform: rotate(0deg);         }
     100%    {    left: 20%; transform: rotate(360deg);      }
@@ -133,6 +154,11 @@
     0%      {    opacity: 0;                                }
     75%     {    opacity: 0;                                }
     100%    {    opacity: 1;                                }
+}
+
+.dashboard i.fa-globe:hover {
+    color: red;
+    cursor: pointer;
 }
 
 .github i.fa-github:hover {
