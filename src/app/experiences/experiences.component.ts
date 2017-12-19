@@ -11,5 +11,4 @@ export class ExperiencesComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
