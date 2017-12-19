@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './/app-routing.module';
+import { HttpModule } from "@angular/http";
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,6 +13,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ExperiencesComponent } from './experiences/experiences.component';
 import { SkillsComponent } from './skills/skills.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { TechnologyTypeService } from './services/Skills/technology-types.service';
+import { MapTechnologyTypeEnumPipe } from './services/pipes/map-technology-type-enum.pipe';
 
 
 @NgModule({
@@ -22,14 +25,19 @@ import { ProjectsComponent } from './projects/projects.component';
     FooterComponent,
     ExperiencesComponent,
     SkillsComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    MapTechnologyTypeEnumPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     AppRoutingModule
   ],
-  providers: [ ExperienceService ],
+  providers: [ 
+    ExperienceService,
+    TechnologyTypeService
+   ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

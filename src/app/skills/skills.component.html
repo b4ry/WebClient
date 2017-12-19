@@ -1,3 +1,18 @@
-<p>
-  skills works!
-</p>
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Technology type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let technologyType of _technologyTypes">
+                <td class="text-center" style="width: 15px;">{{technologyType.name}}</td>
+                <td class="text-center" style="width: 15px;">{{technologyType.technologyTypeEnum | mapTechnologyTypeEnumPipe}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
