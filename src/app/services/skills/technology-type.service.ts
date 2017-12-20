@@ -17,7 +17,7 @@ export class TechnologyTypeService {
     }
 
     getTechnologyTypes(): Observable<TechnologyTypeDto[]> {
-        return this.http.get(environment.apiBaseUrl + this.connectionString)
+        return this.http.get<TechnologyTypeDto[]>(environment.apiBaseUrl + this.connectionString)
             .catch(this.handleError);
     }
 

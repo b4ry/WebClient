@@ -17,7 +17,7 @@ export class ProjectService {
     }
 
     getProjects(): Observable<ProjectDto[]> {
-        return this.http.get(environment.apiBaseUrl + this.connectionString)
+        return this.http.get<ProjectDto[]>(environment.apiBaseUrl + this.connectionString)
             .catch(this.handleError);
     }
 

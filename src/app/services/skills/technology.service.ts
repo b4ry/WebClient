@@ -16,7 +16,7 @@ export class TechnologyService {
     }
 
     getTechnologies(): Observable<TechnologyDto[]> {
-        return this.http.get(environment.apiBaseUrl + this.connectionString)
+        return this.http.get<TechnologyDto[]>(environment.apiBaseUrl + this.connectionString)
             .catch(this.handleError);
     }
 

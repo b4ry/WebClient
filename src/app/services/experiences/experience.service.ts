@@ -17,7 +17,7 @@ export class ExperienceService {
     }
 
     getExperiences(): Observable<ExperienceDto[]> {
-        return this.http.get(environment.apiBaseUrl + this.connectionString)
+        return this.http.get<ExperienceDto[]>(environment.apiBaseUrl + this.connectionString)
             .catch(this.handleError);
     }
 
