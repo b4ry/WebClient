@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpModule } from "@angular/http";
@@ -25,6 +25,8 @@ import { ProjectService } from './services/projects/project.service';
 
 import { MapTechnologyTypeEnumPipe } from './services/pipes/map-technology-type-enum.pipe';
 import { EnumToDropdownPipe } from './services/pipes/enum-to-dropdown.pipe';
+
+import { GlobalErrorHandler } from './errors/GlobalErrorHandler.handler';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { EnumToDropdownPipe } from './services/pipes/enum-to-dropdown.pipe';
     ExperienceService,
     TechnologyTypeService,
     TechnologyService,
-    ProjectService
+    ProjectService,
+    {provide: ErrorHandler, useClass: GlobalErrorHandler}
    ],
   bootstrap: [ AppComponent ]
 })
