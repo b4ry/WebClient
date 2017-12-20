@@ -20,6 +20,8 @@ export class SkillsComponent implements OnInit, OnDestroy {
   private technologyName: string;
   private technologyType: number;
 
+  private technologyTypesEnum = TechnologyTypeEnum;
+
   private aliveTechnologyTypesSubscription: boolean = true;
   private aliveTechnologySubscription: boolean = true;
 

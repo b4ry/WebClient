@@ -61,6 +61,11 @@
        <label>Type: </label>
        <input [(ngModel)]="technologyType" />
     </div>
+    <select [(ngModel)]="technologyType">
+        <option *ngFor="let technologyTypeEnum of technologyTypesEnum | enumToDropdown" [value]="technologyTypeEnum.key">
+            {{technologyTypeEnum.value}}
+        </option>
+     </select>
     <div>
        <button (click)="createTechnology()">Add</button>
     </div>
