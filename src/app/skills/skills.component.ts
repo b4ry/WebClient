@@ -5,6 +5,7 @@ import { TechnologyTypeService } from '../services/skills/technology-type.servic
 import { TechnologyService } from '../services/skills/technology.service';
 import { TechnologyTypeDto } from '../services/dtos/technology-type.dto';
 import { TechnologyDto } from '../services/dtos/technology.dto';
+import { TechnologyTypeEnum } from '../services/enums/technology-type.enum';
 
 @Component({
   selector: 'app-skills',
@@ -13,8 +14,11 @@ import { TechnologyDto } from '../services/dtos/technology.dto';
 })
 export class SkillsComponent implements OnInit, OnDestroy {
 
-  private _technologyTypes: TechnologyTypeDto[];
-  private _technologies: TechnologyDto[];
+  private technologyTypes: TechnologyTypeDto[];
+  private technologies: TechnologyDto[];
+
+  private technologyName: string;
+  private technologyType: number;
 
   private aliveTechnologyTypesSubscription: boolean = true;
   private aliveTechnologySubscription: boolean = true;
@@ -37,7 +41,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
     this.technologyTypeService.getTechnologyTypes()
       .takeWhile(() => this.aliveTechnologyTypesSubscription)
       .subscribe(
-          resultArray => this._technologyTypes = resultArray,
+          resultArray => this.technologyTypes = resultArray,
           error => console.log("Error :: " + error)
       )
   }
@@ -46,10 +50,24 @@ export class SkillsComponent implements OnInit, OnDestroy {
     this.technologyService.getTechnologies()
       .takeWhile(() => this.aliveTechnologySubscription)
       .subscribe(
-          resultArray => this._technologies = resultArray,
+          resultArray => this.technologies = resultArray,
           error => console.log("Error :: " + error)
       )
   }
 
+  createTechnology() {
+    let technology = new TechnologyDto();
 
+    technology.name = this.technologyName;
+    technology.technologyType = new TechnologyTypeDto();
+    technology.technologyType.technologyTypeEnum = this.technologyType;
+
+    this.technologyService.createTechnology(technology)
+      .takeWhile(() => this.aliveTechnologySubscription)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+      );
+  }
 }

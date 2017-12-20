@@ -8,7 +8,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let technologyType of _technologyTypes">
+            <tr *ngFor="let technologyType of technologyTypes">
                 <td class="text-center" style="width: 15px;">{{technologyType.name}}</td>
                 <td class="text-center" style="width: 15px;">{{technologyType.technologyTypeEnum | mapTechnologyTypeEnumPipe}}</td>
             </tr>
@@ -28,7 +28,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let technology of _technologies">
+            <tr *ngFor="let technology of technologies">
                 <td class="text-center" style="width: 15px;">{{technology.name}}</td>
                 <td class="text-center" style="width: 15px;">{{technology.technologyType.technologyTypeEnum | mapTechnologyTypeEnumPipe}}</td>
 
@@ -50,3 +50,18 @@
         </table>
     </div>
 </div>
+
+
+<div style="background-color:white;">
+    <div>
+       <label>Name: </label>
+       <input [(ngModel)]="technologyName" />
+    </div>
+    <div>
+       <label>Type: </label>
+       <input [(ngModel)]="technologyType" />
+    </div>
+    <div>
+       <button (click)="createTechnology()">Add</button>
+    </div>
+  </div>

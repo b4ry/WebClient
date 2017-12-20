@@ -43,7 +43,7 @@ export class ExperienceDetailsComponent implements OnInit, OnDestroy {
     )
   }
 
-  dupa(): void {
+  alertExperience(): void {
     alert(this.experience.companyName + " : " + this.experience.position + " : NumberOfProjects= " + this.experience.projects.length);
   }
 }

@@ -3,6 +3,7 @@ import { Observable } from "rxjs/Observable";
 import { HttpClient } from "@angular/common/http";
 import { HttpParams } from "@angular/common/http";
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 import { environment } from '../../../environments/environment';
 import { ExperienceDto } from "../dtos/experience.dto";
