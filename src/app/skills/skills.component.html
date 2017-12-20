@@ -59,7 +59,7 @@
     </div>
     <div>
        <label>Type: </label>
-       <input [(ngModel)]="technologyType" />
+       <input readonly [(ngModel)]="technologyType" />
     </div>
     <select [(ngModel)]="technologyType">
         <option *ngFor="let technologyTypeEnum of technologyTypesEnum | enumToDropdown" [value]="technologyTypeEnum.key">
