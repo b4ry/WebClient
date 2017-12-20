@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
-import "rxjs/Rx";
+import { HttpClient } from "@angular/common/http";
+import { HttpParams } from "@angular/common/http";
+import 'rxjs/add/operator/catch';
 
 import { environment } from '../../../environments/environment';
 import { ExperienceDto } from "../dtos/experience.dto";
@@ -11,19 +12,26 @@ export class ExperienceService {
 
     private connectionString: string = 'experience/getexperiences';
 
-    constructor(private http: Http) { 
+    constructor(private http: HttpClient) { 
 
     }
 
     getExperiences(): Observable<ExperienceDto[]> {
         return this.http.get(environment.apiBaseUrl + this.connectionString)
-            .map((response: Response) => {
-                return <ExperienceDto[]>response.json();
-            })
+            .catch(this.handleError);
+    }
+
+    getExperienceByKey(companyName: string, position: string): Observable<ExperienceDto> {
+        let queryParams = new HttpParams();
+
+        queryParams = queryParams.append('companyName', companyName);
+        queryParams = queryParams.append('position', position);
+
+        return this.http.get(environment.apiBaseUrl + 'experience/getExperience', { params: queryParams })
             .catch(this.handleError);
     }
 
     private handleError(error: Response) {
-        return Observable.throw(error.statusText);
+        return Observable.throw(error);
     }
 }

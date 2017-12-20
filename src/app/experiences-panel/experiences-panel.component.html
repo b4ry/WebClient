@@ -6,13 +6,13 @@
     <i class="fa fa-times-circle" (click)="closeExperiencesPanel()"></i>
   </div>
   <div class="grid">
-    <a *ngFor="let experience of experiences" class="list-experiences-element">
+    <a *ngFor="let experience of experiences" class="list-experiences-element" (click)="navigateToExperience(experience.companyName, experience.position)">
       <div class="experiences-button">
         {{experience.companyName}}
       </div>
     </a>
   </div>
   <div class="grid-more">
-    <div class="more-experiences experiences-button" (click)="redirectToExperiencesPage()">MORE</div>
+    <div class="more-experiences experiences-button" (click)="navigateToExperiencesPage()">MORE</div>
   </div>
 </div>

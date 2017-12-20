@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SkillsPanelComponent } from './skills-panel/skills-panel.component';
 import { ExperiencesPanelComponent } from './experiences-panel/experiences-panel.component';
 import { ProjectsPanelComponent } from './projects-panel/projects-panel.component';
+import { SkillDetailsComponent } from './skill-details/skill-details.component';
 
 import { ExperienceService } from './services/experiences/experience.service';
 import { TechnologyTypeService } from './services/skills/technology-type.service';
@@ -21,6 +22,7 @@ import { TechnologyService } from './services/skills/technology.service';
 import { ProjectService } from './services/projects/project.service';
 
 import { MapTechnologyTypeEnumPipe } from './services/pipes/map-technology-type-enum.pipe';
+import { ExperienceDetailsComponent } from './experience-details/experience-details.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { MapTechnologyTypeEnumPipe } from './services/pipes/map-technology-type-
     SkillsPanelComponent,
     ExperiencesPanelComponent,
     ProjectsPanelComponent,
-    MapTechnologyTypeEnumPipe
+    MapTechnologyTypeEnumPipe,
+    SkillDetailsComponent,
+    ExperienceDetailsComponent
   ],
   imports: [
     BrowserModule,

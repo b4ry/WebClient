@@ -45,7 +45,11 @@ export class ExperiencesPanelComponent implements OnInit, OnDestroy {
     this.notifyClosingExperiencesPanel.emit(this.experiencesPanelHeight);
   }
   
-  redirectToExperiencesPage() {
+  navigateToExperiencesPage() {
     this.router.navigate(['/experiences']);
+  }
+
+  navigateToExperience(companyName: string, position: string) {
+    this.router.navigate(['experience', companyName, position]);
   }
 }
