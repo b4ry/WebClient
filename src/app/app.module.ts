@@ -15,9 +15,10 @@ import { SkillsPanelComponent } from './skills-panel/skills-panel.component';
 import { ExperiencesPanelComponent } from './experiences-panel/experiences-panel.component';
 import { ProjectsPanelComponent } from './projects-panel/projects-panel.component';
 
-import { ExperienceService } from './services/experience.service';
-import { TechnologyTypeService } from './services/Skills/technology-types.service';
-import { TechnologyService } from './services/Skills/technology.service';
+import { ExperienceService } from './services/experiences/experience.service';
+import { TechnologyTypeService } from './services/skills/technology-type.service';
+import { TechnologyService } from './services/skills/technology.service';
+import { ProjectService } from './services/projects/project.service';
 
 import { MapTechnologyTypeEnumPipe } from './services/pipes/map-technology-type-enum.pipe';
 
@@ -44,7 +45,8 @@ import { MapTechnologyTypeEnumPipe } from './services/pipes/map-technology-type-
   providers: [ 
     ExperienceService,
     TechnologyTypeService,
-    TechnologyService
+    TechnologyService,
+    ProjectService
    ],
   bootstrap: [ AppComponent ]
 })

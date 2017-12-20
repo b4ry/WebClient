@@ -2,4 +2,14 @@
     <div class="closebtn">
         <i class="fa fa-times-circle" (click)="closeSkillsPanel()"></i>
     </div>
+    <div class="grid">
+        <a *ngFor="let skill of skills" class="list-skills-element">
+          <div class="skills-button">
+            {{skill.name}}
+          </div>
+      </a>
+    </div>
+    <div class="grid-more">
+        <div class="more-skills skills-button" (click)="redirectToSkillsPage()">MORE</div>
+    </div>
 </div>

@@ -1,23 +1,24 @@
 import { Injectable } from "@angular/core";
 import { Http, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
-import { TechnologyTypeDto } from '../dtos/technology-type-dto';
 import "rxjs/Rx";
 
 import { environment } from '../../../environments/environment';
-import { TechnologyTypeEnum } from "../enums/technology-type-enum";
+import { ProjectDto } from "../dtos/project.dto";
 
 @Injectable()
-export class TechnologyTypeService {
+export class ProjectService {
 
+    private connectionString: string = 'project/getprojects';
+    
     constructor(private http: Http) { 
 
     }
 
-    getTechnologyTypes(): Observable<TechnologyTypeDto[]> {
-        return this.http.get(environment.apiBaseUrl + 'technologytype/gettechnologytypes')
+    getProjects(): Observable<ProjectDto[]> {
+        return this.http.get(environment.apiBaseUrl + this.connectionString)
             .map((response: Response) => {
-                return <TechnologyTypeDto[]>response.json();
+                return <ProjectDto[]>response.json();
             })
             .catch(this.handleError);
     }

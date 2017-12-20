@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import "rxjs/add/operator/takeWhile";
 
-import { TechnologyTypeService } from '../services/Skills/technology-types.service';
-import { TechnologyService } from '../services/Skills/technology.service';
-import { TechnologyTypeDto } from '../services/dtos/technology-type-dto';
-import { TechnologyDto } from '../services/dtos/technology-dto';
+import { TechnologyTypeService } from '../services/skills/technology-type.service';
+import { TechnologyService } from '../services/skills/technology.service';
+import { TechnologyTypeDto } from '../services/dtos/technology-type.dto';
+import { TechnologyDto } from '../services/dtos/technology.dto';
 
 @Component({
   selector: 'app-skills',
@@ -21,7 +21,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
 
   constructor(
     private technologyTypeService: TechnologyTypeService,
-    private technologyServie: TechnologyService) { }
+    private technologyService: TechnologyService) { }
 
   ngOnInit() {
     this.getTechnologyTypes();
@@ -43,7 +43,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
   }
 
   getTechnologies(): void {
-    this.technologyServie.getTechnologies()
+    this.technologyService.getTechnologies()
       .takeWhile(() => this.aliveTechnologySubscription)
       .subscribe(
           resultArray => this._technologies = resultArray,

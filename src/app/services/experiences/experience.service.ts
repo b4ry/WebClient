@@ -4,21 +4,21 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/Rx";
 
 import { environment } from '../../../environments/environment';
-import { TechnologyDto } from "../dtos/technology.dto";
+import { ExperienceDto } from "../dtos/experience.dto";
 
 @Injectable()
-export class TechnologyService {
+export class ExperienceService {
 
-    private connectionString: string = 'technology/gettechnologies';
+    private connectionString: string = 'experience/getexperiences';
 
     constructor(private http: Http) { 
 
     }
 
-    getTechnologies(): Observable<TechnologyDto[]> {
+    getExperiences(): Observable<ExperienceDto[]> {
         return this.http.get(environment.apiBaseUrl + this.connectionString)
             .map((response: Response) => {
-                return <TechnologyDto[]>response.json();
+                return <ExperienceDto[]>response.json();
             })
             .catch(this.handleError);
     }

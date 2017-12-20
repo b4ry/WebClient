@@ -28,3 +28,46 @@ i.fa-times-circle:hover {
     color: red;
     cursor: pointer;
 }
+
+.grid {
+    padding-top: 1%;
+    padding-left: 5%;
+}
+
+.list-experiences-element {
+    float: left;
+    padding-right: 3%;
+    width: 10%;
+}
+  
+.experiences-button {
+    padding: 24%;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    color: dimgray;
+    background-color: black;
+
+}
+  
+.experiences-button:hover {
+    box-shadow:
+        inset 0 0 50px skyblue,   
+        inset 20px 0 80px darkblue,  
+        inset -20px 0 80px dodgerblue,  
+        inset 20px 0 300px blue,
+        inset -20px 0 300px dodgerblue, 
+        -10px 0 150px 1px darkblue,
+        10px 0 80px 1px darkblue;
+    cursor: pointer;
+    color: black;
+}
+
+.grid-more {
+    padding-left: 80%;
+    padding-right: 10%;
+}
+
+.more-experiences {
+    padding: 24% 10%;
+}

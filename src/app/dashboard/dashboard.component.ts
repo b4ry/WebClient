@@ -61,16 +61,4 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   onNotifyClosingProjectsPanel(updatedProjectsPanelWidth:Number):void {
     this.projectsPanelWidth = updatedProjectsPanelWidth;
   }
-
-  redirectToSkillsPage() {
-    this.router.navigate(['/skills']);
-  }
-
-  redirectToProjectsPage() {
-    this.router.navigate(['/projects']);
-  }
-
-  redirectToExperiencesPage() {
-    this.router.navigate(['/experiences']);
-  }
 }

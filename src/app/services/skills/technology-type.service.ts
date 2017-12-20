@@ -4,21 +4,22 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/Rx";
 
 import { environment } from '../../../environments/environment';
-import { TechnologyDto } from "../dtos/technology.dto";
+import { TechnologyTypeEnum } from "../enums/technology-type.enum";
+import { TechnologyTypeDto } from '../dtos/technology-type.dto';
 
 @Injectable()
-export class TechnologyService {
+export class TechnologyTypeService {
 
-    private connectionString: string = 'technology/gettechnologies';
+    private connectionString: string = 'technologytype/gettechnologytypes';
 
     constructor(private http: Http) { 
 
     }
 
-    getTechnologies(): Observable<TechnologyDto[]> {
+    getTechnologyTypes(): Observable<TechnologyTypeDto[]> {
         return this.http.get(environment.apiBaseUrl + this.connectionString)
             .map((response: Response) => {
-                return <TechnologyDto[]>response.json();
+                return <TechnologyTypeDto[]>response.json();
             })
             .catch(this.handleError);
     }

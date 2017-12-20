@@ -1,6 +1,6 @@
-import { ProjectTypeDto } from "./project-type-dto";
+import { ProjectTypeDto } from "./project-type.dto";
 
-export class ProjectDto {
+export class TechnologyProjectDto {
     name: string;
     description: string;
     startTime: Date;
