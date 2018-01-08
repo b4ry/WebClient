@@ -7,18 +7,20 @@ import 'rxjs/add/observable/throw';
 
 import { environment } from '../../../environments/environment';
 import { ExperienceDto } from "../dtos/experience.dto";
+import { UrlService } from "../url.service";
 
 @Injectable()
 export class ExperienceService {
 
-    private connectionString: string = 'experience/getexperiences';
-
-    constructor(private http: HttpClient) { 
+    constructor(
+        private http: HttpClient,
+        private urlService: UrlService
+    ) { 
 
     }
 
     getExperiences(): Observable<ExperienceDto[]> {
-        return this.http.get<ExperienceDto[]>(environment.apiBaseUrl + this.connectionString)
+        return this.http.get<ExperienceDto[]>(environment.apiBaseUrl + this.urlService.getUrl("GetExperiences"))
             .catch(this.handleError);
     }
 
@@ -28,7 +30,7 @@ export class ExperienceService {
         queryParams = queryParams.append('companyName', companyName);
         queryParams = queryParams.append('position', position);
 
-        return this.http.get(environment.apiBaseUrl + 'experience/getExperience', { params: queryParams })
+        return this.http.get(environment.apiBaseUrl + this.urlService.getUrl("GetExperience"), { params: queryParams })
             .catch(this.handleError);
     }
 

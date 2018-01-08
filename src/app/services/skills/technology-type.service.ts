@@ -7,18 +7,19 @@ import 'rxjs/add/observable/throw';
 import { environment } from '../../../environments/environment';
 import { TechnologyTypeEnum } from "../enums/technology-type.enum";
 import { TechnologyTypeDto } from '../dtos/technology-type.dto';
+import { UrlService } from "../url.service";
 
 @Injectable()
 export class TechnologyTypeService {
 
-    private connectionString: string = 'technologytype/gettechnologytypes';
-
-    constructor(private http: HttpClient) { 
+    constructor(
+        private http: HttpClient,
+        private urlService: UrlService) { 
 
     }
 
     getTechnologyTypes(): Observable<TechnologyTypeDto[]> {
-        return this.http.get<TechnologyTypeDto[]>(environment.apiBaseUrl + this.connectionString)
+        return this.http.get<TechnologyTypeDto[]>(environment.apiBaseUrl + this.urlService.getUrl("GetTechnologyTypes"))
             .catch(this.handleError);
     }
 

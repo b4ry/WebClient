@@ -6,19 +6,21 @@ import 'rxjs/add/observable/throw';
 
 import { environment } from '../../../environments/environment';
 import { ProjectDto } from "../dtos/project.dto";
+import { UrlService } from "../url.service";
 
 
 @Injectable()
 export class ProjectService {
-
-    private connectionString: string = 'project/getprojects';
     
-    constructor(private http: HttpClient) { 
+    constructor(
+        private http: HttpClient,
+        private urlService: UrlService
+    ) { 
 
     }
 
     getProjects(): Observable<ProjectDto[]> {
-        return this.http.get<ProjectDto[]>(environment.apiBaseUrl + this.connectionString)
+        return this.http.get<ProjectDto[]>(environment.apiBaseUrl + this.urlService.getUrl("GetProjects"))
             .catch(this.handleError);
     }
 

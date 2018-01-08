@@ -27,6 +27,7 @@ import { MapTechnologyTypeEnumPipe } from './services/pipes/map-technology-type-
 import { EnumToDropdownPipe } from './services/pipes/enum-to-dropdown.pipe';
 
 import { GlobalErrorHandler } from './errors/GlobalErrorHandler.handler';
+import { UrlService } from './services/url.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,11 @@ import { GlobalErrorHandler } from './errors/GlobalErrorHandler.handler';
     TechnologyTypeService,
     TechnologyService,
     ProjectService,
-    {provide: ErrorHandler, useClass: GlobalErrorHandler}
+    UrlService,
+    {
+      provide: ErrorHandler, 
+      useClass: GlobalErrorHandler
+    }
    ],
   bootstrap: [ AppComponent ]
 })

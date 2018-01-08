@@ -6,23 +6,24 @@ import 'rxjs/add/observable/throw';
 
 import { environment } from '../../../environments/environment';
 import { TechnologyDto } from "../dtos/technology.dto";
+import { UrlService } from "../url.service";
 
 @Injectable()
 export class TechnologyService {
 
-    private connectionString: string = 'technology/gettechnologies';
-
-    constructor(private http: HttpClient) { 
+    constructor(
+        private http: HttpClient,
+        private urlService: UrlService) { 
 
     }
 
     getTechnologies(): Observable<TechnologyDto[]> {
-        return this.http.get<TechnologyDto[]>(environment.apiBaseUrl + this.connectionString)
+        return this.http.get<TechnologyDto[]>(environment.apiBaseUrl + this.urlService.getUrl("GetTechnologies"))
             .catch(this.handleError);
     }
 
     createTechnology(technology: TechnologyDto): Observable<TechnologyDto[]> {
-        return this.http.post(environment.apiBaseUrl + "technology/createtechnology", technology)
+        return this.http.post(environment.apiBaseUrl + this.urlService.getUrl("CreateTechnology"), technology)
             .catch(this.handleError);
     }
 
