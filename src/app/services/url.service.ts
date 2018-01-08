@@ -4,12 +4,12 @@ import { Injectable } from "@angular/core";
 export class UrlService {
 
     private map = new Map<string, string>([
-        [ "GetExperiences", "experience/getexperiences"],
-        [ "GetExperience", "experience/getexperience"],
-        [ "GetProjects", "project/getprojects"],
-        [ "GetTechnologyTypes", "technologytype/gettechnologytypes"],
-        [ "GetTechnologies", "technology/gettechnologies"],
-        [ "CreateTechnology", "technology/createtechnology"]
+        [ "GetExperiences", "experience/getexperiences" ],
+        [ "GetExperience", "experience/getexperience" ],
+        [ "GetProjects", "project/getprojects" ],
+        [ "GetTechnologyTypes", "technologytype/gettechnologytypes" ],
+        [ "GetTechnologies", "technology/gettechnologies" ],
+        [ "CreateTechnology", "technology/createtechnology" ]
     ]);
 
     constructor() { 

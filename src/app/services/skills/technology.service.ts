@@ -5,8 +5,9 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 import { environment } from '../../../environments/environment';
-import { TechnologyDto } from "../dtos/technology.dto";
 import { UrlService } from "../url.service";
+import { CreateTechnologyDto } from "../dtos/create-technology.dto";
+import { TechnologyDto } from "../dtos/technology.dto";
 
 @Injectable()
 export class TechnologyService {
@@ -22,7 +23,7 @@ export class TechnologyService {
             .catch(this.handleError);
     }
 
-    createTechnology(technology: TechnologyDto): Observable<TechnologyDto[]> {
+    createTechnology(technology: CreateTechnologyDto): Observable<CreateTechnologyDto> {
         return this.http.post(environment.apiBaseUrl + this.urlService.getUrl("CreateTechnology"), technology)
             .catch(this.handleError);
     }
