@@ -5,4 +5,5 @@ export class TechnologyDto {
     name: string;
     projects: TechnologyProjectDto[];
     technologyType: TechnologyTypeDto;
+    iconUrl: string;
 }

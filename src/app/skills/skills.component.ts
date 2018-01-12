@@ -5,6 +5,7 @@ import { TechnologyTypeService } from '../services/skills/technology-type.servic
 import { TechnologyService } from '../services/skills/technology.service';
 import { TechnologyTypeDto } from '../services/dtos/technology-type.dto';
 import { TechnologyDto } from '../services/dtos/technology.dto';
+import { CreateTechnologyDto } from '../services/dtos/create-technology.dto';
 import { TechnologyTypeEnum } from '../services/enums/technology-type.enum';
 
 @Component({
@@ -18,6 +19,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
   private technologies: TechnologyDto[];
 
   private technologyName: string;
+  private technologyIconUrl: string;
   private technologyType: number;
 
   private technologyTypesEnum = TechnologyTypeEnum;
@@ -58,13 +60,13 @@ export class SkillsComponent implements OnInit, OnDestroy {
   }
 
   createTechnology() {
-    let technology = new TechnologyDto();
+    let createTechnologyDto = new CreateTechnologyDto();
 
-    technology.name = this.technologyName;
-    technology.technologyType = new TechnologyTypeDto();
-    technology.technologyType.technologyTypeEnum = this.technologyType;
+    createTechnologyDto.name = this.technologyName;
+    createTechnologyDto.iconUrl = this.technologyIconUrl;
+    createTechnologyDto.technologyTypeEnum = this.technologyType;
 
-    this.technologyService.createTechnology(technology)
+    this.technologyService.createTechnology(createTechnologyDto)
       .takeWhile(() => this.aliveTechnologySubscription)
       .subscribe(
         res => {

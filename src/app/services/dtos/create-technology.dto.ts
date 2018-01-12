@@ -1,6 +1,7 @@
-import { TechnologyTypeDto } from "./technology-type.dto";
+import { TechnologyTypeEnum } from "../enums/technology-type.enum";
 
 export class CreateTechnologyDto {
     name: string;
-    technologyType: TechnologyTypeDto;
+    technologyTypeEnum: TechnologyTypeEnum;
+    iconUrl: string;
 }
