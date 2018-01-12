@@ -1,7 +1,7 @@
-<div class="container">
-    <div *ngFor="let technology of technologies">
-        <img [src]="technology.iconUrl">
-    </div>
+<div class="flex-container">
+    <li class="flex-item" *ngFor="let technology of technologies">
+        <i [ngClass]="technology.iconClass"></i>
+    </li>
 </div>
 
 <!-- <div class="container" style="background-color:white;">
@@ -23,7 +23,7 @@
     </div>
 </div> -->
 
-<div class="container" style="background-color:white;">
+<!-- <div class="container" style="background-color:white;">
     <div class="row">
         <table class="table">
             <thead>
@@ -31,7 +31,7 @@
                 <th class="text-center">Name</th>
                 <th class="text-center">Technology type</th>
                 <th class="text-center">Projects</th>
-                <th class="text-center">IconUrl</th>
+                <th class="text-center">iconClass</th>
             </tr>
             </thead>
             <tbody>
@@ -53,7 +53,7 @@
                     </tr>
                 </table>    
 
-                <td class="text-center" style="width: 15px;">{{technology.iconUrl}}</td>
+                <td class="text-center" style="width: 15px;">{{technology.iconClass}}</td>
             </tr>
             </tbody>
         </table>
@@ -66,8 +66,8 @@
        <input [(ngModel)]="technologyName" />
     </div>
     <div>
-        <label>IconUrl: </label>
-        <input [(ngModel)]="technologyIconUrl" />
+        <label>IconClass: </label>
+        <input [(ngModel)]="technologyIconClass" />
      </div>
     <div>
        <label>Type: </label>
@@ -81,4 +81,4 @@
     <div>
        <button (click)="createTechnology()">Add</button>
     </div>
-  </div>
+  </div> -->

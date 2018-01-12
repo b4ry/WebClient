@@ -19,7 +19,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
   private technologies: TechnologyDto[];
 
   private technologyName: string;
-  private technologyIconUrl: string;
+  private technologyIconClass: string;
   private technologyType: number;
 
   private technologyTypesEnum = TechnologyTypeEnum;
@@ -63,7 +63,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
     let createTechnologyDto = new CreateTechnologyDto();
 
     createTechnologyDto.name = this.technologyName;
-    createTechnologyDto.iconUrl = this.technologyIconUrl;
+    createTechnologyDto.iconClass = this.technologyIconClass;
     createTechnologyDto.technologyTypeEnum = this.technologyType;
 
     this.technologyService.createTechnology(createTechnologyDto)

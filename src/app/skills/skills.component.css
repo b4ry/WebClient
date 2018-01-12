@@ -1,0 +1,21 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.flex-item {
+    margin: 3%;
+    /* width: calc(100% * (1/6)); */
+    align-content: center;
+    justify-content: center;
+}
+
+.flex-item:hover {
+    cursor: pointer;
+}
+
+i {
+    font-size: 1000%;
+}

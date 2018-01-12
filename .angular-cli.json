@@ -19,7 +19,10 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "assets/css/devicon.css",
+        "assets/css/devicon-colors.css",
+        "assets/css/devicon.min.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
