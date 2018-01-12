@@ -1,4 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+
 import "rxjs/add/operator/takeWhile";
 
 import { TechnologyTypeService } from '../services/skills/technology-type.service';
@@ -29,7 +31,8 @@ export class SkillsComponent implements OnInit, OnDestroy {
 
   constructor(
     private technologyTypeService: TechnologyTypeService,
-    private technologyService: TechnologyService) { }
+    private technologyService: TechnologyService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getTechnologyTypes();
@@ -73,5 +76,9 @@ export class SkillsComponent implements OnInit, OnDestroy {
           console.log(res);
         },
       );
+  }
+
+  openSkillDetails(technologyName: string): void {
+    this.router.navigate(['skills', technologyName]);
   }
 }

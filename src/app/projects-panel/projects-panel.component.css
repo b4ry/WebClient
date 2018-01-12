@@ -33,6 +33,7 @@ i.fa-times-circle:hover {
 .projects-button {
     padding: 10%;
     text-align: center;
+    justify-content: center;
     font-weight: bold;
     color: dimgray;
     background-color: black;

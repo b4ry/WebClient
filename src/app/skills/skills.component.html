@@ -1,6 +1,6 @@
 <div class="flex-container">
     <li class="flex-item" *ngFor="let technology of technologies">
-        <i [ngClass]="technology.iconClass"></i>
+        <i [ngClass]="technology.iconClass" (click)="openSkillDetails(technology.name)"></i>
     </li>
 </div>
 

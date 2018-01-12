@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'projects', component: ProjectsComponent },
   { path: 'skills', component: SkillsComponent },
   { path: 'skills/:id', component: SkillDetailsComponent },
+  { path: 'skills/:technologyName', component: SkillDetailsComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 
