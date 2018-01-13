@@ -6,15 +6,11 @@
     <i class="fa fa-times-circle" (click)="closeExperiencesPanel()"></i>
   </div>
   <div class="flex-container">
-    <div class="flex-container">
       <div *ngFor="let experience of experiences" (click)="navigateToExperience(experience.companyName, experience.position)">
         {{experience.companyName}}
       </div>
-    </div>
-    <div class="flex-container right">
-      <div (click)="navigateToExperiencesPage()">
+      <div class="right" (click)="navigateToExperiencesPage()">
         MORE
       </div>
-    </div>
   </div>
 </div>
