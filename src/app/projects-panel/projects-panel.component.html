@@ -2,14 +2,14 @@
   <div class="closebtn">
     <i class="fa fa-times-circle" (click)="closeProjectsPanel()"></i>
   </div>
-  <div class="grid">
-      <a *ngFor="let project of projects" class="list-projects-element">
-        <div class="projects-button">
+  <div class="flex-container">
+      <div *ngFor="let project of projects">
           {{project.name}}
-        </div>
-    </a>
+      </div>
   </div>
-  <div class="grid-more">
-      <div class="more-projects projects-button" (click)="redirectToProjectsPage()">MORE</div>
+  <div class="flex-container">
+    <div>
+      MORE
+    </div>
   </div>
 </div>

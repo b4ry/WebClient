@@ -22,41 +22,26 @@ i.fa-times-circle:hover {
     cursor: pointer;
 }
    
-.grid {
-    padding: 30% 10%;
-}
-
-.list-skills-element {
-    padding-right: 10%;
-}
+.flex-container {
+    margin-top: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   
-.skills-button {
+.flex-container>div {
+    background-color: black;
+    color: dimgray;
+    margin: 5%;
     padding: 10%;
+    max-width: 70%;
+    min-width: 70%;
     text-align: center;
     font-weight: bold;
-    color: dimgray;
-    background-color: black;
+    flex: 1 1 0;
 }
-  
-.skills-button:hover {
-    box-shadow:
-        inset 0 0 50px white,    
-        inset 20px 0 80px orangered,   
-        inset -20px 0 80px red,  
-        inset 20px 0 300px orangered,  
-        inset -20px 0 300px red, 
-        -10px 0 150px 1px crimson,
-        10px 0 80px 1px crimson;
+
+.flex-container>div:hover {
     cursor: pointer;
-    color: black;
-}
-
-.grid-more {
-    padding-bottom: 10%;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-.more-skills {
-    padding: 30% 10%;
 }
