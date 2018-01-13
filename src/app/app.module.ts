@@ -22,12 +22,14 @@ import { ExperienceService } from './services/experiences/experience.service';
 import { TechnologyTypeService } from './services/skills/technology-type.service';
 import { TechnologyService } from './services/skills/technology.service';
 import { ProjectService } from './services/projects/project.service';
+import { UrlService } from './services/url.service';
 
 import { MapTechnologyTypeEnumPipe } from './services/pipes/map-technology-type-enum.pipe';
 import { EnumToDropdownPipe } from './services/pipes/enum-to-dropdown.pipe';
 
 import { GlobalErrorHandler } from './errors/GlobalErrorHandler.handler';
-import { UrlService } from './services/url.service';
+
+import { SkillsResolver } from './services/resolvers/skills.resolver';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { UrlService } from './services/url.service';
     {
       provide: ErrorHandler, 
       useClass: GlobalErrorHandler
-    }
+    },
+    SkillsResolver
    ],
   bootstrap: [ AppComponent ]
 })

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import "rxjs/add/operator/takeWhile";
 
@@ -32,11 +32,12 @@ export class SkillsComponent implements OnInit, OnDestroy {
   constructor(
     private technologyTypeService: TechnologyTypeService,
     private technologyService: TechnologyService,
-    private router: Router) { }
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.getTechnologyTypes();
-    this.getTechnologies();
+    this.technologies = this.activatedRoute.snapshot.data['skills'];
   }
 
   ngOnDestroy(): void {
@@ -49,15 +50,6 @@ export class SkillsComponent implements OnInit, OnDestroy {
       .takeWhile(() => this.aliveTechnologyTypesSubscription)
       .subscribe(
           resultArray => this.technologyTypes = resultArray,
-          error => console.log("Error :: " + error)
-      )
-  }
-
-  getTechnologies(): void {
-    this.technologyService.getTechnologies()
-      .takeWhile(() => this.aliveTechnologySubscription)
-      .subscribe(
-          resultArray => this.technologies = resultArray,
           error => console.log("Error :: " + error)
       )
   }

@@ -8,17 +8,49 @@ import { ProjectsComponent } from './projects/projects.component';
 import { SkillsComponent } from './skills/skills.component';
 import { SkillDetailsComponent } from './skill-details/skill-details.component';
 import { ExperienceDetailsComponent } from './experience-details/experience-details.component';
+import { SkillsResolver } from './services/resolvers/skills.resolver';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'about-me', component: AboutMeComponent },
-  { path: 'experiences', component: ExperiencesComponent },
-  { path: 'experience/:companyName/:position', component: ExperienceDetailsComponent },
-  { path: 'projects', component: ProjectsComponent },
-  { path: 'skills', component: SkillsComponent },
-  { path: 'skills/:id', component: SkillDetailsComponent },
-  { path: 'skills/:technologyName', component: SkillDetailsComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+  { 
+    path: 'dashboard', 
+    component: DashboardComponent 
+  },
+  { 
+    path: 'about-me', 
+    component: AboutMeComponent 
+  },
+  { 
+    path: 'experiences', 
+    component: ExperiencesComponent 
+  },
+  { 
+    path: 'experience/:companyName/:position', 
+    component: ExperienceDetailsComponent 
+  },
+  { 
+    path: 'projects', 
+    component: ProjectsComponent 
+  },
+  { 
+    path: 'skills', 
+    component: SkillsComponent,
+    resolve: {
+      skills: SkillsResolver
+    } 
+  },
+  { 
+    path: 'skills/:id', 
+    component: SkillDetailsComponent 
+  },
+  { 
+    path: 'skills/:technologyName', 
+    component: SkillDetailsComponent 
+  },
+  { 
+    path: '', 
+    redirectTo: '/dashboard', 
+    pathMatch: 'full' 
+  }
 ];
 
 @NgModule({
