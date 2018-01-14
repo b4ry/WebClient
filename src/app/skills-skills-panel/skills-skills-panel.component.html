@@ -1,14 +1,16 @@
 <div class="tech-types-container">
+  <div class="technologies-header">
+    TECHNOLOGIES
+  </div>
   <ul class="list-of-tech-types" *ngFor="let technologyType of technologyTypes">
     <div class="tech-type">
       <span>{{technologyType.name}}</span>
-      <!-- <i class="fa fa-plus-square-o" (click)="expandList(technologyType)"></i> -->
-      <i class="fa fa-plus-square-o" (click)="toggleList(technologyType.name)"></i>
+      <i [ngClass]="isTechnologyListVisible(technologyType.name) === true ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'" (click)="toggleList(technologyType.name)"></i>
     </div>
     <div [ngClass]="isTechnologyListVisible(technologyType.name) === true ? 'list-of-technologies-visible' : 'list-of-technologies-hidden'">
-        <ul *ngFor="let technology of technologies | filterTechnologiesPipe:technologyType.technologyTypeEnum">
-          {{technology.name}}
-        </ul>
+      <ul *ngFor="let technology of technologies | filterTechnologiesPipe:technologyType.technologyTypeEnum">
+        {{technology.name}}
+      </ul>
     </div>
   </ul>
 </div>

@@ -10,7 +10,6 @@
 
 .list-of-tech-types {
     display: flex;
-    
     flex-direction: column;
     border-top-style: dotted;
     border-color: dimgray;
@@ -56,5 +55,21 @@
 
 .list-of-technologies-visible {
     visibility: visible;
-    height: auto;
-  }
+    animation-name: expand-list;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+.technologies-header {
+    color: white;
+    font-weight: bold;
+}
+
+@keyframes expand-list {
+    0% {
+        max-height: 0;
+    }
+    100% {
+        max-height: 500px;
+    }
+}
