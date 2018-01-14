@@ -3,7 +3,10 @@
     
     <ul class="flex-container">
         <li class="flex-item" *ngFor="let technology of technologies">
-            <i [ngClass]="technology.iconClass" (click)="openSkillDetails(technology.name)"></i>
+            <div class="technology">
+                <i [ngClass]="technology.iconClass" (click)="openSkillDetails(technology.name)"></i>
+                <span class="technology-name">{{technology.name}}</span>
+            </div>    
         </li>
     </ul>
 </div>
