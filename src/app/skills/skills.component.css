@@ -10,10 +10,14 @@
     /* width: calc(100% * (1/6)); */
     align-content: center;
     justify-content: center;
+    border-style: dotted;
+    border-color: transparent;
+    border-radius: 50%;
 }
 
 .flex-item:hover {
     cursor: pointer;
+    border-color: aqua;
 }
 
 i {

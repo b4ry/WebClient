@@ -30,6 +30,9 @@ import { EnumToDropdownPipe } from './services/pipes/enum-to-dropdown.pipe';
 import { GlobalErrorHandler } from './errors/GlobalErrorHandler.handler';
 
 import { SkillsResolver } from './services/resolvers/skills.resolver';
+import { SkillsSkillsPanelComponent } from './skills-skills-panel/skills-skills-panel.component';
+import { TechnologyTypesResolver } from './services/resolvers/technologyTypes.resolver';
+import { FilterTechnologiesPipe } from './services/pipes/filter-technologies.pipe';
 
 @NgModule({
   declarations: [
@@ -45,8 +48,10 @@ import { SkillsResolver } from './services/resolvers/skills.resolver';
     ProjectsPanelComponent,
     SkillDetailsComponent,
     ExperienceDetailsComponent,
+    SkillsSkillsPanelComponent,
     MapTechnologyTypeEnumPipe,
-    EnumToDropdownPipe
+    EnumToDropdownPipe,
+    FilterTechnologiesPipe
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,8 @@ import { SkillsResolver } from './services/resolvers/skills.resolver';
       provide: ErrorHandler, 
       useClass: GlobalErrorHandler
     },
-    SkillsResolver
+    SkillsResolver,
+    TechnologyTypesResolver
    ],
   bootstrap: [ AppComponent ]
 })

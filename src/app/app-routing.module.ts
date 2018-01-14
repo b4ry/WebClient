@@ -9,6 +9,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { SkillDetailsComponent } from './skill-details/skill-details.component';
 import { ExperienceDetailsComponent } from './experience-details/experience-details.component';
 import { SkillsResolver } from './services/resolvers/skills.resolver';
+import { TechnologyTypesResolver } from './services/resolvers/technologyTypes.resolver';
 
 const routes: Routes = [
   { 
@@ -35,7 +36,8 @@ const routes: Routes = [
     path: 'skills', 
     component: SkillsComponent,
     resolve: {
-      skills: SkillsResolver
+      skills: SkillsResolver,
+      technologyTypes: TechnologyTypesResolver
     } 
   },
   { 

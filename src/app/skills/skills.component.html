@@ -1,7 +1,11 @@
 <div class="flex-container">
-    <li class="flex-item" *ngFor="let technology of technologies">
-        <i [ngClass]="technology.iconClass" (click)="openSkillDetails(technology.name)"></i>
-    </li>
+    <app-skills-skills-panel></app-skills-skills-panel>
+    
+    <ul class="flex-container">
+        <li class="flex-item" *ngFor="let technology of technologies">
+            <i [ngClass]="technology.iconClass" (click)="openSkillDetails(technology.name)"></i>
+        </li>
+    </ul>
 </div>
 
 <!-- <div class="container" style="background-color:white;">

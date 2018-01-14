@@ -1,0 +1,60 @@
+.tech-types-container {
+    height: 88%;
+    width: 15%;
+    position: fixed;
+    top: 5%;
+    left: 0;
+    border-right-style: dotted;
+    border-color: dimgray;
+}
+
+.list-of-tech-types {
+    display: flex;
+    
+    flex-direction: column;
+    border-top-style: dotted;
+    border-color: dimgray;
+    position: relative;
+    color: white;
+    font-weight: bold;
+}
+
+.list-of-tech-types:hover {
+    border-top-color: aqua;
+}
+
+.tech-type {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tech-type>span { 
+    position: relative;
+    top: 0.2em;
+}
+
+.tech-type>i { 
+    position: relative;
+    top: 0.2em;
+    right: 10%;
+}
+
+.tech-type>span:hover {
+    cursor: pointer;
+    color: aqua;
+}
+
+.tech-type>i:hover {
+    cursor: pointer;
+    color: aqua;
+}
+
+.list-of-technologies-hidden {
+    visibility: hidden;
+    height: 0;
+}
+
+.list-of-technologies-visible {
+    visibility: visible;
+    height: auto;
+  }
