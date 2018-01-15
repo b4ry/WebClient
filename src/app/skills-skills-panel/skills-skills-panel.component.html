@@ -4,12 +4,15 @@
   </div>
   <ul class="list-of-tech-types" *ngFor="let technologyType of technologyTypes">
     <div class="tech-type">
-      <span>{{technologyType.name}}</span>
-      <i [ngClass]="isTechnologyListVisible(technologyType.name) === true ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'" (click)="toggleList(technologyType.name)"></i>
+      <span (click)="toggleList(technologyType.name)">{{technologyType.name}}</span>
+      <i [ngClass]="isTechnologyListVisible(technologyType.name) === true ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'" 
+      (click)="toggleList(technologyType.name)"></i>
     </div>
     <div [ngClass]="isTechnologyListVisible(technologyType.name) === true ? 'list-of-technologies-visible' : 'list-of-technologies-hidden'">
       <ul *ngFor="let technology of technologies | filterTechnologiesPipe:technologyType.technologyTypeEnum">
-        {{technology.name}}
+        <li class="technology">
+          {{technology.name}}
+        </li>
       </ul>
     </div>
   </ul>

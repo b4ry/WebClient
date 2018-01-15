@@ -5,11 +5,27 @@
     align-items: baseline;
 }
 
+.flex-container-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    min-width: 50%;
+}
+
 .flex-item {
     margin: 3%;
     /* width: calc(100% * (1/6)); */
     align-content: center;
     justify-content: center;
+    animation-name: icon-appears, icon-move;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+@keyframes icon-appears {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 i:hover {
@@ -36,4 +52,15 @@ i {
 
 i:hover+.technology-name {
     color: aqua;
+}
+
+app-skills-skills-panel {
+    animation-name: skills-skills-panel-appears;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+@keyframes skills-skills-panel-appears {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
 }

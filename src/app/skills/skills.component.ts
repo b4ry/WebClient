@@ -17,6 +17,7 @@ import { TechnologyTypeEnum } from '../services/enums/technology-type.enum';
 export class SkillsComponent implements OnInit, OnDestroy {
 
   private technologies: TechnologyDto[];
+  private initialTechnologies: TechnologyDto[];
 
   private technologyName: string;
   private technologyIconClass: string;
@@ -31,15 +32,16 @@ export class SkillsComponent implements OnInit, OnDestroy {
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.technologies = this.activatedRoute.snapshot.data['skills'];
+    this.initialTechnologies = this.technologies;
   }
 
   ngOnDestroy(): void {
     this.aliveTechnologySubscription = false;
   }
 
-  createTechnology() {
+  createTechnology(): void {
     let createTechnologyDto = new CreateTechnologyDto();
 
     createTechnologyDto.name = this.technologyName;
@@ -57,5 +59,33 @@ export class SkillsComponent implements OnInit, OnDestroy {
 
   openSkillDetails(technologyName: string): void {
     this.router.navigate(['skills', technologyName]);
+  }
+
+  onNotifyChangingListOfTechIcons(expandListEvent: any): void {
+    if(this.technologies === this.initialTechnologies) {
+      this.technologies = expandListEvent.techIconsArray;
+    }
+
+    if(expandListEvent.expandList) {
+      for(var technologyDto of expandListEvent.techIconsArray) {
+        if(!this.technologies.includes(technologyDto)) {
+          this.technologies.push(technologyDto);
+        }
+      }
+    }
+    else {
+      for(var technologyDto of expandListEvent.techIconsArray) {
+        if(this.technologies.includes(technologyDto)) {
+          var index = this.technologies.indexOf(technologyDto, 0);
+          this.technologies.splice(index, 1);
+        }
+      }
+    }
+  }
+
+  onNotifyRebuildingListOfTechIcons(rebuildListOfTechIcons: boolean): void {
+    if(rebuildListOfTechIcons) {
+      this.technologies = this.initialTechnologies;
+    }
   }
 }

@@ -4,7 +4,7 @@
     position: fixed;
     top: 5%;
     left: 0;
-    border-right-style: dotted;
+    /* border-right-style: dotted; */
     border-color: dimgray;
 }
 
@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: column;
     border-top-style: dotted;
+    border-right-style: dotted;
     border-color: dimgray;
     position: relative;
     color: white;
@@ -19,7 +20,7 @@
 }
 
 .list-of-tech-types:hover {
-    border-top-color: aqua;
+    border-color: aqua;
 }
 
 .tech-type {
@@ -58,6 +59,11 @@
     animation-name: expand-list;
     animation-duration: 2s;
     animation-timing-function: linear;
+    padding-top: 5%;
+    margin-right: 10%;
+    margin-top: 5%;
+    border-top-style: dotted;
+    border-color: dimgray;
 }
 
 .technologies-header {
@@ -72,4 +78,9 @@
     100% {
         max-height: 500px;
     }
+}
+
+.technology:hover {
+    color: aqua;
+    cursor: pointer;
 }
