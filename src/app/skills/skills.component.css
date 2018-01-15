@@ -23,14 +23,11 @@
 
 i:hover {
     cursor: pointer;
-    border-color: aqua;
+    color: white;
 }
 
 i {
     font-size: 1000%;
-    border-style: dotted;
-    border-color: transparent;
-    border-radius: 50%;
 }
 
 .technology {
@@ -44,7 +41,7 @@ i {
 }
 
 i:hover+.technology-name {
-    color: aqua;
+    color: white;
 }
 
 app-skills-skills-panel {

@@ -14,7 +14,7 @@ import { Transform } from 'stream';
   selector: 'app-skills',
   animations: [
     trigger('itemState', [
-        state('selected', style({transition: 'transform 2s',  transform: 'translateX(0) scale(2)'})),
+        state('selected', style({transition: 'transform 2s',  transform: 'translateX(0) scale(1.5)'})),
         state('unselected', style({transition: 'transform 2s',  transform: 'translateX(0) scale(0.5)'})),
         state('listed', style({transition: 'transform 2s',  transform: 'translateX(0) scale(1)'})),
         state('void',   style({opacity: 0, display: 'none', transform: 'translateX(0) scale(0.5)'})),
