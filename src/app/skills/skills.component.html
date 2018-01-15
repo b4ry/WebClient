@@ -4,7 +4,7 @@
         (notifyRebuildingListOfTechIcons)='onNotifyRebuildingListOfTechIcons($event)'>
     </app-skills-skills-panel>
     <ul class="flex-container-icons">
-        <li class="flex-item" *ngFor="let technology of technologies">
+        <li class="flex-item" *ngFor="let technology of technologies" [@itemState]="itemState">
             <div class="technology">
                 <i [ngClass]="technology.iconClass" (click)="openSkillDetails(technology.name)"></i>
                 <span class="technology-name">{{technology.name}}</span>

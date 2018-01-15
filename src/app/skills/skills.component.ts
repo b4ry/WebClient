@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, trigger, state, transition, animate, style } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import "rxjs/add/operator/takeWhile";
@@ -11,6 +11,23 @@ import { TechnologyTypeEnum } from '../services/enums/technology-type.enum';
 
 @Component({
   selector: 'app-skills',
+  animations: [
+    trigger('itemState', [
+        state('void',   style({opacity: 0, display: 'none', transform: 'translateX(0) scale(0.5)'})),
+        transition('* => void', [
+            animate('1000ms', style({
+                opacity: 0,
+                transform: 'translateX(0) scale(0.5)'
+            }))
+        ]),
+        transition('void => *', [
+          animate('1000ms', style({
+              opacity: 1,
+              transform: 'translateX(0) scale(1)'
+          }))
+      ]),
+    ])
+  ],
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })
@@ -21,6 +38,8 @@ export class SkillsComponent implements OnInit, OnDestroy {
 
   private technologyName: string;
   private technologyIconClass: string;
+  private itemState: string;
+
   private technologyType: number;
 
   private technologyTypesEnum = TechnologyTypeEnum;
