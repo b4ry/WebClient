@@ -11,8 +11,8 @@
 .list-of-tech-types {
     display: flex;
     flex-direction: column;
-    border-top-style: dotted;
-    border-right-style: dotted;
+    border-top-style: solid;
+    border-right-style: solid;
     border-color: dimgray;
     position: relative;
     color: white;
