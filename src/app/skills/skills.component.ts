@@ -8,11 +8,15 @@ import { TechnologyTypeDto } from '../services/dtos/technology-type.dto';
 import { TechnologyDto } from '../services/dtos/technology.dto';
 import { CreateTechnologyDto } from '../services/dtos/create-technology.dto';
 import { TechnologyTypeEnum } from '../services/enums/technology-type.enum';
+import { Transform } from 'stream';
 
 @Component({
   selector: 'app-skills',
   animations: [
     trigger('itemState', [
+        state('selected', style({transition: 'transform 2s',  transform: 'translateX(0) scale(2)'})),
+        state('unselected', style({transition: 'transform 2s',  transform: 'translateX(0) scale(0.5)'})),
+        state('listed', style({transition: 'transform 2s',  transform: 'translateX(0) scale(1)'})),
         state('void',   style({opacity: 0, display: 'none', transform: 'translateX(0) scale(0.5)'})),
         transition('* => void', [
             animate('1000ms', style({
@@ -20,12 +24,18 @@ import { TechnologyTypeEnum } from '../services/enums/technology-type.enum';
                 transform: 'translateX(0) scale(0.5)'
             }))
         ]),
-        transition('void => *', [
+        transition('void => unselected', [
+          animate('1000ms', style({
+              opacity: 1,
+              transform: 'translateX(0) scale(0.5)'
+          }))
+        ]),
+        transition('void => listed', [
           animate('1000ms', style({
               opacity: 1,
               transform: 'translateX(0) scale(1)'
           }))
-      ]),
+        ]),
     ])
   ],
   templateUrl: './skills.component.html',
@@ -38,7 +48,6 @@ export class SkillsComponent implements OnInit, OnDestroy {
 
   private technologyName: string;
   private technologyIconClass: string;
-  private itemState: string;
 
   private technologyType: number;
 
@@ -54,6 +63,10 @@ export class SkillsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.technologies = this.activatedRoute.snapshot.data['skills'];
     this.initialTechnologies = this.technologies;
+
+    this.initialTechnologies.forEach(initialTechnology => {
+      initialTechnology.itemState = "listed";
+    });
   }
 
   ngOnDestroy(): void {
@@ -86,7 +99,21 @@ export class SkillsComponent implements OnInit, OnDestroy {
     }
 
     if(expandListEvent.expandList) {
+
       for(var technologyDto of expandListEvent.techIconsArray) {
+        let selectedTechnology: TechnologyDto = this.technologies.find(technologyDto => technologyDto.itemState === "selected");
+
+        if(selectedTechnology) {
+          expandListEvent.techIconsArray.forEach(tech => {
+            if(tech !== selectedTechnology) {
+              tech.itemState = "unselected";
+            }
+          });
+        }
+        else {
+          technologyDto.itemState = "listed";
+        }
+        
         if(!this.technologies.includes(technologyDto)) {
           this.technologies.push(technologyDto);
         }
@@ -97,6 +124,12 @@ export class SkillsComponent implements OnInit, OnDestroy {
         if(this.technologies.includes(technologyDto)) {
           var index = this.technologies.indexOf(technologyDto, 0);
           this.technologies.splice(index, 1);
+
+          if(technologyDto.itemState === "selected") {
+            this.technologies.forEach(technologyDto => {
+              technologyDto.itemState = "listed";
+            });
+          }
         }
       }
     }
@@ -104,7 +137,34 @@ export class SkillsComponent implements OnInit, OnDestroy {
 
   onNotifyRebuildingListOfTechIcons(rebuildListOfTechIcons: boolean): void {
     if(rebuildListOfTechIcons) {
+      this.initialTechnologies.forEach(initialTechnologyDto => {
+        initialTechnologyDto.itemState = "listed";
+      });
+
       this.technologies = this.initialTechnologies;
+
+      for(var technologyDto of this.technologies) {
+        if(technologyDto.itemState !== "selected") {
+          technologyDto.itemState = "listed";
+        }
+      }
+    }
+  }
+
+  selectTechnology(technologyDto: TechnologyDto) {
+    if(technologyDto.itemState !== "selected") {
+      technologyDto.itemState = "selected";
+
+      for(var tech of this.technologies) {
+        if(tech !== technologyDto) {
+          tech.itemState = "unselected";
+        }
+      }
+    }
+    else {
+      this.technologies.forEach(technology => {
+        technology.itemState = "listed";
+      });
     }
   }
 }
