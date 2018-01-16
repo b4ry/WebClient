@@ -29,13 +29,13 @@
     justify-content: center;
 }
 
-.technology-name-label {
+.technology-property-label {
     position: relative;
     top: 1em;
     left: 30%;
 }
 
-.technology-name {
+.technology-property {
     position: relative;
     top: 1em;
     left: 30%;
@@ -52,7 +52,22 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 5%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    margin-left: 30%;
+    border-top-style: dotted;
+    border-top-color: dimgray;
+    min-width: 100%;
+}
+
+.technology-project-property-label {
+    position: relative;
+    top: 1em;
+}
+
+.technology-project-property {
+    position: relative;
+    top: 1em;
 }
 
 .technology-detail-projects {

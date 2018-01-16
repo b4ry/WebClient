@@ -4,18 +4,18 @@
   </span>
   <div class="technology-details-container" *ngIf="selectedTechnologyDto">
     <div class="technology-detail">
-      <span class="technology-name-label">
+      <span class="technology-property-label">
         Name:
       </span>
-      <span class="technology-name">
+      <span class="technology-property">
         {{selectedTechnologyDto?.name}}
       </span>
     </div>
     <div class="technology-detail">
-      <span class="technology-name-label">
+      <span class="technology-property-label">
         Type:
       </span>
-      <span class="technology-name">
+      <span class="technology-property">
           {{selectedTechnologyDto?.technologyType.name}}
       </span>
     </div>
@@ -26,18 +26,18 @@
     </span>
     <div class="project-detail" *ngFor="let project of selectedTechnologyDto?.projects">
       <div class="technology-detail">
-        <span class="technology-name-label">
+        <span class="technology-project-property-label">
           Name:
         </span>
-        <span class="technology-name">
+        <span class="technology-project-property">
           {{project.name}}
         </span>
       </div>
       <div class="technology-detail">
-        <span class="technology-name-label">
+        <span class="technology-project-property-label">
           Description:
         </span>
-        <span class="technology-name">
+        <span class="technology-project-property">
           {{project.description}}
         </span>
       </div>
