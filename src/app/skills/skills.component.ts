@@ -4,11 +4,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import "rxjs/add/operator/takeWhile";
 
 import { TechnologyService } from '../services/skills/technology.service';
+
 import { TechnologyTypeDto } from '../services/dtos/technology-type.dto';
 import { TechnologyDto } from '../services/dtos/technology.dto';
 import { CreateTechnologyDto } from '../services/dtos/create-technology.dto';
+
 import { TechnologyTypeEnum } from '../services/enums/technology-type.enum';
-import { Transform } from 'stream';
 
 @Component({
   selector: 'app-skills',
@@ -43,6 +44,8 @@ import { Transform } from 'stream';
 })
 export class SkillsComponent implements OnInit, OnDestroy {
 
+  private selectedTechnologyDto: TechnologyDto;
+
   private technologies: TechnologyDto[];
   private initialTechnologies: TechnologyDto[];
 
@@ -61,12 +64,12 @@ export class SkillsComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.technologies = this.activatedRoute.snapshot.data['skills'];
-    this.initialTechnologies = this.technologies;
+    this.technologies = [];//this.activatedRoute.snapshot.data['skills'];
+    // this.initialTechnologies = this.technologies;
 
-    this.initialTechnologies.forEach(initialTechnology => {
-      initialTechnology.itemState = "listed";
-    });
+    // this.initialTechnologies.forEach(initialTechnology => {
+    //   initialTechnology.itemState = "listed";
+    // });
   }
 
   ngOnDestroy(): void {
@@ -135,25 +138,30 @@ export class SkillsComponent implements OnInit, OnDestroy {
     }
   }
 
-  onNotifyRebuildingListOfTechIcons(rebuildListOfTechIcons: boolean): void {
-    if(rebuildListOfTechIcons) {
-      this.initialTechnologies.forEach(initialTechnologyDto => {
-        initialTechnologyDto.itemState = "listed";
-      });
+  // onNotifyRebuildingListOfTechIcons(rebuildListOfTechIcons: boolean): void {
+  //   if(rebuildListOfTechIcons) {
+  //     this.initialTechnologies.forEach(initialTechnologyDto => {
+  //       initialTechnologyDto.itemState = "listed";
+  //     });
 
-      this.technologies = this.initialTechnologies;
+  //     this.technologies = this.initialTechnologies;
 
-      for(var technologyDto of this.technologies) {
-        if(technologyDto.itemState !== "selected") {
-          technologyDto.itemState = "listed";
-        }
-      }
-    }
+  //     for(var technologyDto of this.technologies) {
+  //       if(technologyDto.itemState !== "selected") {
+  //         technologyDto.itemState = "listed";
+  //       }
+  //     }
+  //   }
+  // }
+
+  onNotifySelectingTechnology(selectedTechnologyDto: TechnologyDto): void {
+    this.selectedTechnologyDto = selectedTechnologyDto;
   }
 
-  selectTechnology(technologyDto: TechnologyDto) {
+  onSelectTechnology(technologyDto: TechnologyDto) {
     if(technologyDto.itemState !== "selected") {
       technologyDto.itemState = "selected";
+      this.selectedTechnologyDto = technologyDto;
 
       for(var tech of this.technologies) {
         if(tech !== technologyDto) {
@@ -165,6 +173,8 @@ export class SkillsComponent implements OnInit, OnDestroy {
       this.technologies.forEach(technology => {
         technology.itemState = "listed";
       });
+
+      this.selectedTechnologyDto = null;
     }
   }
 }

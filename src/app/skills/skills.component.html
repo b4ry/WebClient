@@ -1,13 +1,15 @@
 <div class="flex-container">
     <app-skills-skills-panel 
-        (notifyChangingListOfTechIcons)='onNotifyChangingListOfTechIcons($event)' 
-        (notifyRebuildingListOfTechIcons)='onNotifyRebuildingListOfTechIcons($event)'>
+        [selectedTechnologyDto]="selectedTechnologyDto"
+        (notifyChangingListOfTechIcons)="onNotifyChangingListOfTechIcons($event)"
+        (notifySelectingTechnology)="onNotifySelectingTechnology($event)"
+    >
     </app-skills-skills-panel>
     <ul class="flex-container-icons">
         <li class="flex-item" *ngFor="let technology of technologies" [@itemState]="technology.itemState">
-            <div class="technology">
-                <i [ngClass]="technology.iconClass" (click)=selectTechnology(technology)></i> <!--(click)="openSkillDetails(technology.name)"></i>-->
-                <span class="technology-name">{{technology.name}}</span>
+            <div class="icon-and-label">
+                <i [ngClass]="technology.iconClass" (click)="onSelectTechnology(technology)"></i> <!--(click)="openSkillDetails(technology.name)"></i>-->
+                <span class="icon-label">{{technology.name}}</span>
             </div>    
         </li>
     </ul>

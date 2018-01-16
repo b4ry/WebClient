@@ -2,16 +2,23 @@
   <div class="technologies-header">
     TECHNOLOGIES
   </div>
-  <ul class="list-of-tech-types" *ngFor="let technologyType of technologyTypes">
+  <ul class="list-of-tech-types" *ngFor="let technologyTypeDto of technologyTypesDto">
     <div class="tech-type">
-      <span (click)="toggleList(technologyType.name)">{{technologyType.name}}</span>
-      <i [ngClass]="isTechnologyListVisible(technologyType.name) === true ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'" 
-      (click)="toggleList(technologyType.name)"></i>
+      <span (click)="onToggleList(technologyTypeDto.name)">{{technologyTypeDto.name}}</span>
+      <i [ngClass]="isTechnologyListVisible(technologyTypeDto.name) === true ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'" 
+         (click)="onToggleList(technologyTypeDto.name)">
+      </i>
     </div>
-    <div [ngClass]="isTechnologyListVisible(technologyType.name) === true ? 'list-of-technologies-visible' : 'list-of-technologies-hidden'">
-      <ul *ngFor="let technology of technologies | filterTechnologiesPipe:technologyType.technologyTypeEnum">
+    <div 
+      [ngClass]="isTechnologyListVisible(technologyTypeDto.name) === true ? 'list-of-technologies-visible' : 'list-of-technologies-hidden'"
+    >
+      <ul 
+        *ngFor="let technologyDto of technologiesDto | filterTechnologiesPipe:technologyTypeDto.technologyTypeEnum" 
+        (click)=onSelectTechnology(technologyDto)
+        [class.selected]="technologyDto === selectedTechnologyDto"
+      >
         <li class="technology">
-          {{technology.name}}
+          {{technologyDto.name}}
         </li>
       </ul>
     </div>

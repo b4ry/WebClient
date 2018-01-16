@@ -11,42 +11,53 @@ import { TechnologyDto } from '../services/dtos/technology.dto';
 })
 export class SkillsSkillsPanelComponent implements OnInit {
 
-  private technologyTypes: TechnologyTypeDto[] = [];
-  private technologies: TechnologyDto[] = [];
+  @Input() selectedTechnologyDto: TechnologyDto;
+
+  private technologyTypesDto: TechnologyTypeDto[] = [];
+  private technologiesDto: TechnologyDto[] = [];
 
   public selectedTechTypeNames: string[] = [];
 
   @Output() notifyChangingListOfTechIcons: EventEmitter<any> = new EventEmitter<any>();
   @Output() notifyRebuildingListOfTechIcons: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() notifySelectingTechnology: EventEmitter<TechnologyDto> = new EventEmitter<TechnologyDto>();
 
   constructor(
     private activatedRoute: ActivatedRoute) { }
 
-  ngOnInit() {
-    this.technologyTypes = this.activatedRoute.snapshot.data['technologyTypes'];
-    this.technologies = this.activatedRoute.snapshot.data['skills'];
+  ngOnInit(): void {
+    this.technologyTypesDto = this.activatedRoute.snapshot.data['technologyTypes'];
+    this.technologiesDto = this.activatedRoute.snapshot.data['skills'];
   }
   
-  toggleList(technologyTypeName: string): void {
+  onToggleList(technologyTypeName: string): void {
     if (this.isExpandedTechType(technologyTypeName)){
       var index = this.selectedTechTypeNames.indexOf(technologyTypeName, 0);
+
+      if(this.selectedTechnologyDto) {
+        this.selectedTechnologyDto = null;
+        this.notifySelectingTechnology.emit(this.selectedTechnologyDto);
+      }
+
       this.selectedTechTypeNames.splice(index, 1);
       this.notifyChangingListOfTechIcons.emit(
         {
-          techIconsArray: this.technologies.filter(technology => technology.technologyType.name === technologyTypeName), 
+          techIconsArray: this.technologiesDto.filter(technologyDto => technologyDto.technologyType.name === technologyTypeName), 
           expandList: false
         });
     } else {
       this.selectedTechTypeNames.push(technologyTypeName);
       this.notifyChangingListOfTechIcons.emit(
         {
-          techIconsArray: this.technologies.filter(technology => technology.technologyType.name === technologyTypeName), 
+          techIconsArray: this.technologiesDto.filter(technologyDto => technologyDto.technologyType.name === technologyTypeName), 
           expandList: true
         });
     }
 
     if(this.selectedTechTypeNames.length === 0) {
-      this.notifyRebuildingListOfTechIcons.emit(true);
+      this.selectedTechnologyDto = null;
+      this.notifySelectingTechnology.emit(this.selectedTechnologyDto);
+      // this.notifyRebuildingListOfTechIcons.emit(true);
     }
   }
 
@@ -54,7 +65,28 @@ export class SkillsSkillsPanelComponent implements OnInit {
     return this.selectedTechTypeNames.includes(technologyTypeName);
   }
 
-  isTechnologyListVisible(technologyTypeName: string){
+  isTechnologyListVisible(technologyTypeName: string): boolean {
     return this.selectedTechTypeNames.includes(technologyTypeName);
+  }
+
+  onSelectTechnology(technologyDto: TechnologyDto) {
+    if(technologyDto !== this.selectedTechnologyDto) {
+
+      this.technologiesDto.forEach(technology => {
+        technology.itemState = "unselected";
+      });
+
+      this.selectedTechnologyDto = technologyDto;
+      this.selectedTechnologyDto.itemState = "selected";
+      this.notifySelectingTechnology.emit(this.selectedTechnologyDto);
+    }
+    else {
+      this.selectedTechnologyDto = null;
+      this.notifySelectingTechnology.emit(this.selectedTechnologyDto);
+
+      this.technologiesDto.forEach(technology => {
+        technology.itemState = "listed";
+      });
+    }
   }
 }

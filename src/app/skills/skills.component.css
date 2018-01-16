@@ -30,17 +30,17 @@ i {
     font-size: 1000%;
 }
 
-.technology {
+.icon-and-label {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.technology-name {
+.icon-label {
     color: transparent;
 }
 
-i:hover+.technology-name {
+i:hover+.icon-label {
     color: white;
 }
 

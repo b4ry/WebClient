@@ -4,8 +4,6 @@
     position: fixed;
     top: 5%;
     left: 0;
-    /* border-right-style: dotted; */
-    border-color: dimgray;
 }
 
 .list-of-tech-types {
@@ -83,4 +81,8 @@
 .technology:hover {
     color: aqua;
     cursor: pointer;
+}
+
+.selected {
+    color: aqua;
 }
