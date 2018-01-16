@@ -1,0 +1,66 @@
+.flex-container {
+    display: flex;
+    height: 88%;
+    width: 15%;
+    position: fixed;
+    flex-direction: column;
+    top: 5%;
+    right: 10%;
+    border-left-style: solid;
+    border-color: dimgray;
+}
+
+.technology-details-header {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 30%;
+    border-bottom-style: solid;
+    border-color: dimgray;
+    min-width: 100%;
+}
+
+.technology-details-container {
+    display: flex;
+    position: relative;
+    color: white;
+    font-weight: bold;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.technology-name-label {
+    position: relative;
+    top: 1em;
+    left: 30%;
+}
+
+.technology-name {
+    position: relative;
+    top: 1em;
+    left: 30%;
+}
+
+.technology-detail {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+
+.project-detail {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+
+.technology-detail-projects {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60%;
+    color: white;
+    font-weight: bold;
+    flex-direction: column;
+    justify-content: center;
+}

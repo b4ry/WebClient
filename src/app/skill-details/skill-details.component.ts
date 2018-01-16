@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { TechnologyDto } from '../services/dtos/technology.dto';
 
 @Component({
   selector: 'app-skill-details',
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillDetailsComponent implements OnInit {
 
+  @Input() selectedTechnologyDto: TechnologyDto;
+  
   constructor() { }
 
   ngOnInit() {

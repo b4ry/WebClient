@@ -12,6 +12,7 @@
     align-items: baseline;
     min-width: 50%;
     margin-top: 10%;
+    margin-right: 10%;
 }
 
 .flex-item {
@@ -45,12 +46,18 @@ i:hover+.icon-label {
 }
 
 app-skills-skills-panel {
-    animation-name: skills-skills-panel-appears;
+    animation-name: slowly-appears;
     animation-duration: 2s;
     animation-timing-function: linear;
 }
 
-@keyframes skills-skills-panel-appears {
+app-skill-details {
+    animation-name: slowly-appears;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+@keyframes slowly-appears {
     0%   { opacity: 0; }
     100% { opacity: 1; }
 }
