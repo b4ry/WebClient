@@ -11,6 +11,7 @@ import { TechnologyDto } from '../services/dtos/technology.dto';
 import { CreateTechnologyDto } from '../services/dtos/create-technology.dto';
 
 import { TechnologyTypeEnum } from '../services/enums/technology-type.enum';
+import { TechnologyItemStateEnum } from '../services/enums/technnology-item-state.enum';
 
 @Component({
   selector: 'app-skills',
@@ -111,20 +112,19 @@ export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
     // }
 
     if(expandListEvent.expandList) {
-
       for(var technologyDto of expandListEvent.techIconsArray) {
-        let selectedTechnology: TechnologyDto = this.technologies.find(technologyDto => technologyDto.itemState === "selected");
+        let selectedTechnology: TechnologyDto = this.technologies.find(technologyDto => technologyDto.itemState === TechnologyItemStateEnum.Selected);
         // this.selectedTechnologyDto = selectedTechnology;
 
         if(selectedTechnology) {
           expandListEvent.techIconsArray.forEach(tech => {
             if(tech !== selectedTechnology) {
-              tech.itemState = "unselected";
+              tech.itemState = TechnologyItemStateEnum.Unselected;
             }
           });
         }
         else {
-          technologyDto.itemState = "listed";
+          technologyDto.itemState = TechnologyItemStateEnum.Listed;
         }
         
         if(!this.technologies.includes(technologyDto)) {
@@ -138,9 +138,9 @@ export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
           var index = this.technologies.indexOf(technologyDto, 0);
           this.technologies.splice(index, 1);
 
-          if(technologyDto.itemState === "selected") {
+          if(technologyDto.itemState === TechnologyItemStateEnum.Selected) {
             this.technologies.forEach(technologyDto => {
-              technologyDto.itemState = "listed";
+              technologyDto.itemState = TechnologyItemStateEnum.Listed;
             });
           }
         }
@@ -171,23 +171,36 @@ export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
     //   });
     // }
 
+    this.technologies.forEach(technologyDto => {
+      if(selectedTechnologyDto) {
+        technologyDto.itemState = TechnologyItemStateEnum.Unselected;
+      }
+      else {
+        technologyDto.itemState = TechnologyItemStateEnum.Listed;
+      }
+    });
+
     this.selectedTechnologyDto = selectedTechnologyDto;
+
+    if(this.selectedTechnologyDto) {
+      this.selectedTechnologyDto.itemState = TechnologyItemStateEnum.Selected;
+    }
   }
 
   onSelectTechnology(technologyDto: TechnologyDto): void {
-    if(technologyDto.itemState !== "selected") {
-      technologyDto.itemState = "selected";
+    if(technologyDto.itemState !== TechnologyItemStateEnum.Selected) {
+      technologyDto.itemState = TechnologyItemStateEnum.Selected;
       this.selectedTechnologyDto = technologyDto;
 
       for(var tech of this.technologies) {
         if(tech !== technologyDto) {
-          tech.itemState = "unselected";
+          tech.itemState = TechnologyItemStateEnum.Unselected;
         }
       }
     }
     else {
       this.technologies.forEach(technology => {
-        technology.itemState = "listed";
+        technology.itemState = TechnologyItemStateEnum.Listed;
       });
 
       this.selectedTechnologyDto = null;

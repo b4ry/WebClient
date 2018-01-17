@@ -4,6 +4,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { TechnologyTypeDto } from '../services/dtos/technology-type.dto';
 import { TechnologyDto } from '../services/dtos/technology.dto';
 
+import { TechnologyItemStateEnum } from '../services/enums/technnology-item-state.enum';
+
 @Component({
   selector: 'app-skills-skills-panel',
   templateUrl: './skills-skills-panel.component.html',
@@ -34,7 +36,7 @@ export class SkillsSkillsPanelComponent implements OnInit {
 
     if(technologyName && technologyTypeName) {
       this.selectedTechnologyDto = this.technologiesDto.find(technologyDto => technologyDto.name === technologyName);
-      this.selectedTechnologyDto.itemState = "selected";
+      // this.selectedTechnologyDto.itemState = TechnologyItemStateEnum.Selected;
       this.notifySelectingTechnology.emit(this.selectedTechnologyDto);
       this.selectedTechTypeNames.push(technologyTypeName);
       this.notifyChangingListOfTechIcons.emit(
@@ -52,9 +54,15 @@ export class SkillsSkillsPanelComponent implements OnInit {
       if(this.selectedTechnologyDto && this.selectedTechnologyDto.technologyType.name === technologyTypeName) {
         this.selectedTechnologyDto = null;
         this.notifySelectingTechnology.emit(this.selectedTechnologyDto);
+
+        this.technologiesDto.forEach(technologyDto => {
+          technologyDto.itemState = TechnologyItemStateEnum.Listed;
+        });
       }
 
       this.selectedTechTypeNames.splice(index, 1);
+
+
       this.notifyChangingListOfTechIcons.emit(
         {
           techIconsArray: this.technologiesDto.filter(technologyDto => technologyDto.technologyType.name === technologyTypeName), 
@@ -87,27 +95,27 @@ export class SkillsSkillsPanelComponent implements OnInit {
   onSelectTechnology(technologyDto: TechnologyDto) {
     if(technologyDto !== this.selectedTechnologyDto) {
 
-      this.technologiesDto.forEach(technology => {
-        technology.itemState = "unselected";
-      });
+      // this.technologiesDto.forEach(technology => {
+      //   technology.itemState = TechnologyItemStateEnum.Unselected;
+      // });
 
       this.selectedTechnologyDto = technologyDto;
-      this.selectedTechnologyDto.itemState = "selected";
+      // this.selectedTechnologyDto.itemState = TechnologyItemStateEnum.Selected;
       this.notifySelectingTechnology.emit(this.selectedTechnologyDto);
     }
     else {
       this.selectedTechnologyDto = null;
       this.notifySelectingTechnology.emit(this.selectedTechnologyDto);
 
-      this.technologiesDto.forEach(technology => {
-        technology.itemState = "listed";
-      });
+      // this.technologiesDto.forEach(technology => {
+      //   technology.itemState = TechnologyItemStateEnum.Listed;
+      // });
 
-      this.notifyChangingListOfTechIcons.emit(
-        {
-          techIconsArray: this.technologiesDto, 
-          expandList: false
-        });
+      // this.notifyChangingListOfTechIcons.emit(
+      //   {
+      //     techIconsArray: this.technologiesDto, 
+      //     expandList: false
+      //   });
     }
   }
 }
