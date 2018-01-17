@@ -3,7 +3,7 @@
         <i class="fa fa-times-circle" (click)="closeSkillsPanel()"></i>
     </div>
     <div class="flex-container">
-        <div *ngFor="let skill of skills">
+        <div *ngFor="let skill of skills" (click)="redirectToSkillsPageDetails(skill)">
             {{skill.name}}
         </div>
     </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, trigger, state, transition, animate, style } from '@angular/core';
+import { Component, OnInit, OnDestroy, trigger, state, transition, animate, style, ChangeDetectorRef } from '@angular/core';
+import { AfterViewChecked } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import "rxjs/add/operator/takeWhile";
@@ -42,7 +43,7 @@ import { TechnologyTypeEnum } from '../services/enums/technology-type.enum';
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })
-export class SkillsComponent implements OnInit, OnDestroy {
+export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   private selectedTechnologyDto: TechnologyDto;
 
@@ -61,7 +62,8 @@ export class SkillsComponent implements OnInit, OnDestroy {
   constructor(
     private technologyService: TechnologyService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private changeDetectorRef:ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.technologies = [];//this.activatedRoute.snapshot.data['skills'];
@@ -74,6 +76,11 @@ export class SkillsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.aliveTechnologySubscription = false;
+  }
+
+  ngAfterViewChecked()
+  {
+    this.changeDetectorRef.detectChanges();
   }
 
   createTechnology(): void {
@@ -97,14 +104,17 @@ export class SkillsComponent implements OnInit, OnDestroy {
   }
 
   onNotifyChangingListOfTechIcons(expandListEvent: any): void {
-    if(this.technologies === this.initialTechnologies) {
+    // if(this.technologies === this.initialTechnologies) {
+    if(this.technologies.length === 0) {
       this.technologies = expandListEvent.techIconsArray;
     }
+    // }
 
     if(expandListEvent.expandList) {
 
       for(var technologyDto of expandListEvent.techIconsArray) {
         let selectedTechnology: TechnologyDto = this.technologies.find(technologyDto => technologyDto.itemState === "selected");
+        // this.selectedTechnologyDto = selectedTechnology;
 
         if(selectedTechnology) {
           expandListEvent.techIconsArray.forEach(tech => {
@@ -155,10 +165,16 @@ export class SkillsComponent implements OnInit, OnDestroy {
   // }
 
   onNotifySelectingTechnology(selectedTechnologyDto: TechnologyDto): void {
+    // if(!selectedTechnologyDto && this.technologies.includes(this.selectedTechnologyDto)) {
+    //   this.technologies.forEach(TechnologyDto => {
+    //     TechnologyDto.itemState = "listed";
+    //   });
+    // }
+
     this.selectedTechnologyDto = selectedTechnologyDto;
   }
 
-  onSelectTechnology(technologyDto: TechnologyDto) {
+  onSelectTechnology(technologyDto: TechnologyDto): void {
     if(technologyDto.itemState !== "selected") {
       technologyDto.itemState = "selected";
       this.selectedTechnologyDto = technologyDto;

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { TechnologyTypeDto } from '../services/dtos/technology-type.dto';
 import { TechnologyDto } from '../services/dtos/technology.dto';
@@ -28,13 +28,28 @@ export class SkillsSkillsPanelComponent implements OnInit {
   ngOnInit(): void {
     this.technologyTypesDto = this.activatedRoute.snapshot.data['technologyTypes'];
     this.technologiesDto = this.activatedRoute.snapshot.data['skills'];
+    
+    let technologyName: string = this.activatedRoute.snapshot.params.technologyName;
+    let technologyTypeName: string = this.activatedRoute.snapshot.params.technologyTypeName;
+
+    if(technologyName && technologyTypeName) {
+      this.selectedTechnologyDto = this.technologiesDto.find(technologyDto => technologyDto.name === technologyName);
+      this.selectedTechnologyDto.itemState = "selected";
+      this.notifySelectingTechnology.emit(this.selectedTechnologyDto);
+      this.selectedTechTypeNames.push(technologyTypeName);
+      this.notifyChangingListOfTechIcons.emit(
+        {
+          techIconsArray: this.technologiesDto.filter(technologyDto => technologyDto.technologyType.name === technologyTypeName), 
+          expandList: true
+        });
+    }
   }
   
   onToggleList(technologyTypeName: string): void {
     if (this.isExpandedTechType(technologyTypeName)){
       var index = this.selectedTechTypeNames.indexOf(technologyTypeName, 0);
 
-      if(this.selectedTechnologyDto) {
+      if(this.selectedTechnologyDto && this.selectedTechnologyDto.technologyType.name === technologyTypeName) {
         this.selectedTechnologyDto = null;
         this.notifySelectingTechnology.emit(this.selectedTechnologyDto);
       }
@@ -87,6 +102,12 @@ export class SkillsSkillsPanelComponent implements OnInit {
       this.technologiesDto.forEach(technology => {
         technology.itemState = "listed";
       });
+
+      this.notifyChangingListOfTechIcons.emit(
+        {
+          techIconsArray: this.technologiesDto, 
+          expandList: false
+        });
     }
   }
 }

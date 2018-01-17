@@ -48,4 +48,8 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
   redirectToSkillsPage(): void {
     this.router.navigate(['/skills']);
   }
+
+  redirectToSkillsPageDetails(skill: TechnologyDto): void {
+    this.router.navigate(['/skills', { technologyName: skill.name, technologyTypeName: skill.technologyType.name }]);
+  }
 }
