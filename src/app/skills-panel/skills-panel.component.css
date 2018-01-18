@@ -54,6 +54,7 @@ i.fa-times-circle:hover {
     cursor: pointer;
     color: aqua;
     border-color: aqua;
+    transition: 0.3s;
 }
 
 .flex-container div:last-of-type {
