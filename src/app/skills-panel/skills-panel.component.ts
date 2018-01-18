@@ -13,6 +13,8 @@ import { TechnologyService } from '../services/skills/technology.service';
 export class SkillsPanelComponent implements OnInit, OnDestroy {
 
   @Input() skillsPanelWidth: Number;
+  @Input() buttonVisibility: string;
+  
   @Output() notifyClosingSkillsPanel: EventEmitter<Number> = new EventEmitter<Number>();
   
   private skills: TechnologyDto[] = [];
@@ -42,6 +44,7 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
 
   closeSkillsPanel(): void {
     this.skillsPanelWidth = 0;
+
     this.notifyClosingSkillsPanel.emit(this.skillsPanelWidth);
   }
 

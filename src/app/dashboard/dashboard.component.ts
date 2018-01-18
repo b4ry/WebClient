@@ -9,10 +9,11 @@ import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
 
-  @ViewChild("skillsPanel", {read: ElementRef}) skillsPanel: ElementRef;
-  public skillsPanelWidth: Number;
-  public experiencesPanelHeight: Number;
-  public projectsPanelWidth: Number;
+  private skillsPanelWidth: Number;
+  private experiencesPanelHeight: Number;
+  private projectsPanelWidth: Number;
+
+  private buttonVisibility: string;
 
   constructor(private router: Router) { }
 
@@ -20,15 +21,16 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // console.log(this.skillsPanel.nativeElement.offsetWidth);
   }
 
   openSkillsPanel() {
     if(this.skillsPanelWidth == 10) {
       this.skillsPanelWidth = 0;
+      this.buttonVisibility = "hidden";
     }
     else {
       this.skillsPanelWidth = 10;
+      this.buttonVisibility = "visible";
     }
   }
 

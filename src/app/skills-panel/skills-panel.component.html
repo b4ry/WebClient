@@ -1,15 +1,13 @@
-<div #skillsPanel [style.width.%]="skillsPanelWidth" class="left-side-nav">
+<div [style.width.%]="skillsPanelWidth" class="left-side-nav">
     <div class="closebtn">
         <i class="fa fa-times-circle" (click)="closeSkillsPanel()"></i>
     </div>
     <div class="flex-container">
-        <div *ngFor="let skill of skills" (click)="redirectToSkillsPageDetails(skill)">
+        <div [style.visibility]="buttonVisibility" *ngFor="let skill of skills" (click)="redirectToSkillsPageDetails(skill)">
             {{skill.name}}
         </div>
-    </div>
-    <div class="flex-container">
-      <div (click)="redirectToSkillsPage()">
-        MORE
-      </div>
+        <div [style.visibility]="buttonVisibility" (click)="redirectToSkillsPage()">
+            MORE
+        </div>
     </div>
 </div>

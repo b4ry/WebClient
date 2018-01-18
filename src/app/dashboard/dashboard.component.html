@@ -36,7 +36,12 @@
     </span>
   </div>
   <div class="sun center"></div>
-  <app-skills-panel [skillsPanelWidth]="skillsPanelWidth" (notifyClosingSkillsPanel)='onNotifyClosingSkillsPanel($event)'></app-skills-panel>
+  <app-skills-panel 
+    [skillsPanelWidth]="skillsPanelWidth" 
+    [buttonVisibility]="buttonVisibility"
+    (notifyClosingSkillsPanel)='onNotifyClosingSkillsPanel($event)'
+  >
+  </app-skills-panel>
   <app-experiences-panel [experiencesPanelHeight]="experiencesPanelHeight" (notifyClosingExperiencesPanel)='onNotifyClosingExperiencesPanel($event)'></app-experiences-panel>
   <app-projects-panel [projectsPanelWidth]="projectsPanelWidth" (notifyClosingProjectsPanel)='onNotifyClosingProjectsPanel($event)'></app-projects-panel>
 </div>
