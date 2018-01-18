@@ -251,3 +251,15 @@ textPath {
     0%   { opacity: 0; }
     100% { opacity: 1; }
 }
+
+.arrow {
+    color: dimgray;
+    left: 3.5%;
+    font-size: 200%;
+    transition: 0.5s;
+}
+
+.arrow:hover {
+    color: aqua;
+    cursor: pointer;
+}

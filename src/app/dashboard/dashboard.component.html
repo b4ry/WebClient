@@ -36,6 +36,11 @@
     </span>
   </div>
   <div class="sun center"></div>
+  <i 
+    [style.left.%]="skillsArrowLeftPosition" 
+    [ngClass]="skillsArrowLeftPosition === 3.5 ? 'fa fa-arrow-circle-o-right arrow center' : 'fa fa-arrow-circle-o-left arrow center'" 
+    (click)="openSkillsPanel()">
+  </i>
   <app-skills-panel 
     [skillsPanelWidth]="skillsPanelWidth" 
     [buttonVisibility]="buttonVisibility"

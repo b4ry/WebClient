@@ -14,7 +14,7 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
 
   @Input() skillsPanelWidth: Number;
   @Input() buttonVisibility: string;
-  
+
   @Output() notifyClosingSkillsPanel: EventEmitter<Number> = new EventEmitter<Number>();
   
   private skills: TechnologyDto[] = [];
@@ -43,7 +43,7 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
   }
 
   closeSkillsPanel(): void {
-    this.skillsPanelWidth = 0;
+    this.skillsPanelWidth = 2;
 
     this.notifyClosingSkillsPanel.emit(this.skillsPanelWidth);
   }
