@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  private loadingPage: boolean = true;
+
+  constructor(
+      private router: Router
+  ) {}
+
+  ngAfterViewInit() {
+      this.router.events
+          .subscribe((event) => {
+              if(event instanceof NavigationStart) {
+                  this.loadingPage = true;
+              }
+              else if (
+                  event instanceof NavigationEnd || 
+                  event instanceof NavigationCancel
+              ) {
+                  this.loadingPage = false;
+              }
+          });
+  }
 }

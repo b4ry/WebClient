@@ -1,2 +1,11 @@
-<router-outlet></router-outlet>
+<!-- <div [hidden]="!loadingPage" class="page">
+    <mat-spinner class="center"></mat-spinner>
+</div> -->
+<div>
+        <div [hidden]="!loadingPage" class="page">
+                <mat-spinner class="center"></mat-spinner>
+            </div>
+    <router-outlet></router-outlet>
+</div>
+
 <app-footer></app-footer>

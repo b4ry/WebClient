@@ -34,6 +34,7 @@ import { SkillsResolver } from './services/resolvers/skills.resolver';
 import { SkillsSkillsPanelComponent } from './skills-skills-panel/skills-skills-panel.component';
 import { TechnologyTypesResolver } from './services/resolvers/technologyTypes.resolver';
 import { FilterTechnologiesPipe } from './services/pipes/filter-technologies.pipe';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { FilterTechnologiesPipe } from './services/pipes/filter-technologies.pip
     HttpModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
   ],
   providers: [ 
     ExperienceService,

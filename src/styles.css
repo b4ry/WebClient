@@ -1,3 +1,5 @@
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 body {
     background-image: url("https://orig00.deviantart.net/6add/f/2011/189/c/7/nebula_13_hi_res_by_packeranatic-d3lfvvg.png");
 }

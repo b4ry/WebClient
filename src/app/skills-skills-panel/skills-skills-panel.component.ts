@@ -5,31 +5,37 @@ import { TechnologyTypeDto } from '../services/dtos/technology-type.dto';
 import { TechnologyDto } from '../services/dtos/technology.dto';
 
 import { TechnologyItemStateEnum } from '../services/enums/technnology-item-state.enum';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-skills-skills-panel',
   templateUrl: './skills-skills-panel.component.html',
   styleUrls: ['./skills-skills-panel.component.css']
 })
-export class SkillsSkillsPanelComponent implements OnInit {
+export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
 
   @Input() selectedTechnologyDto: TechnologyDto;
+  
+  @Output() notifyChangingListOfTechIcons: EventEmitter<any> = new EventEmitter<any>();
+  @Output() notifyRebuildingListOfTechIcons: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() notifySelectingTechnology: EventEmitter<TechnologyDto> = new EventEmitter<TechnologyDto>();
 
   private technologyTypesDto: TechnologyTypeDto[] = [];
   private technologiesDto: TechnologyDto[] = [];
 
   public selectedTechTypeNames: string[] = [];
-
-  @Output() notifyChangingListOfTechIcons: EventEmitter<any> = new EventEmitter<any>();
-  @Output() notifyRebuildingListOfTechIcons: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() notifySelectingTechnology: EventEmitter<TechnologyDto> = new EventEmitter<TechnologyDto>();
+  
+  private aliveTechnologyTypesSubscription: boolean = true;
+  private aliveTechnologiesSubscription: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.technologyTypesDto = this.activatedRoute.snapshot.data['technologyTypes'];
-    this.technologiesDto = this.activatedRoute.snapshot.data['skills'];
+    // this.technologyTypesDto = this.activatedRoute.snapshot.data['technologyTypes']
+    this.activatedRoute.data.takeWhile(() => this.aliveTechnologyTypesSubscription).subscribe(result => this.technologyTypesDto = result['technologyTypes']);
+    this.activatedRoute.data.takeWhile(() => this.aliveTechnologiesSubscription).subscribe(result => this.technologiesDto = result['skills']);
+    // this.technologiesDto = this.activatedRoute.snapshot.data['skills'];
     
     let technologyName: string = this.activatedRoute.snapshot.params.technologyName;
     let technologyTypeName: string = this.activatedRoute.snapshot.params.technologyTypeName;
@@ -45,6 +51,11 @@ export class SkillsSkillsPanelComponent implements OnInit {
           expandList: true
         });
     }
+  }
+
+  ngOnDestroy(): void {
+    this.aliveTechnologiesSubscription = false;
+    this.aliveTechnologyTypesSubscription = false;
   }
   
   onToggleList(technologyTypeName: string): void {
