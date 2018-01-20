@@ -1,11 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 
 import { TechnologyTypeDto } from '../services/dtos/technology-type.dto';
 import { TechnologyDto } from '../services/dtos/technology.dto';
 
-import { TechnologyItemStateEnum } from '../services/enums/technnology-item-state.enum';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-skills-skills-panel',
