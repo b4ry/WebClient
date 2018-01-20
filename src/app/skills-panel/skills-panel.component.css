@@ -34,6 +34,7 @@ i.fa-times-circle:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 12em;
 }
   
 .flex-container>div {
