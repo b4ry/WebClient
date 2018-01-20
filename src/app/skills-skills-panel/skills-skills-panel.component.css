@@ -15,6 +15,7 @@
     position: relative;
     color: white;
     font-weight: bold;
+    overflow-y: hidden;
 }
 
 .list-of-tech-types:hover {
@@ -24,6 +25,7 @@
 .tech-type {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 1%;
 }
 
 .tech-type>span { 
