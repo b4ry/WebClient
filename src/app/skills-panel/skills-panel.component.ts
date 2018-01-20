@@ -35,8 +35,8 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
 
   getTechnologies(): void {
     this.technologyService.getTechnologies()
-    .takeWhile(() => this.aliveTechnologySubscription)
-    .subscribe(
+      .takeWhile(() => this.aliveTechnologySubscription)
+      .subscribe(
         resultArray => this.skills = resultArray.slice(0, 5),
         error => console.log("Error :: " + error)
     )
@@ -53,6 +53,6 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
   }
 
   redirectToSkillsPageDetails(skill: TechnologyDto): void {
-    this.router.navigate(['/skills', { technologyName: skill.name, technologyTypeName: skill.technologyType.name }]);
+    this.router.navigate(['/skills'], { queryParams: { technologyName: skill.name, technologyTypeName: skill.technologyType.name }});
   }
 }

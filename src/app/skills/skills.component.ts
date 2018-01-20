@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, trigger, state, transition, animate, style, ChangeDetectorRef } from '@angular/core';
 import { AfterViewChecked } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import "rxjs/add/operator/takeWhile";
 
@@ -64,7 +65,11 @@ export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
     private technologyService: TechnologyService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private changeDetectorRef:ChangeDetectorRef) { }
+    private changeDetectorRef: ChangeDetectorRef,
+    private location: Location
+  ) { 
+    this.location = location;
+  }
 
   ngOnInit(): void {
     this.technologies = [];//this.activatedRoute.snapshot.data['skills'];
@@ -145,6 +150,10 @@ export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
           }
         }
       }
+
+      if(this.technologies.length === 0) {
+        this.changeUrlWithoutRedirecting(null, null);
+      }
     }
   }
 
@@ -184,6 +193,8 @@ export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     if(this.selectedTechnologyDto) {
       this.selectedTechnologyDto.itemState = TechnologyItemStateEnum.Selected;
+
+      this.changeUrlWithoutRedirecting(selectedTechnologyDto.name, selectedTechnologyDto.technologyType.name);
     }
   }
 
@@ -191,6 +202,8 @@ export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
     if(technologyDto.itemState !== TechnologyItemStateEnum.Selected) {
       technologyDto.itemState = TechnologyItemStateEnum.Selected;
       this.selectedTechnologyDto = technologyDto;
+
+      this.changeUrlWithoutRedirecting(technologyDto.name, technologyDto.technologyType.name);
 
       for(var tech of this.technologies) {
         if(tech !== technologyDto) {
@@ -205,5 +218,13 @@ export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
 
       this.selectedTechnologyDto = null;
     }
+  }
+
+  private changeUrlWithoutRedirecting(technologyName: string, technologyTypeName: string): void {
+    let url = this.router
+      .createUrlTree([this.router.url.split('?')[0]], { queryParams: { technologyName: technologyName, technologyTypeName: technologyTypeName }})
+      .toString();
+
+    this.location.go(url);  
   }
 }

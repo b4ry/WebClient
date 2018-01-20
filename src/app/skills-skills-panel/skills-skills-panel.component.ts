@@ -37,8 +37,8 @@ export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
     this.activatedRoute.data.takeWhile(() => this.aliveTechnologiesSubscription).subscribe(result => this.technologiesDto = result['skills']);
     // this.technologiesDto = this.activatedRoute.snapshot.data['skills'];
     
-    let technologyName: string = this.activatedRoute.snapshot.params.technologyName;
-    let technologyTypeName: string = this.activatedRoute.snapshot.params.technologyTypeName;
+    let technologyName: string = this.activatedRoute.snapshot.queryParams.technologyName;
+    let technologyTypeName: string = this.activatedRoute.snapshot.queryParams.technologyTypeName;
 
     if(technologyName && technologyTypeName) {
       this.selectedTechnologyDto = this.technologiesDto.find(technologyDto => technologyDto.name === technologyName);

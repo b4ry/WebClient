@@ -79,3 +79,13 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.technology-project-zoom {
+    position: relative;
+    top: 1em;
+}
+
+.technology-project-zoom:hover {
+    color: aqua;
+    cursor: pointer;
+}
