@@ -1,7 +1,7 @@
 <div class="tech-types-container">
   <div class="technologies-header">
     TECHNOLOGIES
-    <i class="fa fa-pie-chart" style="padding-left: 39%"></i>
+    <i class="fa fa-pie-chart statistics-icon" (click)="openStatisticsDialog()"></i>
   </div>
   <ul class="list-of-tech-types" *ngFor="let technologyTypeDto of technologyTypesDto">
     <div class="tech-type">
@@ -24,12 +24,4 @@
       </ul>
     </div>
   </ul>
-  <div class="statistics">
-    <canvas baseChart width="100%" height="100%"
-      [data]="pieChartData"
-      [labels]="pieChartLabels"
-      [chartType]="pieChartType"
-    >
-    </canvas>
-  </div>
 </div>

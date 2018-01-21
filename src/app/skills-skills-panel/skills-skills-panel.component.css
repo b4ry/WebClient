@@ -89,7 +89,11 @@
     color: aqua;
 }
 
-.statistics {
-    margin-top: 100%;
-    display: block;
+.statistics-icon {
+    padding-left: 39%;
+}
+
+.statistics-icon:hover {
+    color: aqua;
+    cursor: pointer;
 }

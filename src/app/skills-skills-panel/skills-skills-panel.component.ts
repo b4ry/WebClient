@@ -1,9 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { TechnologyTypeDto } from '../services/dtos/technology-type.dto';
 import { TechnologyDto } from '../services/dtos/technology.dto';
+
+import { StatisticsDialogComponent } from '../statistics-dialog/statistics-dialog.component';
 
 
 @Component({
@@ -27,31 +30,20 @@ export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
   public technologyTypesDto: TechnologyTypeDto[] = [];
   public technologiesDto: TechnologyDto[] = [];
 
-  public pieChartLabels:string[] = [];
-  public pieChartData:number[] = [];
-  public pieChartType:string = 'pie';
-
   constructor(
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.activatedRoute.data.takeWhile(() => this.aliveTechnologyTypesSubscription)
       .subscribe(result => 
         {
           this.technologyTypesDto = result['technologyTypes'];
-          
-          this.technologyTypesDto.forEach(technologyTypeDto => {
-            this.pieChartLabels.push(technologyTypeDto.name);
-          });
         });
     this.activatedRoute.data.takeWhile(() => this.aliveTechnologiesSubscription)
       .subscribe(result => 
         {
           this.technologiesDto = result['skills'];
-
-          this.technologyTypesDto.forEach(technologyTypeDto => {
-            this.pieChartData.push(this.technologiesDto.filter(technologyDto => technologyDto.technologyType.name === technologyTypeDto.name).length);
-          });
         });
     
     let technologyName: string = this.activatedRoute.snapshot.queryParams.technologyName;
@@ -76,6 +68,30 @@ export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
 
   private isExpandedTechType(technologyTypeName: string): boolean {
     return this.selectedTechTypeNames.includes(technologyTypeName);
+  }
+
+  public openStatisticsDialog(): void {
+    let chartData: Number[] = [];
+    
+    this.technologyTypesDto.forEach(technologyTypeDto => {
+      chartData.push(this.technologiesDto.filter(technologyDto => technologyDto.technologyType.name === technologyTypeDto.name).length);
+    });
+
+    let dialogConfig: MatDialogConfig = new MatDialogConfig();
+    dialogConfig.width = "18em";
+    dialogConfig.height = "18em";
+    dialogConfig.position = { top: '25%', bottom: '0', left: '0', right: '0'};
+    dialogConfig.data = { 
+      chartLabels: this.technologyTypesDto.map(technologyTypeDto => technologyTypeDto.name), 
+      chartData: chartData,
+      chartType: "pie"
+    }
+
+    let dialogRef = this.dialog.open(StatisticsDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
   
   public onToggleList(technologyTypeName: string): void {

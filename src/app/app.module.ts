@@ -5,8 +5,10 @@ import { HttpModule } from "@angular/http";
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ChartsModule } from 'ng2-charts';
-import { AppRoutingModule } from './/app-routing.module';
+
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -21,6 +23,7 @@ import { ProjectsPanelComponent } from './projects-panel/projects-panel.componen
 import { SkillDetailsComponent } from './skill-details/skill-details.component';
 import { ExperienceDetailsComponent } from './experience-details/experience-details.component';
 import { SkillsSkillsPanelComponent } from './skills-skills-panel/skills-skills-panel.component';
+import { StatisticsDialogComponent } from './statistics-dialog/statistics-dialog.component';
 
 import { ExperienceService } from './services/experiences/experience.service';
 import { TechnologyTypeService } from './services/skills/technology-type.service';
@@ -52,6 +55,7 @@ import { TechnologyTypesResolver } from './services/resolvers/technologyTypes.re
     SkillDetailsComponent,
     ExperienceDetailsComponent,
     SkillsSkillsPanelComponent,
+    StatisticsDialogComponent,
     MapTechnologyTypeEnumPipe,
     EnumToDropdownPipe,
     FilterTechnologiesPipe
@@ -64,6 +68,7 @@ import { TechnologyTypesResolver } from './services/resolvers/technologyTypes.re
     FormsModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
     ChartsModule
   ],
   providers: [ 
@@ -79,6 +84,9 @@ import { TechnologyTypesResolver } from './services/resolvers/technologyTypes.re
     SkillsResolver,
     TechnologyTypesResolver
    ],
+  entryComponents: [ 
+    StatisticsDialogComponent 
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
