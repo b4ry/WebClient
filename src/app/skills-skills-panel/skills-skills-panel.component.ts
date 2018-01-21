@@ -80,7 +80,7 @@ export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
     let dialogConfig: MatDialogConfig = new MatDialogConfig();
     dialogConfig.width = "18em";
     dialogConfig.height = "18em";
-    dialogConfig.position = { top: '25%', bottom: '0', left: '0', right: '0'};
+    dialogConfig.position = { top: '33%', bottom: '0', left: '0', right: '0'};
     dialogConfig.data = { 
       chartLabels: this.technologyTypesDto.map(technologyTypeDto => technologyTypeDto.name), 
       chartData: chartData,
