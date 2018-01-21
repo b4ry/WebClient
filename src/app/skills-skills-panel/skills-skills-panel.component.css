@@ -85,6 +85,11 @@
     cursor: pointer;
 }
 
-.selected {
+.technology-selected {
     color: aqua;
+}
+
+.statistics {
+    margin-top: 100%;
+    display: block;
 }

@@ -19,20 +19,40 @@ export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
   @Output() notifyRebuildingListOfTechIcons: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() notifySelectingTechnology: EventEmitter<TechnologyDto> = new EventEmitter<TechnologyDto>();
 
-  private technologyTypesDto: TechnologyTypeDto[] = [];
-  private technologiesDto: TechnologyDto[] = [];
+  private selectedTechTypeNames: string[] = [];
 
-  public selectedTechTypeNames: string[] = [];
-  
   private aliveTechnologyTypesSubscription: boolean = true;
   private aliveTechnologiesSubscription: boolean = true;
+
+  public technologyTypesDto: TechnologyTypeDto[] = [];
+  public technologiesDto: TechnologyDto[] = [];
+
+  public pieChartLabels:string[] = [];
+  public pieChartData:number[] = [];
+  public pieChartType:string = 'pie';
 
   constructor(
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.data.takeWhile(() => this.aliveTechnologyTypesSubscription).subscribe(result => this.technologyTypesDto = result['technologyTypes']);
-    this.activatedRoute.data.takeWhile(() => this.aliveTechnologiesSubscription).subscribe(result => this.technologiesDto = result['skills']);
+    this.activatedRoute.data.takeWhile(() => this.aliveTechnologyTypesSubscription)
+      .subscribe(result => 
+        {
+          this.technologyTypesDto = result['technologyTypes'];
+          
+          this.technologyTypesDto.forEach(technologyTypeDto => {
+            this.pieChartLabels.push(technologyTypeDto.name);
+          });
+        });
+    this.activatedRoute.data.takeWhile(() => this.aliveTechnologiesSubscription)
+      .subscribe(result => 
+        {
+          this.technologiesDto = result['skills'];
+
+          this.technologyTypesDto.forEach(technologyTypeDto => {
+            this.pieChartData.push(this.technologiesDto.filter(technologyDto => technologyDto.technologyType.name === technologyTypeDto.name).length);
+          });
+        });
     
     let technologyName: string = this.activatedRoute.snapshot.queryParams.technologyName;
     let technologyTypeName: string = this.activatedRoute.snapshot.queryParams.technologyTypeName;
@@ -53,8 +73,12 @@ export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
     this.aliveTechnologiesSubscription = false;
     this.aliveTechnologyTypesSubscription = false;
   }
+
+  private isExpandedTechType(technologyTypeName: string): boolean {
+    return this.selectedTechTypeNames.includes(technologyTypeName);
+  }
   
-  onToggleList(technologyTypeName: string): void {
+  public onToggleList(technologyTypeName: string): void {
     if (this.isExpandedTechType(technologyTypeName)){
       var index = this.selectedTechTypeNames.indexOf(technologyTypeName, 0);
 
@@ -85,15 +109,11 @@ export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
     }
   }
 
-  isExpandedTechType(technologyTypeName: string): boolean {
+  public isTechnologyListVisible(technologyTypeName: string): boolean {
     return this.selectedTechTypeNames.includes(technologyTypeName);
   }
 
-  isTechnologyListVisible(technologyTypeName: string): boolean {
-    return this.selectedTechTypeNames.includes(technologyTypeName);
-  }
-
-  onSelectTechnology(technologyDto: TechnologyDto) {
+  public onSelectTechnology(technologyDto: TechnologyDto): void {
     if(technologyDto !== this.selectedTechnologyDto) {
       this.selectedTechnologyDto = technologyDto;
       this.notifySelectingTechnology.emit(this.selectedTechnologyDto);

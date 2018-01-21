@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './/app-routing.module';
 import { HttpModule } from "@angular/http";
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ChartsModule } from 'ng2-charts';
+import { AppRoutingModule } from './/app-routing.module';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -18,6 +20,7 @@ import { ExperiencesPanelComponent } from './experiences-panel/experiences-panel
 import { ProjectsPanelComponent } from './projects-panel/projects-panel.component';
 import { SkillDetailsComponent } from './skill-details/skill-details.component';
 import { ExperienceDetailsComponent } from './experience-details/experience-details.component';
+import { SkillsSkillsPanelComponent } from './skills-skills-panel/skills-skills-panel.component';
 
 import { ExperienceService } from './services/experiences/experience.service';
 import { TechnologyTypeService } from './services/skills/technology-type.service';
@@ -27,14 +30,12 @@ import { UrlService } from './services/url.service';
 
 import { MapTechnologyTypeEnumPipe } from './services/pipes/map-technology-type-enum.pipe';
 import { EnumToDropdownPipe } from './services/pipes/enum-to-dropdown.pipe';
+import { FilterTechnologiesPipe } from './services/pipes/filter-technologies.pipe';
 
 import { GlobalErrorHandler } from './errors/GlobalErrorHandler.handler';
 
 import { SkillsResolver } from './services/resolvers/skills.resolver';
-import { SkillsSkillsPanelComponent } from './skills-skills-panel/skills-skills-panel.component';
 import { TechnologyTypesResolver } from './services/resolvers/technologyTypes.resolver';
-import { FilterTechnologiesPipe } from './services/pipes/filter-technologies.pipe';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ChartsModule
   ],
   providers: [ 
     ExperienceService,

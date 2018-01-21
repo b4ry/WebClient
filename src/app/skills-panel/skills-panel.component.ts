@@ -17,7 +17,7 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
 
   @Output() notifyClosingSkillsPanel: EventEmitter<Number> = new EventEmitter<Number>();
   
-  private skills: TechnologyDto[] = [];
+  private technologiesDto: TechnologyDto[] = [];
   private aliveTechnologySubscription: boolean = true;
 
   constructor(
@@ -37,7 +37,7 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
     this.technologyService.getTechnologies()
       .takeWhile(() => this.aliveTechnologySubscription)
       .subscribe(
-        resultArray => this.skills = resultArray.slice(0, 5),
+        resultArray => this.technologiesDto = resultArray.slice(0, 5),
         error => console.log("Error :: " + error)
     )
   }

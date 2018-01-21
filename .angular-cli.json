@@ -24,7 +24,9 @@
         "assets/css/devicon-colors.css",
         "assets/css/devicon.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "node_modules/chart.js/src/chart.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
