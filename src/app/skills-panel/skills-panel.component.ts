@@ -17,7 +17,8 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
 
   @Output() notifyClosingSkillsPanel: EventEmitter<Number> = new EventEmitter<Number>();
   
-  private technologiesDto: TechnologyDto[] = [];
+  public technologiesDto: TechnologyDto[] = [];
+  
   private aliveTechnologySubscription: boolean = true;
 
   constructor(

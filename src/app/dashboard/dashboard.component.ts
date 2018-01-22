@@ -9,13 +9,13 @@ import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
 
-  private skillsPanelWidth: Number;
-  private experiencesPanelHeight: Number;
-  private projectsPanelWidth: Number;
+  public skillsPanelWidth: Number;
+  public experiencesPanelHeight: Number;
+  public projectsPanelWidth: Number;
   
-  private skillsArrowLeftPosition: Number = 3.5;
+  public skillsArrowLeftPosition: Number = 3.5;
 
-  private buttonVisibility: string;
+  public buttonVisibility: string;
 
   constructor(private router: Router) { }
 

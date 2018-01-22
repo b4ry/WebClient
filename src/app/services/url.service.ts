@@ -7,6 +7,7 @@ export class UrlService {
         [ "GetExperiences", "experience/getexperiences" ],
         [ "GetExperience", "experience/getexperience" ],
         [ "GetProjects", "project/getprojects" ],
+        [ "GetProject", "project/getproject" ],
         [ "GetTechnologyTypes", "technologytype/gettechnologytypes" ],
         [ "GetTechnologies", "technology/gettechnologies" ],
         [ "CreateTechnology", "technology/createtechnology" ]

@@ -6,10 +6,10 @@
     >
     </app-skills-skills-panel>
     <ul class="flex-container-icons">
-        <li class="flex-item" *ngFor="let technology of technologies" [@itemState]="technology.itemState">
+        <li class="flex-item" *ngFor="let technologyDto of technologiesDto" [@itemState]="technologyDto.itemState">
             <div class="icon-and-label">
-                <i [ngClass]="technology.iconClass" (click)="onSelectTechnology(technology)"></i> <!--(click)="openSkillDetails(technology.name)"></i>-->
-                <span class="icon-label">{{technology.name}}</span>
+                <i [ngClass]="technologyDto.iconClass" (click)="onSelectTechnology(technologyDto)"></i> <!--(click)="openSkillDetails(technology.name)"></i>-->
+                <span class="icon-label">{{technologyDto.name}}</span>
             </div>    
         </li>
     </ul>

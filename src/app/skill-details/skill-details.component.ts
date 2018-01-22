@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { TechnologyDto } from '../services/dtos/technology.dto';
+import { ProjectDto } from '../services/dtos/project.dto';
 
 @Component({
   selector: 'app-skill-details',
@@ -11,9 +13,14 @@ export class SkillDetailsComponent implements OnInit {
 
   @Input() selectedTechnologyDto: TechnologyDto;
   
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
+  public redirectToProjectDetails(projectDto: ProjectDto) {
+    this.router.navigate(['/projects', projectDto.name ]);
+  }
 }

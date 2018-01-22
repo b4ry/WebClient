@@ -8,6 +8,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { SkillsComponent } from './skills/skills.component';
 import { SkillDetailsComponent } from './skill-details/skill-details.component';
 import { ExperienceDetailsComponent } from './experience-details/experience-details.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { SkillsResolver } from './services/resolvers/skills.resolver';
 import { TechnologyTypesResolver } from './services/resolvers/technologyTypes.resolver';
 
@@ -31,6 +32,10 @@ const routes: Routes = [
   { 
     path: 'projects', 
     component: ProjectsComponent 
+  },
+  {
+    path: 'projects/:projectName',
+    component: ProjectDetailsComponent
   },
   { 
     path: 'skills', 

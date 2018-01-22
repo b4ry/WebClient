@@ -39,6 +39,7 @@ import { GlobalErrorHandler } from './errors/GlobalErrorHandler.handler';
 
 import { SkillsResolver } from './services/resolvers/skills.resolver';
 import { TechnologyTypesResolver } from './services/resolvers/technologyTypes.resolver';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
 
 @NgModule({
   declarations: [
@@ -56,9 +57,10 @@ import { TechnologyTypesResolver } from './services/resolvers/technologyTypes.re
     ExperienceDetailsComponent,
     SkillsSkillsPanelComponent,
     StatisticsDialogComponent,
+    ProjectDetailsComponent,
     MapTechnologyTypeEnumPipe,
     EnumToDropdownPipe,
-    FilterTechnologiesPipe
+    FilterTechnologiesPipe,
   ],
   imports: [
     BrowserModule,
