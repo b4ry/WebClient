@@ -41,14 +41,6 @@ const routes: Routes = [
     } 
   },
   { 
-    path: 'skills/:id', 
-    component: SkillDetailsComponent 
-  },
-  { 
-    path: 'skills/:technologyName', 
-    component: SkillDetailsComponent 
-  },
-  { 
     path: '', 
     redirectTo: '/dashboard', 
     pathMatch: 'full' 
