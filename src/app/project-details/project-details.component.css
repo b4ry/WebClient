@@ -93,6 +93,7 @@ mat-grid-tile:nth-of-type(3):hover {
     min-width: 25%;
     vertical-align: center;
     text-align: center;
+    color: dimgray;
 }
 
 .fa-arrow-circle-o-right {

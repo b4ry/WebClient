@@ -1,20 +1,26 @@
 .right-side-nav {
     height: 88%;
-    width: 0;
+    width: 2%;
     position: fixed;
     z-index: 1;
     top: 4%;
     right: 0;
-    background-color: dimgray;
+    background-color: transparent;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-color: dimgray;
     overflow-x: hidden;
     transition: 0.5s;
 }
 
 .right-side-nav .closebtn {
     position: absolute;
+    color: dimgray;
     top: 0.5%;
     left: 4%;
     font-size: 200%;
+    visibility: hidden;
 }
 
 i.fa-times-circle:hover {
@@ -23,24 +29,35 @@ i.fa-times-circle:hover {
 }
 
 .flex-container {
-    margin-top: 30%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+    width: 12em;
+}
   
-  .flex-container>div {
-    background-color: black;
+.flex-container>div {
+    background-color: transparent;
     color: dimgray;
+    border-style: solid;
+    border-color: dimgray;
     margin: 5%;
     padding: 10%;
     max-width: 70%;
     min-width: 70%;
     text-align: center;
     font-weight: bold;
-  }
+    visibility: hidden;
+}
 
-  .flex-container>div:hover {
-      cursor: pointer;
-  }
+.flex-container>div:hover {
+    cursor: pointer;
+    color: aqua;
+    border-color: aqua;
+    transition: 0.3s;
+}
+
+.flex-container div:last-of-type {
+    margin-top: 100%;
+}

@@ -38,15 +38,24 @@
   <div class="sun center"></div>
   <i 
     [style.left.%]="skillsArrowLeftPosition" 
-    [ngClass]="skillsArrowLeftPosition === 3.5 ? 'fa fa-arrow-circle-o-right arrow center' : 'fa fa-arrow-circle-o-left arrow center'" 
+    [ngClass]="skillsArrowLeftPosition === 3.5 ? 'fa fa-arrow-circle-o-right arrow-skills center' : 'fa fa-arrow-circle-o-left arrow-skills center'" 
     (click)="openSkillsPanel()">
+  </i>
+  <i 
+    [style.left.%]="projectsArrowRightPosition" 
+    [ngClass]="projectsArrowRightPosition === 96.5 ? 'fa fa-arrow-circle-o-left arrow-projects center' : 'fa fa-arrow-circle-o-right arrow-projects center'" 
+    (click)="openProjectsPanel()">
   </i>
   <app-skills-panel 
     [skillsPanelWidth]="skillsPanelWidth" 
-    [buttonVisibility]="buttonVisibility"
+    [buttonVisibility]="skillsButtonVisibility"
     (notifyClosingSkillsPanel)='onNotifyClosingSkillsPanel($event)'
   >
   </app-skills-panel>
   <app-experiences-panel [experiencesPanelHeight]="experiencesPanelHeight" (notifyClosingExperiencesPanel)='onNotifyClosingExperiencesPanel($event)'></app-experiences-panel>
-  <app-projects-panel [projectsPanelWidth]="projectsPanelWidth" (notifyClosingProjectsPanel)='onNotifyClosingProjectsPanel($event)'></app-projects-panel>
+  <app-projects-panel 
+    [projectsPanelWidth]="projectsPanelWidth" 
+    [buttonVisibility]="projectsButtonVisibility"
+    (notifyClosingProjectsPanel)='onNotifyClosingProjectsPanel($event)'>
+  </app-projects-panel>
 </div>

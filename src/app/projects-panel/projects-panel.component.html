@@ -1,15 +1,13 @@
-<div #projectsPanel [style.width.%]="projectsPanelWidth" class="right-side-nav">
-  <div class="closebtn">
+<div [style.width.%]="projectsPanelWidth" class="right-side-nav">
+  <div [style.visibility]="buttonVisibility" class="closebtn">
     <i class="fa fa-times-circle" (click)="closeProjectsPanel()"></i>
   </div>
   <div class="flex-container">
-      <div *ngFor="let project of projects">
-          {{project.name}}
+      <div [style.visibility]="buttonVisibility" *ngFor="let projectDto of projectsDto" (click)="navigateToProjectDetailsPage(projectDto.name)">
+          {{projectDto.name}}
       </div>
-  </div>
-  <div class="flex-container">
-    <div>
-      MORE
-    </div>
+      <div *ngIf="projectsDto.length > 0" [style.visibility]="buttonVisibility">
+        MORE
+      </div>
   </div>
 </div>

@@ -12,9 +12,11 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 export class ProjectsPanelComponent implements OnInit, OnDestroy {
 
   @Input() projectsPanelWidth: Number;
+  @Input() buttonVisibility: string;
+
   @Output() notifyClosingProjectsPanel: EventEmitter<Number> = new EventEmitter<Number>();
 
-  private projects: ProjectDto[] = [];
+  private projectsDto: ProjectDto[] = [];
   private aliveProjectSubscription: boolean = true;
 
   constructor(
@@ -34,17 +36,21 @@ export class ProjectsPanelComponent implements OnInit, OnDestroy {
     this.projectService.getProjects()
     .takeWhile(() => this.aliveProjectSubscription)
     .subscribe(
-        resultArray => this.projects = resultArray.slice(0, 5),
+        resultArray => this.projectsDto = resultArray.slice(0, 5),
         error => console.log("Error :: " + error)
     )
   }
 
   closeProjectsPanel(): void {
-    this.projectsPanelWidth = 0;
+    this.projectsPanelWidth = 2;
     this.notifyClosingProjectsPanel.emit(this.projectsPanelWidth);
   }
 
-  redirectToProjectsPage() {
+  navigateToProjectsPage() {
     this.router.navigate(['/projects']);
+  }
+
+  navigateToProjectDetailsPage(projectDtoName: string) {
+    this.router.navigate(['/projects', projectDtoName]);
   }
 }

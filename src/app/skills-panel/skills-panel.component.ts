@@ -45,7 +45,6 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
 
   closeSkillsPanel(): void {
     this.skillsPanelWidth = 2;
-
     this.notifyClosingSkillsPanel.emit(this.skillsPanelWidth);
   }
 
@@ -53,7 +52,7 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
     this.router.navigate(['/skills']);
   }
 
-  navigateToSkillsPageDetails(skill: TechnologyDto): void {
+  navigateToSkillDetailsPage(skill: TechnologyDto): void {
     this.router.navigate(['/skills'], { queryParams: { technologyName: skill.name, technologyTypeName: skill.technologyType.name }});
   }
 }

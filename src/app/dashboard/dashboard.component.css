@@ -252,14 +252,21 @@ textPath {
     100% { opacity: 1; }
 }
 
-.arrow {
+.arrow-skills {
     color: dimgray;
     left: 3.5%;
     font-size: 200%;
     transition: 0.5s;
 }
 
-.arrow:hover {
+.arrow-projects {
+    color: dimgray;
+    left: 96.5%;
+    font-size: 200%;
+    transition: 0.5s;
+}
+
+.arrow-skills:hover, .arrow-projects:hover {
     color: aqua;
     cursor: pointer;
 }
