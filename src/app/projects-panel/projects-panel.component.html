@@ -10,7 +10,8 @@
           {{projectDto.name}}
       </div>
       <div 
-        *ngIf="projectsDto.length > 0" 
+        class="more"
+        *ngIf="projectsDto.length === 5" 
         [style.visibility]="buttonVisibility">
         MORE
       </div>

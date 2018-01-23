@@ -3,10 +3,17 @@
         <i class="fa fa-times-circle" (click)="closeSkillsPanel()"></i>
     </div>
     <div class="flex-container">
-        <div [style.visibility]="buttonVisibility" *ngFor="let technologyDto of technologiesDto" (click)="navigateToSkillDetailsPage(technologyDto)">
+        <div 
+            [style.visibility]="buttonVisibility" 
+            *ngFor="let technologyDto of technologiesDto" 
+            (click)="navigateToSkillDetailsPage(technologyDto)">
             {{technologyDto.name}}
         </div>
-        <div *ngIf="technologiesDto.length > 0" [style.visibility]="buttonVisibility" (click)="navigateToSkillsPage()">
+        <div 
+            class="more"
+            *ngIf="technologiesDto.length === 5" 
+            [style.visibility]="buttonVisibility" 
+            (click)="navigateToSkillsPage()">
             MORE
         </div>
     </div>

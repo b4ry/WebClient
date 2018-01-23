@@ -62,6 +62,6 @@ i.fa-times-circle:hover {
     transition: 0.3s;
 }
 
-.flex-container div:last-of-type {
+.flex-container .more {
     margin-right: 30%;
 }

@@ -13,7 +13,8 @@
         {{experienceDto.companyName}}
       </div>
       <div 
-        *ngIf="experiencesDto.length > 0" 
+        class="more"
+        *ngIf="experiencesDto.length === 5" 
         [style.visibility]="buttonVisibility"
         (click)="navigateToExperiencesPage()">
         MORE
