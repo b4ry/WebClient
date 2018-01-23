@@ -46,13 +46,21 @@
     [ngClass]="projectsArrowRightPosition === 96.5 ? 'fa fa-arrow-circle-o-left arrow-projects center' : 'fa fa-arrow-circle-o-right arrow-projects center'" 
     (click)="openProjectsPanel()">
   </i>
+  <i 
+    [style.top.%]="experiencesArrowTopPosition" 
+    [ngClass]="experiencesArrowTopPosition === 7 ? 'fa fa-arrow-circle-o-down arrow-experiences center' : 'fa fa-arrow-circle-o-up arrow-experiences center'"
+    (click)="openExperiencesPanel()">
+  </i>
   <app-skills-panel 
     [skillsPanelWidth]="skillsPanelWidth" 
     [buttonVisibility]="skillsButtonVisibility"
-    (notifyClosingSkillsPanel)='onNotifyClosingSkillsPanel($event)'
-  >
+    (notifyClosingSkillsPanel)='onNotifyClosingSkillsPanel($event)'>
   </app-skills-panel>
-  <app-experiences-panel [experiencesPanelHeight]="experiencesPanelHeight" (notifyClosingExperiencesPanel)='onNotifyClosingExperiencesPanel($event)'></app-experiences-panel>
+  <app-experiences-panel 
+    [experiencesPanelHeight]="experiencesPanelHeight"
+    [buttonVisibility]="experiencesButtonVisibility" 
+    (notifyClosingExperiencesPanel)='onNotifyClosingExperiencesPanel($event)'>
+  </app-experiences-panel>
   <app-projects-panel 
     [projectsPanelWidth]="projectsPanelWidth" 
     [buttonVisibility]="projectsButtonVisibility"

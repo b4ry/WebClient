@@ -266,7 +266,14 @@ textPath {
     transition: 0.5s;
 }
 
-.arrow-skills:hover, .arrow-projects:hover {
+.arrow-experiences {
+    color: dimgray;
+    font-size: 200%;
+    transition: 0.5s;
+    top: 7%;
+}
+
+.arrow-skills:hover, .arrow-projects:hover, .arrow-experiences:hover {
     color: aqua;
     cursor: pointer;
 }

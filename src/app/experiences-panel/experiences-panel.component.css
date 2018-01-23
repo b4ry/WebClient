@@ -1,13 +1,17 @@
 .top-nav {
-    height: 0;
+    height: 4%;
     width: 70%;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 15%;
-    background-color: dimgray;
     overflow: hidden;
     transition: 0.5s;
+    background-color: transparent;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-color: dimgray;
 }
 
 .top-nav .left-closebtn {
@@ -15,6 +19,8 @@
     bottom: 0.5%;
     left: 0.5%;
     font-size: 200%;
+    color: dimgray;
+    visibility: hidden;
 }
 
 .top-nav .right-closebtn {
@@ -22,6 +28,8 @@
     bottom: 0.5%;
     right: 0.5%;
     font-size: 200%;
+    color: dimgray;
+    visibility: hidden;
 }
 
 i.fa-times-circle:hover {
@@ -32,22 +40,28 @@ i.fa-times-circle:hover {
 .flex-container {
     display: flex;
     padding-top: 0.5%;
-    padding-left: 5%;
+    padding-left: 10%;
     justify-content: space-between;
 }
   
 .flex-container>div {
-    background-color: black;
+    background-color: transparent;
     color: dimgray;
+    border-style: solid;
+    border-color: dimgray;
     padding: 3%;
     text-align: center;
     font-weight: bold;
+    visibility: hidden;
 }
 
 .flex-container>div:hover {
     cursor: pointer;
+    color: aqua;
+    border-color: aqua;
+    transition: 0.3s;
 }
 
-.right {
+.flex-container div:last-of-type {
     margin-right: 30%;
 }

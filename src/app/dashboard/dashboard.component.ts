@@ -15,9 +15,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   
   public skillsArrowLeftPosition: Number = 3.5;
   public projectsArrowRightPosition: Number = 96.5;
+  public experiencesArrowTopPosition: Number = 7;
 
   public skillsButtonVisibility: string;
   public projectsButtonVisibility: string;
+  public experiencesButtonVisibility: string;
 
   constructor(private router: Router) { }
 
@@ -55,21 +57,27 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   openExperiencesPanel() {
     if(this.experiencesPanelHeight == 12) {
-      this.experiencesPanelHeight = 0;
+      this.experiencesPanelHeight = 4
+      this.experiencesArrowTopPosition = 7;
+      this.experiencesButtonVisibility = "hidden";
     }
     else {
       this.experiencesPanelHeight = 12;
+      this.experiencesArrowTopPosition = 15;
+      this.experiencesButtonVisibility = "visible";
     }
   }
 
   onNotifyClosingSkillsPanel(updatedSkillsPanelWidth:Number):void {
     this.skillsPanelWidth = updatedSkillsPanelWidth;
+    this.experiencesArrowTopPosition = 7;
     this.skillsArrowLeftPosition = 3.5;
     this.skillsButtonVisibility = "hidden";
   }
 
   onNotifyClosingExperiencesPanel(updatedExperiencesPanelHeight:Number):void {
     this.experiencesPanelHeight = updatedExperiencesPanelHeight;
+    this.experiencesButtonVisibility = "hidden";
   }
 
   onNotifyClosingProjectsPanel(updatedProjectsPanelWidth:Number):void {

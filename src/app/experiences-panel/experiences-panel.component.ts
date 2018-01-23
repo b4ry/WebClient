@@ -13,9 +13,11 @@ import { ExperienceService } from '../services/experiences/experience.service';
 export class ExperiencesPanelComponent implements OnInit, OnDestroy {
 
   @Input() experiencesPanelHeight: Number;
+  @Input() buttonVisibility: string;
+
   @Output() notifyClosingExperiencesPanel: EventEmitter<Number> = new EventEmitter<Number>();
   
-  private experiences: ExperienceDto[] = [];
+  private experiencesDto: ExperienceDto[] = [];
   private aliveExperienceSubscription: boolean = true;
 
   constructor(
@@ -35,7 +37,7 @@ export class ExperiencesPanelComponent implements OnInit, OnDestroy {
     this.experienceService.getExperiences()
     .takeWhile(() => this.aliveExperienceSubscription)
     .subscribe(
-        resultArray => this.experiences = resultArray.slice(0, 5),
+        resultArray => this.experiencesDto = resultArray.slice(0, 5),
         error => console.log("Error :: " + error)
     )
   }

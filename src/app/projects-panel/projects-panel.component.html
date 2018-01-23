@@ -3,10 +3,15 @@
     <i class="fa fa-times-circle" (click)="closeProjectsPanel()"></i>
   </div>
   <div class="flex-container">
-      <div [style.visibility]="buttonVisibility" *ngFor="let projectDto of projectsDto" (click)="navigateToProjectDetailsPage(projectDto.name)">
+      <div 
+        [style.visibility]="buttonVisibility" 
+        *ngFor="let projectDto of projectsDto" 
+        (click)="navigateToProjectDetailsPage(projectDto.name)">
           {{projectDto.name}}
       </div>
-      <div *ngIf="projectsDto.length > 0" [style.visibility]="buttonVisibility">
+      <div 
+        *ngIf="projectsDto.length > 0" 
+        [style.visibility]="buttonVisibility">
         MORE
       </div>
   </div>

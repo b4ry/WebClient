@@ -1,15 +1,21 @@
 <div #experiencesPanel [style.height.%]="experiencesPanelHeight" class="top-nav">
-  <div class="left-closebtn">
+  <div [style.visibility]="buttonVisibility" class="left-closebtn">
     <i class="fa fa-times-circle" (click)="closeExperiencesPanel()"></i>
   </div>
-  <div class="right-closebtn">
+  <div [style.visibility]="buttonVisibility" class="right-closebtn">
     <i class="fa fa-times-circle" (click)="closeExperiencesPanel()"></i>
   </div>
   <div class="flex-container">
-      <div *ngFor="let experience of experiences" (click)="navigateToExperience(experience.companyName, experience.position)">
-        {{experience.companyName}}
+      <div 
+        [style.visibility]="buttonVisibility" 
+        *ngFor="let experienceDto of experiencesDto" 
+        (click)="navigateToExperience(experienceDto.companyName, experienceDto.position)">
+        {{experienceDto.companyName}}
       </div>
-      <div class="right" (click)="navigateToExperiencesPage()">
+      <div 
+        *ngIf="experiencesDto.length > 0" 
+        [style.visibility]="buttonVisibility"
+        (click)="navigateToExperiencesPage()">
         MORE
       </div>
   </div>
