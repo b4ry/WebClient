@@ -23,16 +23,16 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   public isFirst: boolean;
   public isLast: boolean;
 
-  public projectNameState: string;
-
-  private projectDtoIndex: Number;
-  private projectsDto: ProjectDto[];
+  public itemState: string;
 
   public gridTiles = [
     {text: 'DESCRIPTION', cols: 4, rows: 1, color: 'transparent'},
     {text: 'TECHNOLOGIES', cols: 2, rows: 1, color: 'transparent'},
     {text: 'DETAILS', cols: 2, rows: 1, color: 'transparent'},
   ];
+
+  private projectDtoIndex: Number;
+  private projectsDto: ProjectDto[];
 
   private aliveProjectSubscription: boolean = true;
 
@@ -74,25 +74,25 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   }
 
   public navigateToNextProject() {
-    this.projectNameState = "void-next";
+    this.itemState = "void-next";
 
     setTimeout(() => { 
       this.projectDto = this.projectsDto[+this.projectDtoIndex+1];
       this.determinePositionOfProjectDto();
       this.changeUrlWithoutRedirecting(this.projectDto.name);
-      this.projectNameState = "next";
-    }, 400)
+      this.itemState = "next";
+    }, 400);
   }
 
   public navigateToPreviousProject() {
-    this.projectNameState = "void-previous";
+    this.itemState = "void-previous";
     
     setTimeout(() => { 
       this.projectDto = this.projectsDto[+this.projectDtoIndex-1];
       this.determinePositionOfProjectDto();
       this.changeUrlWithoutRedirecting(this.projectDto.name);
-      this.projectNameState = "previous";
-    }, 400)
+      this.itemState = "previous";
+    }, 400);
   }
 
   private determinePositionOfProjectDto() {

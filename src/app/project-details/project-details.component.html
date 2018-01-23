@@ -3,9 +3,9 @@
     <i *ngIf="!isFirst" class="fa fa-arrow-circle-o-left" (click)="navigateToPreviousProject()"></i>
   </div>
   <div class="flex-container">
-    <div class="project-name" [@itemState]="projectNameState">{{projectDto.name}}</div>
+    <div class="project-name" [@itemState]="itemState">{{projectDto.name}}</div>
     <mat-grid-list cols="4" rowHeight="10em">
-      <mat-grid-tile
+      <mat-grid-tile [@itemState]="itemState"
         *ngFor="let gridTile of gridTiles"
         [colspan]="gridTile.cols"
         [rowspan]="gridTile.rows"
