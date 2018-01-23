@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { AfterViewChecked } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 // import "rxjs/add/operator/takeWhile";
@@ -34,7 +34,6 @@ export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
   constructor(
     private technologyService: TechnologyService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
     private changeDetectorRef: ChangeDetectorRef,
     private location: Location
   ) { 

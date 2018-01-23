@@ -18,7 +18,7 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
   @Output() notifyClosingSkillsPanel: EventEmitter<Number> = new EventEmitter<Number>();
   
   public technologiesDto: TechnologyDto[] = [];
-  
+
   private aliveTechnologySubscription: boolean = true;
 
   constructor(
@@ -49,11 +49,11 @@ export class SkillsPanelComponent implements OnInit, OnDestroy {
     this.notifyClosingSkillsPanel.emit(this.skillsPanelWidth);
   }
 
-  redirectToSkillsPage(): void {
+  navigateToSkillsPage(): void {
     this.router.navigate(['/skills']);
   }
 
-  redirectToSkillsPageDetails(skill: TechnologyDto): void {
+  navigateToSkillsPageDetails(skill: TechnologyDto): void {
     this.router.navigate(['/skills'], { queryParams: { technologyName: skill.name, technologyTypeName: skill.technologyType.name }});
   }
 }

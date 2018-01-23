@@ -10,7 +10,9 @@ import { SkillDetailsComponent } from './skill-details/skill-details.component';
 import { ExperienceDetailsComponent } from './experience-details/experience-details.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { SkillsResolver } from './services/resolvers/skills.resolver';
-import { TechnologyTypesResolver } from './services/resolvers/technologyTypes.resolver';
+import { TechnologyTypesResolver } from './services/resolvers/technology-types.resolver';
+import { ProjectDetailsResolver } from './services/resolvers/project-details.resolver';
+import { ProjectsResolver } from './services/resolvers/projects.resolver';
 
 const routes: Routes = [
   { 
@@ -35,7 +37,11 @@ const routes: Routes = [
   },
   {
     path: 'projects/:projectName',
-    component: ProjectDetailsComponent
+    component: ProjectDetailsComponent,
+    resolve: {
+      projectDetails: ProjectDetailsResolver,
+      projects: ProjectsResolver
+    }
   },
   { 
     path: 'skills', 

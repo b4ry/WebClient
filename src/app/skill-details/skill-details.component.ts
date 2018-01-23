@@ -20,7 +20,7 @@ export class SkillDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  public redirectToProjectDetails(projectDto: ProjectDto) {
+  public navigateToProjectDetails(projectDto: ProjectDto) {
     this.router.navigate(['/projects', projectDto.name ]);
   }
 }

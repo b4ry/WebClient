@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { SkillDetailsComponent } from './skill-details/skill-details.component';
 import { ExperienceDetailsComponent } from './experience-details/experience-details.component';
 import { SkillsSkillsPanelComponent } from './skills-skills-panel/skills-skills-panel.component';
 import { StatisticsDialogComponent } from './statistics-dialog/statistics-dialog.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
 
 import { ExperienceService } from './services/experiences/experience.service';
 import { TechnologyTypeService } from './services/skills/technology-type.service';
@@ -38,8 +40,9 @@ import { FilterTechnologiesPipe } from './services/pipes/filter-technologies.pip
 import { GlobalErrorHandler } from './errors/GlobalErrorHandler.handler';
 
 import { SkillsResolver } from './services/resolvers/skills.resolver';
-import { TechnologyTypesResolver } from './services/resolvers/technologyTypes.resolver';
-import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { TechnologyTypesResolver } from './services/resolvers/technology-types.resolver';
+import { ProjectDetailsResolver } from './services/resolvers/project-details.resolver';
+import { ProjectsResolver } from './services/resolvers/projects.resolver';
 
 @NgModule({
   declarations: [
@@ -71,7 +74,8 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    ChartsModule
+    ChartsModule,
+    MatGridListModule
   ],
   providers: [ 
     ExperienceService,
@@ -84,7 +88,9 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
       useClass: GlobalErrorHandler
     },
     SkillsResolver,
-    TechnologyTypesResolver
+    TechnologyTypesResolver,
+    ProjectDetailsResolver,
+    ProjectsResolver
    ],
   entryComponents: [ 
     StatisticsDialogComponent 

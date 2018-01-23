@@ -1,3 +1,20 @@
-<p>
-  {{projectDto?.name}}
-</p>
+<div class="flex-container-main">
+  <div class="arrow-container">
+    <i *ngIf="!isFirst" class="fa fa-arrow-circle-o-left" (click)="navigateToPreviousProject()"></i>
+  </div>
+  <div class="flex-container">
+    <div class="project-name" [@itemState]="projectNameState">{{projectDto.name}}</div>
+    <mat-grid-list cols="4" rowHeight="10em">
+      <mat-grid-tile
+        *ngFor="let gridTile of gridTiles"
+        [colspan]="gridTile.cols"
+        [rowspan]="gridTile.rows"
+        [style.background]="gridTile.color">
+          {{gridTile.text}}
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div class="arrow-container">
+      <i *ngIf="!isLast" class="fa fa-arrow-circle-o-right" (click)="navigateToNextProject()"></i>
+    </div>
+</div>
