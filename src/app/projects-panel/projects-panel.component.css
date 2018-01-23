@@ -14,6 +14,10 @@
     transition: 0.5s;
 }
 
+.right-side-nav:hover {
+    border-color: aqua;
+}
+
 .right-side-nav .closebtn {
     position: absolute;
     color: dimgray;
