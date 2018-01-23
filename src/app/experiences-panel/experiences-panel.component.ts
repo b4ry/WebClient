@@ -43,7 +43,7 @@ export class ExperiencesPanelComponent implements OnInit, OnDestroy {
   }
 
   closeExperiencesPanel(): void {
-    this.experiencesPanelHeight = 0;
+    this.experiencesPanelHeight = 4;
     this.notifyClosingExperiencesPanel.emit(this.experiencesPanelHeight);
   }
   

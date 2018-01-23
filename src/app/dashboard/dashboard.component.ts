@@ -70,13 +70,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   onNotifyClosingSkillsPanel(updatedSkillsPanelWidth:Number):void {
     this.skillsPanelWidth = updatedSkillsPanelWidth;
-    this.experiencesArrowTopPosition = 7;
     this.skillsArrowLeftPosition = 3.5;
     this.skillsButtonVisibility = "hidden";
   }
 
   onNotifyClosingExperiencesPanel(updatedExperiencesPanelHeight:Number):void {
     this.experiencesPanelHeight = updatedExperiencesPanelHeight;
+    this.experiencesArrowTopPosition = 7;
     this.experiencesButtonVisibility = "hidden";
   }
 
