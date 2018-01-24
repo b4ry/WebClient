@@ -1,24 +1,20 @@
-import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
-import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProjectDto } from '../services/dtos/project.dto';
+import { MatGridTile } from '@angular/material';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css']
 })
-export class ProjectsComponent implements OnInit, AfterViewInit {
+export class ProjectsComponent implements OnInit {
 
-  public displayedColumns = ['name', 'start', 'end', 'details'];
-  public dataSource: MatTableDataSource<ProjectDto>;
+  public gridTiles: GridTile[] = [];
 
   private aliveProjectSubscription: boolean = true;
   private projectsDto: ProjectDto[];
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
 
   constructor
   (
@@ -33,16 +29,28 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     .subscribe(result => 
       {
         this.projectsDto = result['projects'];
-        this.dataSource = new MatTableDataSource<ProjectDto>(this.projectsDto);
+
+        this.projectsDto.forEach(projectDto => {
+          this.gridTiles.push(
+            {
+              text: projectDto.name,
+              cols: 2,
+              rows: 1,
+              color: "transparent"
+            }
+          );
+        });
       });
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  public navigateToProjectDetails(projectName: string) {
+    this.router.navigate(['/projects', projectName ]);
   }
+}
 
-  public navigateToProjectDetails(projectDto: ProjectDto) {
-    this.router.navigate(['/projects', projectDto.name ]);
-  }
+export interface GridTile {
+  text: string;
+  cols: Number;
+  rows: Number;
+  color: string;
 }
