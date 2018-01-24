@@ -1,0 +1,53 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+mat-table {
+    margin-top: 10%;
+    overflow: auto;
+    background-color: transparent;
+    min-width: 60%;
+}
+
+mat-header-cell {
+    font-weight: bold;
+}
+
+mat-header-cell[mat-sort-header]:hover {
+    color: aqua;
+}
+
+mat-cell {
+    font-weight: bold;
+    
+    
+    color: white;
+}
+
+mat-paginator {
+    margin-top: 0.1%;
+    background-color: transparent;
+    border-color: dimgray;
+    border-top-style: solid;
+    min-width: 60%;
+    color: white;
+}
+
+mat-row {
+    border-color: dimgray;
+}
+
+mat-row:first-of-type {
+    border-top-style: solid;
+}
+
+.fa-search-plus:hover {
+    color: aqua;
+    cursor: pointer;
+}
+
+
+  

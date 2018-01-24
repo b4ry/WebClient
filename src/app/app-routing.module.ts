@@ -33,7 +33,10 @@ const routes: Routes = [
   },
   { 
     path: 'projects', 
-    component: ProjectsComponent 
+    component: ProjectsComponent,
+    resolve: {
+      projects: ProjectsResolver
+    } 
   },
   {
     path: 'projects/:projectName',

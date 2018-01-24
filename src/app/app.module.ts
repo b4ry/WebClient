@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -74,8 +75,11 @@ import { ProjectsResolver } from './services/resolvers/projects.resolver';
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    ChartsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    ChartsModule
   ],
   providers: [ 
     ExperienceService,
