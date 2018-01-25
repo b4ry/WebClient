@@ -2,23 +2,48 @@
   <mat-table #table [dataSource]="dataSource" matSort>
 
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-      <mat-cell *matCellDef="let projectDto"> {{projectDto.name}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 
+        <span matTooltip="Name of a project" matTooltipPosition="right"> Name </span>
+      </mat-header-cell>
+      <mat-cell class="mat-cell-value" *matCellDef="let projectDto"> 
+        <span class="mat-cell-name-value"> 
+          {{projectDto.name}} 
+          <span class="tooltiptext"> 
+            <span *ngFor="let technologyDto of projectDto.technologies"> 
+                <i [ngClass]="technologyDto.iconClass"></i>
+            </span> 
+          </span>
+        </span> 
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="startTime">
-      <mat-header-cell *matHeaderCellDef> Start </mat-header-cell>
-      <mat-cell *matCellDef="let projectDto"> {{ projectDto.startTime | date }} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> 
+        <span class="mat-cell-value" matTooltip="Start date of a project" matTooltipPosition="right"> Start </span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let projectDto"> 
+        <span class="mat-cell-value" matTooltip="{{projectDto.startTime | date:'full'}}" matTooltipPosition="right"> 
+          {{ projectDto.startTime | date }} 
+        </span> 
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="endTime">
-      <mat-header-cell *matHeaderCellDef> End </mat-header-cell>
-      <mat-cell *matCellDef="let projectDto"> {{ projectDto.endTime | date }} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> 
+        <span class="mat-cell-value" matTooltip="End date of a project" matTooltipPosition="right"> End </span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let projectDto"> 
+        <span class="mat-cell-value" matTooltip="{{projectDto.endTime | date:'full'}}" matTooltipPosition="right"> 
+          {{ projectDto.endTime | date }} 
+        </span> 
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="details">
-      <mat-header-cell *matHeaderCellDef> Details </mat-header-cell>
-      <mat-cell *matCellDef="let projectDto"> <i class="fa fa-search-plus" (click)="navigateToProjectDetails(projectDto)"></i> </mat-cell>
+      <mat-header-cell class="mat-cell-value" *matHeaderCellDef> Details </mat-header-cell>
+      <mat-cell *matCellDef="let projectDto"> 
+        <i class="fa fa-search-plus" (click)="navigateToProjectDetails(projectDto)" matTooltip="Clicking will navigate to the project details!" matTooltipPosition="right"></i> 
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

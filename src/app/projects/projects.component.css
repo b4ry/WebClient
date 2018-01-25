@@ -69,3 +69,35 @@ mat-paginator {
 .mat-sort-header-button:hover {
     color: red;
 }
+
+.mat-cell-value {
+    cursor: default;
+}
+
+.mat-cell-name-value {
+    cursor: default;
+}
+
+.mat-cell-name-value .tooltiptext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    min-width: 10%;
+    background-color: white;
+    border-radius: 6px;
+    border-style: solid;
+    margin-left: 7.5%;
+    margin-top: -1.5%;
+    padding-top: 0.2%;
+    position: absolute;
+    z-index: 1;
+    transition: 0.5s;
+    opacity: 0;
+    font-size: 200%;
+}
+
+.mat-cell-name-value:hover .tooltiptext {
+    opacity: 1;
+    visibility: visible;
+}
