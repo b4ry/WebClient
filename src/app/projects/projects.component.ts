@@ -1,20 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit, ViewEncapsulation } from '@angular/core';
+import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProjectDto } from '../services/dtos/project.dto';
-import { MatGridTile } from '@angular/material';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  styleUrls: ['./projects.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements OnInit, AfterViewInit {
 
-  public gridTiles: GridTile[] = [];
+  public displayedColumns = ['name', 'startTime', 'endTime', 'details'];
+  public dataSource: MatTableDataSource<ProjectDto>;
 
   private aliveProjectSubscription: boolean = true;
   private projectsDto: ProjectDto[];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor
   (
@@ -29,28 +34,16 @@ export class ProjectsComponent implements OnInit {
     .subscribe(result => 
       {
         this.projectsDto = result['projects'];
-
-        this.projectsDto.forEach(projectDto => {
-          this.gridTiles.push(
-            {
-              text: projectDto.name,
-              cols: 2,
-              rows: 1,
-              color: "transparent"
-            }
-          );
-        });
+        this.dataSource = new MatTableDataSource<ProjectDto>(this.projectsDto);
       });
   }
 
-  public navigateToProjectDetails(projectName: string) {
-    this.router.navigate(['/projects', projectName ]);
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
-}
 
-export interface GridTile {
-  text: string;
-  cols: Number;
-  rows: Number;
-  color: string;
+  public navigateToProjectDetails(projectDto: ProjectDto) {
+    this.router.navigate(['/projects', projectDto.name ]);
+  }
 }

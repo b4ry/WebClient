@@ -64,7 +64,7 @@ import { ProjectsResolver } from './services/resolvers/projects.resolver';
     ProjectDetailsComponent,
     MapTechnologyTypeEnumPipe,
     EnumToDropdownPipe,
-    FilterTechnologiesPipe,
+    FilterTechnologiesPipe
   ],
   imports: [
     BrowserModule,

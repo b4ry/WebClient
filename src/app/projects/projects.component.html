@@ -1,14 +1,32 @@
-<div class="flex-container-main">
-    <div class="flex-container">
-      <mat-grid-list cols="6" gutterSize="10" rowHeight="5em">
-        <mat-grid-tile (click)="navigateToProjectDetails(gridTile.text)"
-          *ngFor="let gridTile of gridTiles"
-          [colspan]="gridTile.cols"
-          [rowspan]="gridTile.rows"
-          [style.background]="gridTile.color">
-            {{gridTile.text}}
-        </mat-grid-tile>
-      </mat-grid-list>
-    </div>
-  </div>
-  
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let projectDto"> {{projectDto.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="startTime">
+      <mat-header-cell *matHeaderCellDef> Start </mat-header-cell>
+      <mat-cell *matCellDef="let projectDto"> {{ projectDto.startTime | date }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="endTime">
+      <mat-header-cell *matHeaderCellDef> End </mat-header-cell>
+      <mat-cell *matCellDef="let projectDto"> {{ projectDto.endTime | date }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="details">
+      <mat-header-cell *matHeaderCellDef> Details </mat-header-cell>
+      <mat-cell *matCellDef="let projectDto"> <i class="fa fa-search-plus" (click)="navigateToProjectDetails(projectDto)"></i> </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>
