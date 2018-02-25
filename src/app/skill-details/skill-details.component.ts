@@ -1,26 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input } from "@angular/core";
+import { Router } from "@angular/router";
 
-import { TechnologyDto } from '../services/dtos/technology.dto';
-import { ProjectDto } from '../services/dtos/project.dto';
+import { TechnologyDto } from "../services/dtos/technology.dto";
+import { ProjectDto } from "../services/dtos/project.dto";
 
 @Component({
-  selector: 'app-skill-details',
-  templateUrl: './skill-details.component.html',
-  styleUrls: ['./skill-details.component.css']
+  selector: "app-skill-details",
+  templateUrl: "./skill-details.component.html",
+  styleUrls: ["./skill-details.component.css"]
 })
 export class SkillDetailsComponent implements OnInit {
 
-  @Input() selectedTechnologyDto: TechnologyDto;
-  
+  @Input() public selectedTechnologyDto: TechnologyDto;
+
   constructor(
     private router: Router
   ) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
   }
 
   public navigateToProjectDetails(projectDto: ProjectDto) {
-    this.router.navigate(['/projects', projectDto.name ]);
+    this.router.navigate(["/projects", projectDto.name ]);
   }
 }

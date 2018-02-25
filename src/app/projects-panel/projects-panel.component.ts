@@ -1,56 +1,57 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
-import { ProjectService } from '../services/projects/project.service';
-import { ProjectDto } from '../services/dtos/project.dto';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Router } from "@angular/router";
+import { ProjectService } from "../services/projects/project.service";
+import { ProjectDto } from "../services/dtos/project.dto";
+import { OnDestroy } from "@angular/core/src/metadata/lifecycle_hooks";
 
 @Component({
-  selector: 'app-projects-panel',
-  templateUrl: './projects-panel.component.html',
-  styleUrls: ['./projects-panel.component.css']
+  selector: "app-projects-panel",
+  templateUrl: "./projects-panel.component.html",
+  styleUrls: ["./projects-panel.component.css"]
 })
 export class ProjectsPanelComponent implements OnInit, OnDestroy {
 
-  @Input() projectsPanelWidth: Number;
-  @Input() buttonVisibility: string;
+  @Input() public projectsPanelWidth: Number;
+  @Input() public buttonVisibility: string;
 
-  @Output() notifyClosingProjectsPanel: EventEmitter<Number> = new EventEmitter<Number>();
+  @Output() public notifyClosingProjectsPanel: EventEmitter<Number> = new EventEmitter<Number>();
 
-  private projectsDto: ProjectDto[] = [];
-  private aliveProjectSubscription: boolean = true;
+  private projectsDto: Array<ProjectDto> = [];
+  private aliveProjectSubscription: boolean;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private projectService: ProjectService
   ) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    this.aliveProjectSubscription = true;
     this.getProjects();
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.aliveProjectSubscription = false;
   }
 
-  getProjects(): void {
+  public getProjects(): void {
     this.projectService.getProjects()
     .takeWhile(() => this.aliveProjectSubscription)
     .subscribe(
         resultArray => this.projectsDto = resultArray.slice(0, 5),
         error => console.log("Error :: " + error)
-    )
+    );
   }
 
-  closeProjectsPanel(): void {
+  public closeProjectsPanel(): void {
     this.projectsPanelWidth = 2;
     this.notifyClosingProjectsPanel.emit(this.projectsPanelWidth);
   }
 
-  navigateToProjectsPage() {
-    this.router.navigate(['/projects']);
+  public navigateToProjectsPage(): void {
+    this.router.navigate(["/projects"]);
   }
 
-  navigateToProjectDetailsPage(projectDtoName: string) {
-    this.router.navigate(['/projects', projectDtoName]);
+  public navigateToProjectDetailsPage(projectDtoName: string): void {
+    this.router.navigate(["/projects", projectDtoName]);
   }
 }

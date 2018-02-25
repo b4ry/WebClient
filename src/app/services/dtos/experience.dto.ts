@@ -1,7 +1,7 @@
 import { ProjectDto } from "./project.dto";
 
 export class ExperienceDto {
-    companyName: string;
-    position: string;
-    projects: ProjectDto[];
+    public companyName: string;
+    public position: string;
+    public projects: Array<ProjectDto>;
 }

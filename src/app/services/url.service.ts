@@ -13,10 +13,9 @@ export class UrlService {
         [ "CreateTechnology", "technology/createtechnology" ]
     ]);
 
-    constructor() { 
-    }
+    constructor() {}
 
-    getUrl(urlKey: string): string {
+    public getUrl(urlKey: string): string {
         return this.map.get(urlKey);
     }
 }

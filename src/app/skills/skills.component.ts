@@ -1,33 +1,33 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { AfterViewChecked } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
+import { AfterViewChecked } from "@angular/core/src/metadata/lifecycle_hooks";
+import { Router } from "@angular/router";
+import { Location } from "@angular/common";
 
 // import "rxjs/add/operator/takeWhile";
 
-import { TechnologyService } from '../services/skills/technology.service';
+import { TechnologyService } from "../services/skills/technology.service";
 
-import { TechnologyTypeDto } from '../services/dtos/technology-type.dto';
-import { TechnologyDto } from '../services/dtos/technology.dto';
-// import { CreateTechnologyDto } from '../services/dtos/create-technology.dto';
+import { TechnologyTypeDto } from "../services/dtos/technology-type.dto";
+import { TechnologyDto } from "../services/dtos/technology.dto";
+// import { CreateTechnologyDto } from "../services/dtos/create-technology.dto";
 
-// import { TechnologyTypeEnum } from '../services/enums/technology-type.enum';
-import { TechnologyItemStateEnum } from '../services/enums/technnology-item-state.enum';
+// import { TechnologyTypeEnum } from "../services/enums/technology-type.enum";
+import { TechnologyItemStateEnum } from "../services/enums/technnology-item-state.enum";
 
-import { techIconAnimations } from './tech-icon-animations.animation';
+import { techIconAnimations } from "./tech-icon-animations.animation";
 
 @Component({
-  selector: 'app-skills',
+  selector: "app-skills",
   animations: [ techIconAnimations ],
-  templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.css']
+  templateUrl: "./skills.component.html",
+  styleUrls: ["./skills.component.css"]
 })
 export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   public selectedTechnologyDto: TechnologyDto;
 
-  public technologiesDto: TechnologyDto[];
-  public initialTechnologies: TechnologyDto[];
+  public technologiesDto: Array<TechnologyDto>;
+  public initialTechnologies: Array<TechnologyDto>;
 
   // private aliveTechnologySubscription: boolean = true;
 
@@ -36,20 +36,19 @@ export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
     private router: Router,
     private changeDetectorRef: ChangeDetectorRef,
     private location: Location
-  ) { 
+  ) {
     this.location = location;
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.technologiesDto = [];
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     // this.aliveTechnologySubscription = false;
   }
 
-  ngAfterViewChecked()
-  {
+  public ngAfterViewChecked(): void {
     this.changeDetectorRef.detectChanges();
   }
 
@@ -69,83 +68,78 @@ export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
   //     );
   // }
 
-  openSkillDetails(technologyName: string): void {
-    this.router.navigate(['skills', technologyName]);
+  public openSkillDetails(technologyName: string): void {
+    this.router.navigate(["skills", technologyName]);
   }
 
-  onNotifyChangingListOfTechIcons(expandListEvent: any): void {
-    if(this.technologiesDto.length === 0) {
+  public onNotifyChangingListOfTechIcons(expandListEvent: any): void {
+    if (this.technologiesDto.length === 0) {
       this.technologiesDto = expandListEvent.techIconsArray;
     }
 
-    if(expandListEvent.expandList) {
-      for(var technologyDto of expandListEvent.techIconsArray) {
-        let selectedTechnology: TechnologyDto = this.technologiesDto.find(technologyDto => technologyDto.itemState === TechnologyItemStateEnum.Selected);
+    if (expandListEvent.expandList) {
+      for (const technologyDto of expandListEvent.techIconsArray) {
+        const selectedTechnology: TechnologyDto = this.technologiesDto.find(techDto => techDto.itemState === TechnologyItemStateEnum.Selected);
 
-        if(selectedTechnology) {
+        if (selectedTechnology) {
           expandListEvent.techIconsArray.forEach(tech => {
-            if(tech !== selectedTechnology) {
+            if (tech !== selectedTechnology) {
               tech.itemState = TechnologyItemStateEnum.Unselected;
             }
           });
-        }
-        else {
+        } else {
           technologyDto.itemState = TechnologyItemStateEnum.Listed;
         }
-        
-        if(!this.technologiesDto.includes(technologyDto)) {
+
+        if (!this.technologiesDto.includes(technologyDto)) {
           this.technologiesDto.push(technologyDto);
         }
       }
-    }
-    else {
-      for(var technologyDto of expandListEvent.techIconsArray) {
-        if(this.technologiesDto.includes(technologyDto)) {
-          var index = this.technologiesDto.indexOf(technologyDto, 0);
+    } else {
+      for (const technologyDto of expandListEvent.techIconsArray) {
+        if (this.technologiesDto.includes(technologyDto)) {
+          const index = this.technologiesDto.indexOf(technologyDto, 0);
           this.technologiesDto.splice(index, 1);
         }
       }
 
-      if(this.technologiesDto.length === 0) {
+      if (this.technologiesDto.length === 0) {
         this.changeUrlWithoutRedirecting(null, null);
       }
     }
   }
 
-  onNotifySelectingTechnology(selectedTechnologyDto: TechnologyDto): void {
+  public onNotifySelectingTechnology(selectedTechnologyDto: TechnologyDto): void {
     this.technologiesDto.forEach(technologyDto => {
-      if(selectedTechnologyDto) {
+      if (selectedTechnologyDto) {
         technologyDto.itemState = TechnologyItemStateEnum.Unselected;
-      }
-      else {
+      } else {
         technologyDto.itemState = TechnologyItemStateEnum.Listed;
       }
     });
 
     this.selectedTechnologyDto = selectedTechnologyDto;
 
-    if(this.selectedTechnologyDto) {
+    if (this.selectedTechnologyDto) {
       this.selectedTechnologyDto.itemState = TechnologyItemStateEnum.Selected;
       this.changeUrlWithoutRedirecting(selectedTechnologyDto.name, selectedTechnologyDto.technologyType.name);
-    }
-    else {
+    } else {
       this.changeUrlWithoutRedirecting(null, null);
     }
   }
 
-  onSelectTechnology(technologyDto: TechnologyDto): void {
-    if(technologyDto.itemState !== TechnologyItemStateEnum.Selected) {
+  public onSelectTechnology(technologyDto: TechnologyDto): void {
+    if (technologyDto.itemState !== TechnologyItemStateEnum.Selected) {
       technologyDto.itemState = TechnologyItemStateEnum.Selected;
       this.selectedTechnologyDto = technologyDto;
       this.changeUrlWithoutRedirecting(technologyDto.name, technologyDto.technologyType.name);
 
-      for(var tech of this.technologiesDto) {
-        if(tech !== technologyDto) {
+      for (const tech of this.technologiesDto) {
+        if (tech !== technologyDto) {
           tech.itemState = TechnologyItemStateEnum.Unselected;
         }
       }
-    }
-    else {
+    } else {
       this.technologiesDto.forEach(technology => {
         technology.itemState = TechnologyItemStateEnum.Listed;
       });
@@ -156,10 +150,10 @@ export class SkillsComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   private changeUrlWithoutRedirecting(technologyName: string, technologyTypeName: string): void {
-    let url = this.router
-      .createUrlTree([this.router.url.split('?')[0]], { queryParams: { technologyName: technologyName, technologyTypeName: technologyTypeName }})
+    const url = this.router
+      .createUrlTree([this.router.url.split("?")[0]], { queryParams: { technologyName: technologyName, technologyTypeName: technologyTypeName }})
       .toString();
 
-    this.location.go(url);  
+    this.location.go(url);
   }
 }

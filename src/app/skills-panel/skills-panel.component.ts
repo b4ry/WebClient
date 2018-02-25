@@ -1,58 +1,59 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Router } from "@angular/router";
+import { OnDestroy } from "@angular/core/src/metadata/lifecycle_hooks";
 
-import { TechnologyDto } from '../services/dtos/technology.dto';
-import { TechnologyService } from '../services/skills/technology.service';
+import { TechnologyDto } from "../services/dtos/technology.dto";
+import { TechnologyService } from "../services/skills/technology.service";
 
 @Component({
-  selector: 'app-skills-panel',
-  templateUrl: './skills-panel.component.html',
-  styleUrls: ['./skills-panel.component.css']
+  selector: "app-skills-panel",
+  templateUrl: "./skills-panel.component.html",
+  styleUrls: ["./skills-panel.component.css"]
 })
 export class SkillsPanelComponent implements OnInit, OnDestroy {
 
-  @Input() skillsPanelWidth: Number;
-  @Input() buttonVisibility: string;
+  @Input() public skillsPanelWidth: Number;
+  @Input() public buttonVisibility: string;
 
-  @Output() notifyClosingSkillsPanel: EventEmitter<Number> = new EventEmitter<Number>();
-  
-  public technologiesDto: TechnologyDto[] = [];
+  @Output() public notifyClosingSkillsPanel: EventEmitter<Number> = new EventEmitter<Number>();
 
-  private aliveTechnologySubscription: boolean = true;
+  public technologiesDto: Array<TechnologyDto> = [];
+
+  private aliveTechnologySubscription: boolean;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private technologyService: TechnologyService
   ) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    this.aliveTechnologySubscription = true;
     this.getTechnologies();
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.aliveTechnologySubscription = false;
   }
 
-  getTechnologies(): void {
+  public getTechnologies(): void {
     this.technologyService.getTechnologies()
       .takeWhile(() => this.aliveTechnologySubscription)
       .subscribe(
         resultArray => this.technologiesDto = resultArray.slice(0, 5),
         error => console.log("Error :: " + error)
-    )
+    );
   }
 
-  closeSkillsPanel(): void {
+  public closeSkillsPanel(): void {
     this.skillsPanelWidth = 2;
     this.notifyClosingSkillsPanel.emit(this.skillsPanelWidth);
   }
 
-  navigateToSkillsPage(): void {
-    this.router.navigate(['/skills']);
+  public navigateToSkillsPage(): void {
+    this.router.navigate(["/skills"]);
   }
 
-  navigateToSkillDetailsPage(skill: TechnologyDto): void {
-    this.router.navigate(['/skills'], { queryParams: { technologyName: skill.name, technologyTypeName: skill.technologyType.name }});
+  public navigateToSkillDetailsPage(skill: TechnologyDto): void {
+    this.router.navigate(["/skills"], { queryParams: { technologyName: skill.name, technologyTypeName: skill.technologyType.name }});
   }
 }

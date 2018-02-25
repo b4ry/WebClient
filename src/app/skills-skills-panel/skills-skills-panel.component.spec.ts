@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SkillsSkillsPanelComponent } from './skills-skills-panel.component';
+import { SkillsSkillsPanelComponent } from "./skills-skills-panel.component";
 
-describe('SkillsSkillsPanelComponent', () => {
+describe("SkillsSkillsPanelComponent", () => {
   let component: SkillsSkillsPanelComponent;
   let fixture: ComponentFixture<SkillsSkillsPanelComponent>;
 
@@ -19,7 +19,7 @@ describe('SkillsSkillsPanelComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

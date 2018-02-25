@@ -4,11 +4,10 @@ import { DbError } from "./DbError.error";
 
 export class GlobalErrorHandler extends ErrorHandler {
     public handleError(error: any): void {
-        
-        if(error instanceof DbError) {
+
+        if (error instanceof DbError) {
             console.info(`[DbError]:${error.toString()}`);
-        } 
-        else {
+        } else {
             super.handleError(error);
         }
     }

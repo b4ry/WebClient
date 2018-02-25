@@ -1,18 +1,18 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
-import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Router } from "@angular/router";
+import { AfterViewInit } from "@angular/core/src/metadata/lifecycle_hooks";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
 
   public skillsPanelWidth: Number;
   public experiencesPanelHeight: Number;
   public projectsPanelWidth: Number;
-  
+
   public skillsArrowLeftPosition: Number = 3.5;
   public projectsArrowRightPosition: Number = 96.5;
   public experiencesArrowTopPosition: Number = 7;
@@ -23,64 +23,61 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
   }
 
-  openSkillsPanel() {
-    if(this.skillsPanelWidth == 10) {
+  public openSkillsPanel(): void {
+    if (this.skillsPanelWidth === 10) {
       this.skillsPanelWidth = 2;
       this.skillsArrowLeftPosition = 3.5;
       this.skillsButtonVisibility = "hidden";
-    }
-    else {
+    } else {
       this.skillsPanelWidth = 10;
       this.skillsArrowLeftPosition = 11.5;
       this.skillsButtonVisibility = "visible";
     }
   }
 
-  openProjectsPanel() {
-    if(this.projectsPanelWidth == 10) {
+  public openProjectsPanel(): void {
+    if (this.projectsPanelWidth === 10) {
       this.projectsPanelWidth = 2;
       this.projectsArrowRightPosition = 96.5;
       this.projectsButtonVisibility = "hidden";
-    }
-    else {
+    } else {
       this.projectsPanelWidth = 10;
       this.projectsArrowRightPosition = 88.5;
       this.projectsButtonVisibility = "visible";
     }
   }
 
-  openExperiencesPanel() {
-    if(this.experiencesPanelHeight == 12) {
-      this.experiencesPanelHeight = 4
+  public openExperiencesPanel(): void {
+    if (this.experiencesPanelHeight === 12) {
+      this.experiencesPanelHeight = 4;
       this.experiencesArrowTopPosition = 7;
       this.experiencesButtonVisibility = "hidden";
-    }
-    else {
+    } else {
       this.experiencesPanelHeight = 12;
       this.experiencesArrowTopPosition = 15;
       this.experiencesButtonVisibility = "visible";
     }
   }
 
-  onNotifyClosingSkillsPanel(updatedSkillsPanelWidth:Number):void {
+  public onNotifyClosingSkillsPanel(updatedSkillsPanelWidth: Number): void {
     this.skillsPanelWidth = updatedSkillsPanelWidth;
     this.skillsArrowLeftPosition = 3.5;
     this.skillsButtonVisibility = "hidden";
   }
 
-  onNotifyClosingExperiencesPanel(updatedExperiencesPanelHeight:Number):void {
+  public onNotifyClosingExperiencesPanel(updatedExperiencesPanelHeight: Number): void {
     this.experiencesPanelHeight = updatedExperiencesPanelHeight;
     this.experiencesArrowTopPosition = 7;
     this.experiencesButtonVisibility = "hidden";
   }
 
-  onNotifyClosingProjectsPanel(updatedProjectsPanelWidth:Number):void {
+  public onNotifyClosingProjectsPanel(updatedProjectsPanelWidth: Number): void {
     this.projectsPanelWidth = updatedProjectsPanelWidth;
     this.projectsArrowRightPosition = 96.5;
     this.projectsButtonVisibility = "hidden";

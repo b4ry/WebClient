@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:62122/api/'
+  apiBaseUrl: "http://portfolioapplicationapi.azurewebsites.net/api/"
+  // apiBaseUrl: 'http://localhost:62122/api/'
 };

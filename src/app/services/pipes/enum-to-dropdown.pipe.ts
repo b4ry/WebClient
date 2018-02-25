@@ -1,14 +1,14 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
-@Pipe({name: 'enumToDropdown'})
+@Pipe({name: "enumToDropdown"})
 export class EnumToDropdownPipe implements PipeTransform {
-  transform(enumCollection) : any {
-    let enumKeys = [];
+  public transform(enumCollection): any {
+    const enumKeys = [];
 
-    for (var enumMember in enumCollection) {
+    for (const enumMember in enumCollection) {
       if (parseInt(enumMember, 10)) {
         enumKeys.push({key: enumMember, value: enumCollection[enumMember]});
-      } 
+      }
     }
 
     return enumKeys;

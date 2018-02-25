@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { StatisticsDialogComponent } from './statistics-dialog.component';
+import { StatisticsDialogComponent } from "./statistics-dialog.component";
 
-describe('StatisticsDialogComponent', () => {
+describe("StatisticsDialogComponent", () => {
   let component: StatisticsDialogComponent;
   let fixture: ComponentFixture<StatisticsDialogComponent>;
 
@@ -19,7 +19,7 @@ describe('StatisticsDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
