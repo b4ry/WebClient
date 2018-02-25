@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { OnDestroy } from "@angular/core/src/metadata/lifecycle_hooks";
 
-import { ExperienceService } from "../services/experiences/experience.service";
-import { ExperienceDto } from "../services/dtos/experience.dto";
+import { ExperienceService } from "../../services/experiences/experience.service";
+import { ExperienceDto } from "../../services/dtos/experience.dto";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({

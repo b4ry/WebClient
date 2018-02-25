@@ -13,20 +13,20 @@ import { ChartsModule } from "ng2-charts";
 import { AppRoutingModule } from "./app-routing.module";
 
 import { AppComponent } from "./app.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { ExperiencesComponent } from "./experiences/experiences.component";
-import { SkillsComponent } from "./skills/skills.component";
-import { ProjectsComponent } from "./projects/projects.component";
-import { AboutMeComponent } from "./about-me/about-me.component";
-import { FooterComponent } from "./footer/footer.component";
-import { SkillsPanelComponent } from "./skills-panel/skills-panel.component";
-import { ExperiencesPanelComponent } from "./experiences-panel/experiences-panel.component";
-import { ProjectsPanelComponent } from "./projects-panel/projects-panel.component";
-import { SkillDetailsComponent } from "./skill-details/skill-details.component";
-import { ExperienceDetailsComponent } from "./experience-details/experience-details.component";
-import { SkillsSkillsPanelComponent } from "./skills-skills-panel/skills-skills-panel.component";
-import { StatisticsDialogComponent } from "./statistics-dialog/statistics-dialog.component";
-import { ProjectDetailsComponent } from "./project-details/project-details.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { ExperiencesComponent } from "./components/experiences/experiences.component";
+import { SkillsComponent } from "./components/skills/skills.component";
+import { ProjectsComponent } from "./components/projects/projects.component";
+import { AboutMeComponent } from "./components/about-me/about-me.component";
+import { FooterComponent } from "./components/footer/footer.component";
+import { SkillsPanelComponent } from "./components/skills-panel/skills-panel.component";
+import { ExperiencesPanelComponent } from "./components/experiences-panel/experiences-panel.component";
+import { ProjectsPanelComponent } from "./components/projects-panel/projects-panel.component";
+import { SkillDetailsComponent } from "./components/skill-details/skill-details.component";
+import { ExperienceDetailsComponent } from "./components/experience-details/experience-details.component";
+import { SkillsListComponent } from "./components/skills-list/skills-list.component";
+import { StatisticsDialogComponent } from "./components/statistics-dialog/statistics-dialog.component";
+import { ProjectDetailsComponent } from "./components/project-details/project-details.component";
 
 import { ExperienceService } from "./services/experiences/experience.service";
 import { TechnologyTypeService } from "./services/skills/technology-type.service";
@@ -59,7 +59,7 @@ import { ProjectsResolver } from "./services/resolvers/projects.resolver";
     ProjectsPanelComponent,
     SkillDetailsComponent,
     ExperienceDetailsComponent,
-    SkillsSkillsPanelComponent,
+    SkillsListComponent,
     StatisticsDialogComponent,
     ProjectDetailsComponent,
     MapTechnologyTypeEnumPipe,

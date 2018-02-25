@@ -3,18 +3,18 @@ import { ActivatedRoute, ParamMap } from "@angular/router";
 import { OnDestroy } from "@angular/core/src/metadata/lifecycle_hooks";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
-import { TechnologyTypeDto } from "../services/dtos/technology-type.dto";
-import { TechnologyDto } from "../services/dtos/technology.dto";
+import { TechnologyTypeDto } from "../../services/dtos/technology-type.dto";
+import { TechnologyDto } from "../../services/dtos/technology.dto";
 
 import { StatisticsDialogComponent } from "../statistics-dialog/statistics-dialog.component";
 
 
 @Component({
-  selector: "app-skills-skills-panel",
-  templateUrl: "./skills-skills-panel.component.html",
-  styleUrls: ["./skills-skills-panel.component.css"]
+  selector: "app-skills-list",
+  templateUrl: "./skills-list.component.html",
+  styleUrls: ["./skills-list.component.css"]
 })
-export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
+export class SkillsListComponent implements OnInit, OnDestroy {
 
   @Input() public selectedTechnologyDto: TechnologyDto;
 
@@ -26,6 +26,7 @@ export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
 
   private aliveTechnologyTypesSubscription: boolean;
   private aliveTechnologiesSubscription: boolean;
+  private aliveStatisticsSubscription: boolean;
 
   public technologyTypesDto: Array<TechnologyTypeDto> = new Array<TechnologyTypeDto>();
   public technologiesDto: Array<TechnologyDto> = new Array<TechnologyDto>();
@@ -37,11 +38,14 @@ export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.aliveTechnologiesSubscription = true;
     this.aliveTechnologyTypesSubscription = true;
-    this.activatedRoute.data.takeWhile(() => this.aliveTechnologyTypesSubscription)
+    this.aliveStatisticsSubscription = true;
+    this.activatedRoute.data
+      .takeWhile(() => this.aliveTechnologyTypesSubscription)
       .subscribe(result => {
           this.technologyTypesDto = result["technologyTypes"];
         });
-    this.activatedRoute.data.takeWhile(() => this.aliveTechnologiesSubscription)
+    this.activatedRoute.data
+      .takeWhile(() => this.aliveTechnologiesSubscription)
       .subscribe(result => {
           this.technologiesDto = result["skills"];
         });
@@ -64,6 +68,7 @@ export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.aliveTechnologiesSubscription = false;
     this.aliveTechnologyTypesSubscription = false;
+    this.aliveStatisticsSubscription = false;
   }
 
   private isExpandedTechType(technologyTypeName: string): boolean {
@@ -89,9 +94,12 @@ export class SkillsSkillsPanelComponent implements OnInit, OnDestroy {
 
     const dialogRef = this.dialog.open(StatisticsDialogComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
-    });
+    dialogRef
+      .afterClosed()
+      .takeWhile(() => this.aliveStatisticsSubscription)
+      .subscribe(result => {
+        console.log("The dialog was closed");
+      });
   }
 
   public onToggleList(technologyTypeName: string): void {

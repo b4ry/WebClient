@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
-import { ProjectService } from "../services/projects/project.service";
-import { ProjectDto } from "../services/dtos/project.dto";
+import { ProjectService } from "../../services/projects/project.service";
+import { ProjectDto } from "../../services/dtos/project.dto";
 import { OnDestroy } from "@angular/core/src/metadata/lifecycle_hooks";
 
 @Component({

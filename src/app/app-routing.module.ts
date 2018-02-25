@@ -1,14 +1,14 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { AboutMeComponent } from "./about-me/about-me.component";
-import { ExperiencesComponent } from "./experiences/experiences.component";
-import { ProjectsComponent } from "./projects/projects.component";
-import { SkillsComponent } from "./skills/skills.component";
-import { SkillDetailsComponent } from "./skill-details/skill-details.component";
-import { ExperienceDetailsComponent } from "./experience-details/experience-details.component";
-import { ProjectDetailsComponent } from "./project-details/project-details.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { AboutMeComponent } from "./components/about-me/about-me.component";
+import { ExperiencesComponent } from "./components/experiences/experiences.component";
+import { ProjectsComponent } from "./components/projects/projects.component";
+import { SkillsComponent } from "./components/skills/skills.component";
+import { SkillDetailsComponent } from "./components/skill-details/skill-details.component";
+import { ExperienceDetailsComponent } from "./components/experience-details/experience-details.component";
+import { ProjectDetailsComponent } from "./components/project-details/project-details.component";
 import { SkillsResolver } from "./services/resolvers/skills.resolver";
 import { TechnologyTypesResolver } from "./services/resolvers/technology-types.resolver";
 import { ProjectDetailsResolver } from "./services/resolvers/project-details.resolver";

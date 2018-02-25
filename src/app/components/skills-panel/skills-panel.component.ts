@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 import { OnDestroy } from "@angular/core/src/metadata/lifecycle_hooks";
 
-import { TechnologyDto } from "../services/dtos/technology.dto";
-import { TechnologyService } from "../services/skills/technology.service";
+import { TechnologyDto } from "../../services/dtos/technology.dto";
+import { TechnologyService } from "../../services/skills/technology.service";
 
 @Component({
   selector: "app-skills-panel",

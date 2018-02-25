@@ -1,10 +1,10 @@
 <div class="flex-container">
-    <app-skills-skills-panel 
+    <app-skills-list
         [selectedTechnologyDto]="selectedTechnologyDto"
         (notifyChangingListOfTechIcons)="onNotifyChangingListOfTechIcons($event)"
         (notifySelectingTechnology)="onNotifySelectingTechnology($event)"
     >
-    </app-skills-skills-panel>
+    </app-skills-list>
     <ul class="flex-container-icons">
         <li class="flex-item" *ngFor="let technologyDto of technologiesDto" [@itemState]="technologyDto.itemState">
             <div class="icon-and-label">

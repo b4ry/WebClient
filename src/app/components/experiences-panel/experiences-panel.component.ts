@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 import { OnDestroy } from "@angular/core/src/metadata/lifecycle_hooks";
 
-import { ExperienceDto } from "../services/dtos/experience.dto";
-import { ExperienceService } from "../services/experiences/experience.service";
+import { ExperienceDto } from "../../services/dtos/experience.dto";
+import { ExperienceService } from "../../services/experiences/experience.service";
 
 @Component({
   selector: "app-experiences-panel",

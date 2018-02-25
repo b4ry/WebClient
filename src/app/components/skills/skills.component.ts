@@ -5,14 +5,14 @@ import { Location } from "@angular/common";
 
 // import "rxjs/add/operator/takeWhile";
 
-import { TechnologyService } from "../services/skills/technology.service";
+import { TechnologyService } from "../../services/skills/technology.service";
 
-import { TechnologyTypeDto } from "../services/dtos/technology-type.dto";
-import { TechnologyDto } from "../services/dtos/technology.dto";
+import { TechnologyTypeDto } from "../../services/dtos/technology-type.dto";
+import { TechnologyDto } from "../../services/dtos/technology.dto";
 // import { CreateTechnologyDto } from "../services/dtos/create-technology.dto";
 
 // import { TechnologyTypeEnum } from "../services/enums/technology-type.enum";
-import { TechnologyItemStateEnum } from "../services/enums/technnology-item-state.enum";
+import { TechnologyItemStateEnum } from "../../services/enums/technnology-item-state.enum";
 
 import { techIconAnimations } from "./tech-icon-animations.animation";
 
