@@ -28,8 +28,10 @@
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "dev-azure": "environments/environment.azure.dev.ts",
+        "dev-local": "environments/environment.local.dev.ts",
+        "prod-azure": "environments/environment.azure.prod.ts",
+        "prod-local": "environments/environment.local.prod.ts"
       }
     }
   ],
