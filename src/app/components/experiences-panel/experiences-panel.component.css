@@ -45,7 +45,6 @@ i.fa-times-circle:hover {
     display: flex;
     padding-top: 0.5%;
     padding-left: 10%;
-    justify-content: space-between;
 }
   
 .flex-container>div {
@@ -57,6 +56,9 @@ i.fa-times-circle:hover {
     text-align: center;
     font-weight: bold;
     visibility: hidden;
+    margin-left: 1%;
+    min-width: 6em;
+    max-width: 6em;
 }
 
 .flex-container>div:hover {
