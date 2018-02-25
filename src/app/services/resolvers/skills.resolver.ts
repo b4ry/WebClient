@@ -3,7 +3,7 @@ import { Resolve } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 
 import { TechnologyService } from "../skills/technology.service";
-import { TechnologyDto } from "../dtos/technology.dto";
+import { TechnologyDto } from "../../models/dtos/technology.dto";
 
 @Injectable()
 export class SkillsResolver implements Resolve<any> {

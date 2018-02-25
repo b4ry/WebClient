@@ -6,8 +6,8 @@ import "rxjs/add/observable/throw";
 
 import { environment } from "../../../environments/environment";
 import { UrlService } from "../url.service";
-import { CreateTechnologyDto } from "../dtos/create-technology.dto";
-import { TechnologyDto } from "../dtos/technology.dto";
+import { CreateTechnologyDto } from "../../models/dtos/create-technology.dto";
+import { TechnologyDto } from "../../models/dtos/technology.dto";
 
 @Injectable()
 export class TechnologyService {

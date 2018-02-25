@@ -3,8 +3,8 @@ import { ActivatedRoute, ParamMap } from "@angular/router";
 import { OnDestroy } from "@angular/core/src/metadata/lifecycle_hooks";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
-import { TechnologyTypeDto } from "../../services/dtos/technology-type.dto";
-import { TechnologyDto } from "../../services/dtos/technology.dto";
+import { TechnologyTypeDto } from "../../models/dtos/technology-type.dto";
+import { TechnologyDto } from "../../models/dtos/technology.dto";
 
 import { StatisticsDialogComponent } from "../statistics-dialog/statistics-dialog.component";
 

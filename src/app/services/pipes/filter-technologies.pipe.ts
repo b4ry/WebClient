@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
-import { TechnologyDto } from "../dtos/technology.dto";
-import { TechnologyTypeEnum } from "../enums/technology-type.enum";
+import { TechnologyDto } from "../../models/dtos/technology.dto";
+import { TechnologyTypeEnum } from "../../models/enums/technology-type.enum";
 
 
 @Pipe({name: "filterTechnologiesPipe"})

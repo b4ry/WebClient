@@ -6,7 +6,7 @@ import { Location } from "@angular/common";
 // import "rxjs/add/operator/switchMap";
 import "rxjs/add/operator/takeWhile";
 
-import { ProjectDto } from "../../services/dtos/project.dto";
+import { ProjectDto } from "../../models/dtos/project.dto";
 import { ProjectService } from "../../services/projects/project.service";
 import { projectLabelAnimation } from "./project-label-animation.animation";
 

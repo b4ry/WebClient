@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit, AfterViewInit, ViewEncapsulation } from "
 import { MatPaginator, MatTableDataSource, MatSort } from "@angular/material";
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { ProjectDto } from "../../services/dtos/project.dto";
+import { ProjectDto } from "../../models/dtos/project.dto";
 
 @Component({
   selector: "app-projects",

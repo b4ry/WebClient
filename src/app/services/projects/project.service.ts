@@ -5,7 +5,7 @@ import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
 
 import { environment } from "../../../environments/environment";
-import { ProjectDto } from "../dtos/project.dto";
+import { ProjectDto } from "../../models/dtos/project.dto";
 import { UrlService } from "../url.service";
 
 

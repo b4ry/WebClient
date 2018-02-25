@@ -6,7 +6,7 @@ import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
 
 import { environment } from "../../../environments/environment";
-import { ExperienceDto } from "../dtos/experience.dto";
+import { ExperienceDto } from "../../models/dtos/experience.dto";
 import { UrlService } from "../url.service";
 
 @Injectable()

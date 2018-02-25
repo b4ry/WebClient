@@ -3,7 +3,7 @@ import { Resolve } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 
 import { ProjectService } from "../projects/project.service";
-import { ProjectDto } from "../dtos/project.dto";
+import { ProjectDto } from "../../models/dtos/project.dto";
 
 @Injectable()
 export class ProjectsResolver implements Resolve<any> {
