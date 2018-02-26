@@ -11,8 +11,9 @@
       </div>
       <div 
         class="more"
-        *ngIf="projectsDto.length === 5" 
-        [style.visibility]="buttonVisibility">
+        *ngIf="projectsDto.length >= 1" 
+        [style.visibility]="buttonVisibility"
+        (click)="navigateToProjectsPage()">
         MORE
       </div>
   </div>
