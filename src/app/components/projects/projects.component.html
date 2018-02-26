@@ -40,7 +40,9 @@
     </ng-container>
 
     <ng-container matColumnDef="details">
-      <mat-header-cell class="mat-cell-value" *matHeaderCellDef> Details </mat-header-cell>
+      <mat-header-cell class="mat-cell-value" *matHeaderCellDef> 
+          <span matTooltip="Details of a project" matTooltipPosition="right"> Details </span>
+      </mat-header-cell>
       <mat-cell *matCellDef="let projectDto"> 
         <i class="fa fa-search-plus" (click)="navigateToProjectDetails(projectDto)" matTooltip="Clicking will navigate to the project details!" matTooltipPosition="right"></i> 
       </mat-cell>

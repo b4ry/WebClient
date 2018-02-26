@@ -14,6 +14,7 @@
     min-width: 80%;
     border-style: solid;
     border-color: dimgray;
+    background: rgba(126, 126, 126, 0.5);
 }
 
 mat-row:first-of-type {
@@ -22,10 +23,13 @@ mat-row:first-of-type {
 
 mat-cell {
     font-weight: bold;
+    color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .mat-header-cell {
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: 16px;
+    color: wheat !important;
 }
 
 mat-paginator {
@@ -33,6 +37,12 @@ mat-paginator {
     border-style: solid;
     border-color: dimgray;
     min-width: 80%;
+    background: rgba(126, 126, 126, 0.5) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.mat-paginator-increment {
+    color: black !important;
 }
 
 .mat-paginator-page-size-label {
@@ -46,6 +56,7 @@ mat-paginator {
 .mat-select-value-text {
     font-weight: bold;
     text-align: center;
+    color: wheat;
 }
 
 .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
