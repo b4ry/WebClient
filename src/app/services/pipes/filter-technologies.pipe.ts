@@ -3,7 +3,6 @@ import { Pipe, PipeTransform } from "@angular/core";
 import { TechnologyDto } from "../../models/dtos/technology.dto";
 import { TechnologyTypeEnum } from "../../models/enums/technology-type.enum";
 
-
 @Pipe({name: "filterTechnologiesPipe"})
 export class FilterTechnologiesPipe implements PipeTransform {
   public transform(technologies: Array<TechnologyDto>, technologyTypeEnum: TechnologyTypeEnum): Array<TechnologyDto> {

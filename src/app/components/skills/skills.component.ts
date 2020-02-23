@@ -7,7 +7,6 @@ import { Location } from "@angular/common";
 
 import { TechnologyService } from "../../services/skills/technology.service";
 
-import { TechnologyTypeDto } from "../../models/dtos/technology-type.dto";
 import { TechnologyDto } from "../../models/dtos/technology.dto";
 // import { CreateTechnologyDto } from "../services/dtos/create-technology.dto";
 

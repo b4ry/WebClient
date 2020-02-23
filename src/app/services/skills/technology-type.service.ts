@@ -5,7 +5,6 @@ import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
 
 import { environment } from "../../../environments/environment";
-import { TechnologyTypeEnum } from "../../models/enums/technology-type.enum";
 import { TechnologyTypeDto } from "../../models/dtos/technology-type.dto";
 import { UrlService } from "../url.service";
 

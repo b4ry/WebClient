@@ -6,7 +6,6 @@ import { AboutMeComponent } from "./components/about-me/about-me.component";
 import { ExperiencesComponent } from "./components/experiences/experiences.component";
 import { ProjectsComponent } from "./components/projects/projects.component";
 import { SkillsComponent } from "./components/skills/skills.component";
-import { SkillDetailsComponent } from "./components/skill-details/skill-details.component";
 import { ExperienceDetailsComponent } from "./components/experience-details/experience-details.component";
 import { ProjectDetailsComponent } from "./components/project-details/project-details.component";
 import { SkillsResolver } from "./services/resolvers/skills.resolver";
