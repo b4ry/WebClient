@@ -1,5 +1,27 @@
 # PortfolioApplicationWeb
 
+## Keywords
+- angular materials
+- resolvers
+- pipes
+- routing
+- environments
+- angular cli
+- angular 5
+- animations (css and angular)
+- css 3
+- html 5
+- graphs
+- tooltips
+- loading page
+- SPA
+- karma tests
+- catching errors
+- subscribtions
+- reactive programming (RXJS)
+- event emitters
+- typescript
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
 ## Development server
